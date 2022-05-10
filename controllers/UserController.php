@@ -9,10 +9,6 @@ use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 
-
-/**
- * UserController implements the CRUD actions for User model.
- */
 class UserController extends Controller
 {
     /**
@@ -133,12 +129,33 @@ class UserController extends Controller
     public function actionUpdate()
     {
         $model = $this->findModel();
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'idUser' => $model->idUser]);
+        $model->scenario = User::SCENARIO_UPDATE;
+
+        $taxData =  $model->getTaxData()->one();
+
+        if($this->request->isPost && $model->load($this->request->post())) {
+            $isValid = $model->validate();
+            if(Yii::$app->user->can('vendor')) {
+                if(isset($taxData) && $taxData->load($this->request->post())) {
+                    $isValid = $isValid && $taxData->validate();
+                } else {
+                    $isValid = false;
+                }
+            }
+
+            if($isValid) {
+                $model->save(false);
+                if(Yii::$app->user->can('vendor')) {
+                    $taxData->save(false);
+                }
+
+                return $this->redirect(['view']);
+            }
         }
 
         return $this->render('update', [
-            'model' => $model,
+            'user' => $model,
+            'taxData' => $taxData
         ]);
     }
 

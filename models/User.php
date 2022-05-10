@@ -60,12 +60,18 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['firstName', 'lastName', 'email', 'username', 'password', 'password_repeat'], 'required'],
+            [['firstName', 'lastName', 'email', 'username'], 'required'],
             [['firstName', 'lastName', 'email', 'username', 'password', 'password_repeat', 'cityOfBirth'], 'string', 'max' => 255],
             [['dateOfBirth'], 'date', 'format' => 'd/m/Y'],
             [['email'], 'unique'],
             [['email'], 'email'],
-            ['password_repeat', 'compare', 'compareAttribute'=>'password', 'message'=>"Passwords should match between each other"],
+            [['password_repeat','password'], 'required', 'on' => [self::SCENARIO_VENDOR_REGISTRATION, self::SCENARIO_BUYER_REGISTRATION]],
+            ['password_repeat', 'compare', 'compareAttribute'=>'password',
+                'message'=>"Passwords should match between each other",
+                'skipOnEmpty' => false ,
+                'when' => function ($model) {
+                    return !empty($model->password);
+            },],
             [['username'], 'unique'],
             [['refTaxData'], 'integer'],
             [['refTaxData'], 'exist', 'skipOnError' => true, 'targetClass' => TaxData::class, 'targetAttribute' => ['refTaxData' => 'idTaxData']],
@@ -81,7 +87,7 @@ class User extends ActiveRecord implements IdentityInterface
         $scenarios[self::SCENARIO_LOGIN] = ['username', 'password'];
         $scenarios[self::SCENARIO_BUYER_REGISTRATION] = ['firstName', 'lastName', 'email', 'username', 'password', 'password_repeat', 'dateOfBirth', 'cityOfBirth'];
         $scenarios[self::SCENARIO_VENDOR_REGISTRATION] = ['firstName', 'lastName', 'email', 'username', 'password', 'password_repeat', 'dateOfBirth', 'cityOfBirth', 'refTaxData'];
-        $scenarios[self::SCENARIO_UPDATE] = ['firstName', 'lastName', 'email', 'username', 'password', 'dateOfBirth', 'cityOfBirth'];
+        $scenarios[self::SCENARIO_UPDATE] = ['firstName', 'lastName', 'email', 'username', 'password', 'password_repeat', 'dateOfBirth', 'cityOfBirth'];
         return $scenarios;
     }
 
@@ -108,7 +114,12 @@ class User extends ActiveRecord implements IdentityInterface
                     ActiveRecord::EVENT_BEFORE_UPDATE => 'password',
                 ],
                 'value' => function ($event) {
-                    return Yii::$app->getSecurity()->generatePasswordHash($this->password);
+                    if(!empty($this->getDirtyAttributes(["password"])["password"])) {
+                        $hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+                    } else {
+                        $hash = $this->getOldAttribute("password");
+                    }
+                    return $hash;
                 },
             ],
         ];
