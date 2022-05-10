@@ -21,33 +21,36 @@ class m220508_005248_init_rbac extends Migration
          * ========================
          */
 
-        $editPersonalData = $auth->createPermission("editPersonalData");
-        $editPersonalData->description = "Edit the user's personal data";
-        $auth->add($editPersonalData);
+        $userResourceRule = new \app\rbac\UserResourceRule();
+        $auth->add($userResourceRule);
 
         $addPaymentMethod= $auth->createPermission("addPaymentMethod");
         $addPaymentMethod->description = "Add a new payment method";
+        $addPaymentMethod->ruleName = $userResourceRule->name;
         $auth->add($addPaymentMethod);
 
         $viewPaymentMethod= $auth->createPermission("viewPaymentMethod");
         $viewPaymentMethod->description = "View the user's payment method";
+        $viewPaymentMethod->ruleName = $userResourceRule->name;
         $auth->add($viewPaymentMethod);
 
         $editPaymentMethod= $auth->createPermission("editPaymentMethod");
         $editPaymentMethod->description = "Edit the user's payment method";
+        $editPaymentMethod->ruleName = $userResourceRule->name;
         $auth->add($editPaymentMethod);
 
         $removePaymentMethod= $auth->createPermission("removePaymentMethod");
         $removePaymentMethod->description = "Remove the user's payment method";
+        $removePaymentMethod->ruleName = $userResourceRule->name;
         $auth->add($removePaymentMethod);
 
         $viewOrderHistory = $auth->createPermission("viewOrderHistory");
         $viewOrderHistory->description = "View own order history";
+        $viewOrderHistory->ruleName = $userResourceRule->name;
         $auth->add($viewOrderHistory);
 
         $buyer= $auth->createRole("buyer");
         $auth->add($buyer);
-        $auth->addChild($buyer, $editPersonalData);
         $auth->addChild($buyer, $addPaymentMethod);
         $auth->addChild($buyer, $viewPaymentMethod);
         $auth->addChild($buyer, $editPaymentMethod);
