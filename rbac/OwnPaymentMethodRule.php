@@ -2,15 +2,16 @@
 
 namespace app\rbac;
 
+use app\models\PaymentMethod;
 use Yii;
 use yii\rbac\Rule;
 
 /**
- * Checks if authorID matches user passed via params
+ * Checks if paymentMethodId matches user passed via params
  */
-class UserResourceRule extends Rule
+class OwnPaymentMethodRule extends Rule
 {
-    public $name = 'isUserResource';
+    public $name = 'isOwnerOfPaymentMethod';
 
     /**
      * Return true if the id is the same of the one passed via params
@@ -22,6 +23,12 @@ class UserResourceRule extends Rule
      */
     public function execute($user, $item, $params)
     {
-        return Yii::$app->user->id == $params['userId'];
+        $paymentMethod = PaymentMethod::findOne($params['paymentMethodId']);
+
+        if($paymentMethod) {
+            return Yii::$app->user->id == $paymentMethod->refUser;
+        }
+
+        return false;
     }
 }
