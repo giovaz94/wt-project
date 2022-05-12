@@ -8,13 +8,13 @@ use app\models\NotificationSearch;
 use app\models\User;
 
 use app\models\UserNotification;
+use app\utils\NotificationFactory;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\StaleObjectException;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\web\ServerErrorHttpException;
 
 /**
  * NotificationController implements the CRUD actions for Notification model.
@@ -51,6 +51,15 @@ class NotificationController extends Controller
                 ],
             ]
         );
+    }
+
+    /**
+     * @throws \yii\base\Exception
+     */
+    public function actionTest() {
+
+        NotificationFactory::globalNotification("Test", "globale");
+        return $this->redirect(['index']);
     }
 
     /**
