@@ -3,6 +3,10 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "Notification".
@@ -13,9 +17,10 @@ use Yii;
  * @property string $dateOfCreation
  *
  * @property User[] $refUsers
+ * @property-read ActiveQuery $users
  * @property UserNotification[] $userNotifications
  */
-class Notification extends \yii\db\ActiveRecord
+class Notification extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -31,10 +36,25 @@ class Notification extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'body', 'dateOfCreation'], 'required'],
-            [['body'], 'string'],
-            [['dateOfCreation'], 'safe'],
+            [['title', 'body',], 'required'],
             [['title'], 'string', 'max' => 255],
+            [['body'], 'string'],
+            [['dateOfCreation'], 'datetime'],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'dateOfCreation',
+                'updatedAtAttribute' => false,
+                'value' => new Expression('NOW()'),
+            ],
         ];
     }
 
@@ -54,20 +74,11 @@ class Notification extends \yii\db\ActiveRecord
     /**
      * Gets query for [[RefUsers]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getRefUsers()
+    public function getUsers()
     {
-        return $this->hasMany(User::className(), ['idUser' => 'refUser'])->viaTable('UserNotification', ['refNotification' => 'idNotification']);
+        return $this->hasMany(User::class, ['idUser' => 'refUser'])->viaTable('UserNotification', ['refNotification' => 'idNotification']);
     }
 
-    /**
-     * Gets query for [[UserNotifications]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUserNotifications()
-    {
-        return $this->hasMany(UserNotification::className(), ['refNotification' => 'idNotification']);
-    }
 }

@@ -2,19 +2,20 @@
 
 namespace app\models;
 
-use Yii;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "UserNotification".
  *
  * @property int $refUser
  * @property int $refNotification
+ * @property-read ActiveQuery $user
+ * @property-read ActiveQuery $notification
  * @property string|null $readDate
  *
- * @property Notification $refNotification0
- * @property User $refUser0
  */
-class UserNotification extends \yii\db\ActiveRecord
+class UserNotification extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -32,10 +33,10 @@ class UserNotification extends \yii\db\ActiveRecord
         return [
             [['refUser', 'refNotification'], 'required'],
             [['refUser', 'refNotification'], 'integer'],
-            [['readDate'], 'safe'],
+            [['readDate'], 'datetime', "format" => "php:Y-m-d H:m:i"],
             [['refUser', 'refNotification'], 'unique', 'targetAttribute' => ['refUser', 'refNotification']],
-            [['refNotification'], 'exist', 'skipOnError' => true, 'targetClass' => Notification::className(), 'targetAttribute' => ['refNotification' => 'idNotification']],
-            [['refUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['refUser' => 'idUser']],
+            [['refNotification'], 'exist', 'skipOnError' => true, 'targetClass' => Notification::class, 'targetAttribute' => ['refNotification' => 'idNotification']],
+            [['refUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['refUser' => 'idUser']],
         ];
     }
 
@@ -54,20 +55,20 @@ class UserNotification extends \yii\db\ActiveRecord
     /**
      * Gets query for [[RefNotification0]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getRefNotification0()
+    public function getNotification()
     {
-        return $this->hasOne(Notification::className(), ['idNotification' => 'refNotification']);
+        return $this->hasOne(Notification::class, ['idNotification' => 'refNotification']);
     }
 
     /**
-     * Gets query for [[RefUser0]].
+     * Gets query for [[RefUser]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
-    public function getRefUser0()
+    public function getUser()
     {
-        return $this->hasOne(User::className(), ['idUser' => 'refUser']);
+        return $this->hasOne(User::class, ['idUser' => 'refUser']);
     }
 }

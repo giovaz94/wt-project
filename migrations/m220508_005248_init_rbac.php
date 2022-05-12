@@ -20,7 +20,12 @@ class m220508_005248_init_rbac extends Migration
          * BEGIN: BUYER PERMISSIONS
          * ========================
          */
+        $buyer= $auth->createRole("buyer");
+        $auth->add($buyer);
 
+        /**
+         * BEGIN: PAYMENT METHOD
+         */
         $paymentMethodRule = new \app\rbac\OwnPaymentMethodRule();
         $auth->add($paymentMethodRule);
 
@@ -47,13 +52,30 @@ class m220508_005248_init_rbac extends Migration
         $viewOrderHistory->description = "View own order history";
         $auth->add($viewOrderHistory);
 
-        $buyer= $auth->createRole("buyer");
-        $auth->add($buyer);
         $auth->addChild($buyer, $addPaymentMethod);
         $auth->addChild($buyer, $viewPaymentMethod);
         $auth->addChild($buyer, $editPaymentMethod);
         $auth->addChild($buyer, $removePaymentMethod);
         $auth->addChild($buyer, $viewOrderHistory);
+        /**
+         * END: PAYMENT METHOD
+         */
+
+        /**
+         * BEGIN: NOTIFICATIONS
+         */
+        $notificationRule = new \app\rbac\OwnNotificationRule();
+        $auth->add($notificationRule);
+
+        $viewNotification = $auth->createPermission("viewNotification");
+        $viewNotification->description = "View the user's notifications";
+        $viewNotification->ruleName = $notificationRule->name;
+        $auth->add($viewNotification);
+
+        $auth->addChild($buyer, $viewNotification);
+        /**
+         * END: NOTIFICATIONS
+         */
 
         /**
          * ========================
@@ -67,15 +89,25 @@ class m220508_005248_init_rbac extends Migration
          * BEGIN: VENDOR PERMISSIONS
          * ========================
          */
+        $vendor = $auth->createRole("vendor");
+        $auth->add($vendor);
+        $auth->addChild($vendor, $buyer);
 
+        /**
+         * BEGIN: SALES HISTORY
+         */
         $viewSalesHistory = $auth->createPermission("viewSalesHistory");
         $viewSalesHistory->description = "View the sales history";
         $auth->add($viewSalesHistory);
 
-        $viewAllAvailableProducts = $auth->createPermission("viewAllAvailableProducts");
-        $viewAllAvailableProducts->description = "View all available products";
-        $auth->add($viewAllAvailableProducts);
+        $auth->addChild($vendor, $viewSalesHistory);
+        /**
+         * END: SALES HISTORY
+         */
 
+        /**
+         * BEGIN: AVAILABLE PRODUCTS
+         */
         $viewAvailableProduct = $auth->createPermission("viewAvailableProduct");
         $viewAvailableProduct->description = "View an available product";
         $auth->add($viewAvailableProduct);
@@ -92,6 +124,17 @@ class m220508_005248_init_rbac extends Migration
         $removeAvailableProduct->description = "Remove an available product";
         $auth->add($removeAvailableProduct);
 
+        $auth->addChild($vendor, $viewAvailableProduct);
+        $auth->addChild($vendor, $addAvailableProduct);
+        $auth->addChild($vendor, $editAvailableProduct);
+        $auth->addChild($vendor, $removeAvailableProduct);
+        /**
+         * END: AVAILABLE PRODUCTS
+         */
+
+        /**
+         * BEGIN: PRODUCTS
+         */
         $viewAllProducts = $auth->createPermission("viewAllProducts");
         $viewAllProducts->description = "View all inserted products";
         $auth->add($viewAllProducts);
@@ -112,21 +155,14 @@ class m220508_005248_init_rbac extends Migration
         $removeProduct->description = "Remove a  product";
         $auth->add($removeProduct);
 
-        // Vendor role
-        $vendor = $auth->createRole("vendor");
-        $auth->add($vendor);
-        $auth->addChild($vendor, $buyer);
-        $auth->addChild($vendor, $viewSalesHistory);
-        $auth->addChild($vendor, $viewAllAvailableProducts);
-        $auth->addChild($vendor, $viewAvailableProduct);
-        $auth->addChild($vendor, $addAvailableProduct);
-        $auth->addChild($vendor, $editAvailableProduct);
-        $auth->addChild($vendor, $removeAvailableProduct);
         $auth->addChild($vendor, $viewAllProducts);
         $auth->addChild($vendor, $viewProduct);
         $auth->addChild($vendor, $addProduct);
         $auth->addChild($vendor, $editProduct);
         $auth->addChild($vendor, $removeProduct);
+        /**
+         * END: PRODUCTS
+         */
 
         /**
          * ========================

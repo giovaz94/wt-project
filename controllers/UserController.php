@@ -2,9 +2,10 @@
 
 namespace app\controllers;
 
-use Yii;
 use app\models\TaxData;
 use app\models\User;
+
+use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;

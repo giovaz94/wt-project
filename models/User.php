@@ -240,6 +240,13 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->idUser;
     }
 
+
+    /**
+     * ===================
+     * BEGIN: UNUSED AUTH METHODS
+     * ===================
+     */
+
     /**
      * {@inheritDoc}
      */
@@ -260,4 +267,10 @@ class User extends ActiveRecord implements IdentityInterface
     public function validateAuthKey($authKey)
     {
     }
+
+    /**
+     * ===================
+     * END: UNUSED AUTH METHODS
+     * ===================
+     */
 }

@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Notification;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -33,8 +34,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'body:ntext',
             'dateOfCreation',
             [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Notification $model, $key, $index, $column) {
+                'class' => ActionColumn::class,
+                'urlCreator' => static function ($action, Notification $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'idNotification' => $model->idNotification]);
                  }
             ],

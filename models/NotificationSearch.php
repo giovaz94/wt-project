@@ -4,7 +4,6 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Notification;
 
 /**
  * NotificationSearch represents the model behind the search form of `app\models\Notification`.
@@ -40,9 +39,10 @@ class NotificationSearch extends Notification
      */
     public function search($params)
     {
-        $query = Notification::find();
-
-        // add conditions that should always apply here
+        $query = Notification::find()
+            ->joinWith(['users' => function($query) {
+                $query->andWhere(['idUser' => \Yii::$app->user->id]);
+            }]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
