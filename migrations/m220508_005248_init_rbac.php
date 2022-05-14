@@ -108,6 +108,7 @@ class m220508_005248_init_rbac extends Migration
         /**
          * BEGIN: AVAILABLE PRODUCTS
          */
+
         $viewAvailableProduct = $auth->createPermission("viewAvailableProduct");
         $viewAvailableProduct->description = "View an available product";
         $auth->add($viewAvailableProduct);
@@ -135,12 +136,12 @@ class m220508_005248_init_rbac extends Migration
         /**
          * BEGIN: PRODUCTS
          */
-        $viewAllProducts = $auth->createPermission("viewAllProducts");
-        $viewAllProducts->description = "View all inserted products";
-        $auth->add($viewAllProducts);
+        $productRule = new \app\rbac\OwnProductRule();
+        $auth->add($productRule);
 
         $viewProduct = $auth->createPermission("viewProduct");
         $viewProduct->description = "View the detail of a product";
+        $viewProduct->ruleName = $productRule->name;
         $auth->add($viewProduct);
 
         $addProduct = $auth->createPermission("addProduct");
@@ -149,13 +150,14 @@ class m220508_005248_init_rbac extends Migration
 
         $editProduct = $auth->createPermission("editProduct");
         $editProduct->description = "Edit the data of a product";
+        $editProduct->ruleName = $productRule->name;
         $auth->add($editProduct);
 
-        $removeProduct = $auth->createPermission("removeAProduct");
+        $removeProduct = $auth->createPermission("removeProduct");
         $removeProduct->description = "Remove a  product";
+        $removeProduct->ruleName = $productRule->name;
         $auth->add($removeProduct);
 
-        $auth->addChild($vendor, $viewAllProducts);
         $auth->addChild($vendor, $viewProduct);
         $auth->addChild($vendor, $addProduct);
         $auth->addChild($vendor, $editProduct);
