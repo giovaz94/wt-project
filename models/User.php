@@ -31,10 +31,10 @@ use yii\web\IdentityInterface;
 class User extends ActiveRecord implements IdentityInterface
 {
 
-    // BUYER SCENARIOS
+    // BUYER SCENARIO
     const SCENARIO_BUYER_REGISTRATION = "buyer-registration";
 
-    // VENDOR SCENARIOS
+    // VENDOR SCENARIO
     const SCENARIO_VENDOR_REGISTRATION = "vendor-registration";
 
     // LOGIN SCENARIO

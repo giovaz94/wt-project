@@ -4,11 +4,8 @@ namespace app\controllers;
 
 use app\models\Notification;
 use app\models\NotificationSearch;
-
-use app\models\User;
-
 use app\models\UserNotification;
-use app\utils\NotificationFactory;
+
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\StaleObjectException;
@@ -43,23 +40,10 @@ class NotificationController extends Controller
                             'roles' => ['viewNotification'],
                             'roleParams' => ['notificationId' => Yii::$app->request->get('idNotification')],
                         ],
-                        [
-                            'allow' => true,
-                            'actions' => ['test'],
-                        ],
                     ],
                 ],
             ]
         );
-    }
-
-    /**
-     * @throws \yii\base\Exception
-     */
-    public function actionTest() {
-
-        NotificationFactory::globalNotification("Test", "globale");
-        return $this->redirect(['index']);
     }
 
     /**
