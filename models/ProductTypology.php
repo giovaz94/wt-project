@@ -30,6 +30,7 @@ class ProductTypology extends ActiveRecord
     public function rules()
     {
         return [
+            [['idProductTypology'], 'int'],
             [['name'], 'required'],
             [['description'], 'string'],
             [['name'], 'string', 'max' => 255],

@@ -55,6 +55,6 @@ class ProductCategory extends ActiveRecord
      */
     public function getProducts()
     {
-        return $this->hasMany(Product::className(), ['refProductCategory' => 'idProductCategory']);
+        return $this->hasMany(Product::class, ['refProductCategory' => 'idProductCategory']);
     }
 }
