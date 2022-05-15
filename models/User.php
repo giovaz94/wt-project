@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\AttributeBehavior;
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
@@ -146,7 +147,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Gets query for [[Carts]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getCarts()
     {
@@ -156,7 +157,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Gets query for [[Orders]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getOrders()
     {
@@ -166,7 +167,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Gets query for [[PaymentMethods]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getPaymentMethods()
     {
@@ -176,7 +177,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Gets query for [[Products]].
      *
-     * @return \yii\db\ActiveQuery|ProductQuery
+     * @return ActiveQuery
      */
     public function getProducts()
     {
@@ -186,7 +187,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Gets query for [[RefNotifications]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getNotifications()
     {
@@ -196,7 +197,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Gets query for [[UserNotifications]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getUserNotifications()
     {
@@ -206,7 +207,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Gets query for [[TaxData]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getTaxData()
     {
