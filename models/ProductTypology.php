@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
 /**
@@ -30,6 +31,7 @@ class ProductTypology extends ActiveRecord
     public function rules()
     {
         return [
+            [['idProductTypology'], 'int'],
             [['name'], 'required'],
             [['description'], 'string'],
             [['name'], 'string', 'max' => 255],
@@ -51,7 +53,7 @@ class ProductTypology extends ActiveRecord
     /**
      * Gets query for [[Products]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getProducts()
     {

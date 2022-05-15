@@ -25,6 +25,7 @@ use yii\web\UploadedFile;
  * @property int|null $refProductCategory
  * @property int|null $refProductTypology
  * @property int|null $refUser
+ * @property null|string $imageUrl
  *
  * @property-read ActiveQuery $user
  * @property-read ActiveQuery $category
@@ -84,7 +85,6 @@ class Product extends ActiveRecord
         ];
     }
 
-
     /**
      * {@inheritdoc}
      */
@@ -105,7 +105,17 @@ class Product extends ActiveRecord
         ];
     }
 
-
+    /**
+     * {@inheritdoc}
+     */
+    public function beforeDelete()
+    {
+        $availableProducts = $this->getAvailableProducts()->all();
+        foreach ($availableProducts as $availableProduct){
+            $availableProduct->delete();
+        }
+        return parent::beforeDelete();
+    }
 
     /**
      * Gets query for [[AvailableProducts]].
@@ -171,7 +181,6 @@ class Product extends ActiveRecord
 
     /**
      * Process deletion of image
-     *
      * @return boolean the status of deletion
      */
     public function deleteImage() {

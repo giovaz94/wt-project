@@ -106,36 +106,9 @@ class m220508_005248_init_rbac extends Migration
          */
 
         /**
-         * BEGIN: AVAILABLE PRODUCTS
-         */
-
-        $viewAvailableProduct = $auth->createPermission("viewAvailableProduct");
-        $viewAvailableProduct->description = "View an available product";
-        $auth->add($viewAvailableProduct);
-
-        $addAvailableProduct = $auth->createPermission("addAvailableProduct");
-        $addAvailableProduct->description = "Set a product as available";
-        $auth->add($addAvailableProduct);
-
-        $editAvailableProduct = $auth->createPermission("editAvailableProduct");
-        $editAvailableProduct->description = "Edit an available product data";
-        $auth->add($editAvailableProduct);
-
-        $removeAvailableProduct = $auth->createPermission("removeAvailableProduct");
-        $removeAvailableProduct->description = "Remove an available product";
-        $auth->add($removeAvailableProduct);
-
-        $auth->addChild($vendor, $viewAvailableProduct);
-        $auth->addChild($vendor, $addAvailableProduct);
-        $auth->addChild($vendor, $editAvailableProduct);
-        $auth->addChild($vendor, $removeAvailableProduct);
-        /**
-         * END: AVAILABLE PRODUCTS
-         */
-
-        /**
          * BEGIN: PRODUCTS
          */
+
         $productRule = new \app\rbac\OwnProductRule();
         $auth->add($productRule);
 
@@ -164,6 +137,40 @@ class m220508_005248_init_rbac extends Migration
         $auth->addChild($vendor, $removeProduct);
         /**
          * END: PRODUCTS
+         */
+
+        /**
+         * BEGIN: AVAILABLE PRODUCTS
+         */
+        $availableProductRule = new \app\rbac\OwnAvailableProductRule();
+        $auth->add($availableProductRule);
+
+        $viewAvailableProduct = $auth->createPermission("viewAvailableProduct");
+        $viewAvailableProduct->description = "View an available product";
+        $viewAvailableProduct->ruleName = $availableProductRule->name;
+        $auth->add($viewAvailableProduct);
+
+        $addAvailableProduct = $auth->createPermission("addAvailableProduct");
+        $addAvailableProduct->description = "Set a product as available";
+        $addAvailableProduct->ruleName = $productRule->name;
+        $auth->add($addAvailableProduct);
+
+        $editAvailableProduct = $auth->createPermission("editAvailableProduct");
+        $editAvailableProduct->description = "Edit an available product data";
+        $editAvailableProduct->ruleName = $availableProductRule->name;
+        $auth->add($editAvailableProduct);
+
+        $removeAvailableProduct = $auth->createPermission("removeAvailableProduct");
+        $removeAvailableProduct->description = "Remove an available product";
+        $removeAvailableProduct->ruleName = $availableProductRule->name;
+        $auth->add($removeAvailableProduct);
+
+        $auth->addChild($vendor, $viewAvailableProduct);
+        $auth->addChild($vendor, $addAvailableProduct);
+        $auth->addChild($vendor, $editAvailableProduct);
+        $auth->addChild($vendor, $removeAvailableProduct);
+        /**
+         * END: AVAILABLE PRODUCTS
          */
 
         /**

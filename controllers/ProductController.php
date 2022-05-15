@@ -34,7 +34,7 @@ class ProductController extends Controller
                         [
                             'allow' => true,
                             'actions' => ['index'],
-                            'roles' => ['@']
+                            'roles' => ['vendor']
                         ],
                         [
                             'allow' => true,
