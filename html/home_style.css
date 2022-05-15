@@ -1,4 +1,4 @@
-.bd-placeholder-img {
+/*.bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
   -webkit-user-select: none;
@@ -10,7 +10,7 @@
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
-}
+}*/
 
 .bi {
   vertical-align: -.125em;
@@ -21,18 +21,7 @@
   font-size: 85%;
 }
 
-.dropdown-toggle {
-  outline: 0;
-}
-
-.nav-scroller {
-  position: relative;
-  z-index: 2;
-  height: 2.75rem;
-  overflow-y: hidden;
-}
-
-.nav-scroller .nav {
+.nav {
   display: flex;
   flex-wrap: nowrap;
   padding-bottom: 1rem;
@@ -51,5 +40,10 @@
 .responsive {
   width: 100%;
   max-width: 120px;
+  height: auto;
+}
+
+.button-svg {
+  width: 24;
   height: auto;
 }
