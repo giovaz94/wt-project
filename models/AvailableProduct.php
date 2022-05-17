@@ -33,7 +33,8 @@ class AvailableProduct extends ActiveRecord
     {
         return [
             [['availability'], 'required'],
-            [['availability', 'refProduct'], 'integer'],
+            [['refProduct'], 'integer'],
+            [['availability'], 'integer', 'min' => 0],
             [['sellingPrice'], 'number'],
             [['refProduct'], 'exist', 'skipOnError' => true, 'targetClass' => Product::class, 'targetAttribute' => ['refProduct' => 'idProduct']],
         ];

@@ -110,7 +110,7 @@ class Product extends ActiveRecord
      */
     public function beforeDelete()
     {
-        $availableProducts = $this->getAvailableProducts()->all();
+        $availableProducts = $this->availableProducts;
         foreach ($availableProducts as $availableProduct){
             $availableProduct->delete();
         }

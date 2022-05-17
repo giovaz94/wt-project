@@ -11,11 +11,10 @@ use yii\db\ActiveRecord;
  *
  * @property int $idCartItem
  * @property int $quantity
- * @property float $unitPrice
  * @property float $subtotal
  * @property int|null $refCart
- * @property-read ActiveQuery $cart
- * @property-read ActiveQuery $availableProduct
+ * @property-read Cart $cart
+ * @property-read AvailableProduct $availableProduct
  * @property int|null $refAvailableProduct
  *
  */
@@ -35,9 +34,9 @@ class CartItem extends ActiveRecord
     public function rules()
     {
         return [
-            [['quantity', 'unitPrice', 'subtotal'], 'required'],
+            [['quantity', 'subtotal'], 'required'],
             [['quantity', 'refCart', 'refAvailableProduct'], 'integer'],
-            [['unitPrice', 'subtotal'], 'number'],
+            [['subtotal'], 'number'],
             [['refAvailableProduct'], 'exist', 'skipOnError' => true, 'targetClass' => AvailableProduct::class, 'targetAttribute' => ['refAvailableProduct' => 'idAvailableProduct']],
             [['refCart'], 'exist', 'skipOnError' => true, 'targetClass' => Cart::class, 'targetAttribute' => ['refCart' => 'idCart']],
         ];
@@ -51,11 +50,27 @@ class CartItem extends ActiveRecord
         return [
             'idCartItem' => 'Id Cart Item',
             'quantity' => 'Quantity',
-            'unitPrice' => 'Unit Price',
             'subtotal' => 'Subtotal',
             'refCart' => 'Ref Cart',
             'refAvailableProduct' => 'Ref Available Product',
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        $availableProduct = AvailableProduct::findOne($this->refAvailableProduct);
+        if(!$insert && $availableProduct) {
+            $isQtyChanged = $changedAttributes["quantity"];
+            $diff =  $this->quantity - ($isQtyChanged ? $changedAttributes["quantity"] : 0);
+            $result = $availableProduct->availability - $diff;
+            $result = $result < 0 ? $availableProduct->availability : $availableProduct->availability - $diff;
+            $availableProduct->availability -= $result;
+            $availableProduct->update(false);
+        }
+        parent::afterSave($insert, $changedAttributes);
     }
 
     /**

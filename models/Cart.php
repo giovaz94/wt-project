@@ -13,7 +13,7 @@ use yii\db\ActiveRecord;
  * @property float $total
  * @property int $refUser
  *
- * @property-read ActiveQuery $user
+ * @property-read User $user
  * @property CartItem[] $cartItems
  */
 class Cart extends ActiveRecord
@@ -33,7 +33,6 @@ class Cart extends ActiveRecord
     {
         return [
             [['total'], 'number'],
-            [['refUser'], 'required'],
             [['refUser'], 'integer'],
             [['refUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['refUser' => 'idUser']],
         ];
@@ -49,6 +48,18 @@ class Cart extends ActiveRecord
             'total' => 'Total',
             'refUser' => 'Ref User',
         ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function beforeDelete()
+    {
+        $cartItems = $this->cartItems;
+        foreach ($cartItems as $item) {
+            $item->delete();
+        }
+        return parent::beforeDelete();
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Cart;
 use app\models\TaxData;
 use app\models\User;
 

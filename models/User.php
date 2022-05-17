@@ -21,7 +21,7 @@ use yii\web\IdentityInterface;
  * @property string|null $cityOfBirth
  * @property int|null $refTaxData
  *
- * @property Cart[] $carts
+ * @property Cart $cart
  * @property Order[] $orders
  * @property PaymentMethod[] $paymentMethods
  * @property Product[] $products
@@ -145,13 +145,42 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function beforeDelete()
+    {
+        $products = $this->products;
+        foreach ($products as $product) {
+            $product->delete();
+        }
+
+        $this->cart->delete();
+        return parent::beforeDelete();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+
+        $cart = new Cart();
+        $cart->refUser = $this->idUser;
+        $cart->save();
+
+        $this->link('cart', $cart);
+        parent::afterSave($insert, $changedAttributes);
+    }
+
+
+    /**
      * Gets query for [[Carts]].
      *
      * @return ActiveQuery
      */
-    public function getCarts()
+    public function getCart()
     {
-        return $this->hasMany(Cart::class, ['refUser' => 'idUser']);
+        return $this->hasOne(Cart::class, ['refUser' => 'idUser']);
     }
 
     /**

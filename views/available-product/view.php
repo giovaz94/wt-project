@@ -1,6 +1,9 @@
 <?php
 
+use yii\bootstrap4\Modal;
 use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\web\View;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -24,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::button('Add to cart', ['value'=>Url::to(['cart/add-item', 'idAvailable' => $model->idAvailableProduct]), 'class' => 'showAjaxModal btn btn-success','id'=>'modalButton']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -35,5 +39,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'refProduct',
         ],
     ]) ?>
+
+    <?php
+        Modal::begin([
+            'id' => 'ajax-modal',
+            'size'=>'modal-lg',
+            'clientOptions' => ['backdrop' => 'static', 'keyboard' => FALSE]
+        ]);
+
+        // Render the view here.
+        echo "<div id='modalContent'></div>";
+
+        Modal::end();
+    ?>
 
 </div>
