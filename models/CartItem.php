@@ -59,15 +59,47 @@ class CartItem extends ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function afterSave($insert, $changedAttributes)
+    public function beforeSave($insert)
     {
         $availableProduct = AvailableProduct::findOne($this->refAvailableProduct);
-        if(!$insert && $availableProduct) {
-            $isQtyChanged = $changedAttributes["quantity"];
-            $diff =  $this->quantity - ($isQtyChanged ? $changedAttributes["quantity"] : 0);
+        if (!$availableProduct) {
+            return false;
+        }
+
+        if(!$insert) {
+            $oldQuantity = $this->getOldAttribute("quantity");
+            $diff = $this->quantity - (empty($oldQuantity) ? 0 : $oldQuantity);
+
+            if($availableProduct->availability < $diff) {
+                $this->quantity = $availableProduct->availability;
+            }
+        }
+
+
+        $this->subtotal = $availableProduct->sellingPrice * $this->quantity;
+        return parent::beforeSave($insert);
+    }
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        $availableProduct = $this->availableProduct;
+        $isUpdating = !$insert && $availableProduct;
+
+        if($isUpdating) {
+            // Difference of quantity
+            $isQtyChanged = !empty($changedAttributes["quantity"]);
+            $diff =  $isQtyChanged ? $this->quantity - $changedAttributes["quantity"] : 0;
+
+            // If the difference between the product availability and the
+            // cart item quantity is negative then the result should be all the product availability.
             $result = $availableProduct->availability - $diff;
-            $result = $result < 0 ? $availableProduct->availability : $availableProduct->availability - $diff;
-            $availableProduct->availability -= $result;
+            $availableProduct->availability -= $result < 0 ? $availableProduct->availability : $diff;
+
+            // Update the item.
             $availableProduct->update(false);
         }
         parent::afterSave($insert, $changedAttributes);

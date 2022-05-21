@@ -1,5 +1,6 @@
 <?php
 
+use app\models\AddToCartForm;
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\Html;
 
@@ -7,6 +8,8 @@ use yii\helpers\Html;
 /* @var $model app\models\AddToCartForm */
 /* @var $form yii\widgets\ActiveForm */
 
+
+$hiddenInputFieldName = get_class($model) == AddToCartForm::class ? 'idAvailable' : 'idCartItem';
 ?>
 
 <div class="add-to-cart-form">
@@ -15,7 +18,7 @@ use yii\helpers\Html;
 
     <?= $form->field($model, 'quantity')->textInput() ?>
 
-    <?= $form->field($model, 'idAvailable')->hiddenInput(['value'=> $model->idAvailable])->label(false); ?>
+    <?= $form->field($model, $hiddenInputFieldName)->hiddenInput(['value'=> $model->{$hiddenInputFieldName}])->label(false); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Add', ['class' => 'btn btn-success']) ?>

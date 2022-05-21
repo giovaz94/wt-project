@@ -28,17 +28,17 @@ class AddToCartForm extends Model
      */
     public function addItemTo($cart)
     {
+
+        $availableProduct = AvailableProduct::findOne($this->idAvailable);
+        if(!$availableProduct) {
+            return false;
+        }
+
         $cartItem = $cart->getCartItems()
             ->andWhere(["refAvailableProduct" => $this->idAvailable])
             ->one();
 
         if(!$cartItem) {
-
-            $availableProduct = AvailableProduct::findOne($this->idAvailable);
-            if(!$availableProduct) {
-                return false;
-            }
-
             $cartItem = new CartItem();
             if($availableProduct->availability < $this->quantity) {
                 $this->quantity = $availableProduct->availability;
@@ -56,6 +56,10 @@ class AddToCartForm extends Model
             $cartItem->save();
 
             return true;
+        }
+
+        if ($this->quantity > $availableProduct->availability) {
+            $this->quantity = $availableProduct->availability;
         }
 
         $cartItem->quantity += $this->quantity;
