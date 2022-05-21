@@ -67,15 +67,16 @@ class CartItem extends ActiveRecord
         }
 
         if(!$insert) {
+            // Require quantity for this item.
             $oldQuantity = $this->getOldAttribute("quantity");
             $diff = $this->quantity - (empty($oldQuantity) ? 0 : $oldQuantity);
 
+            // Add all the product availability to the cart item.
             if($availableProduct->availability < $diff) {
-                $this->quantity = $availableProduct->availability;
+                $this->quantity += $availableProduct->availability - $diff;
             }
         }
-
-
+        // Calculate the subtotal.
         $this->subtotal = $availableProduct->sellingPrice * $this->quantity;
         return parent::beforeSave($insert);
     }
