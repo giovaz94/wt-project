@@ -20,86 +20,95 @@
                 </div>
             </div>
             <form class="need-validation" novalidate>
-                <h4 class="mb-3">Account</h4>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <label for="e-mail">E-mail</label>
-                        <input type="email" class="form-control" name="e-mail-store-form" id="e-mail" placeholder value required/>
-                        <div class="invalid-feedback">Inserire un'e-mail valida</div>
+                <section class="account">
+                    <h4 class="mb-3">Account</h4>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="e-mail">E-mail</label>
+                            <input type="email" class="form-control" name="e-mail-store-form" id="e-mail" placeholder value required/>
+                            <div class="invalid-feedback">Inserire un'e-mail valida</div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="password">Password</label>
+                            <input type="text" class="form-control" name="password-store-form" id="password" placeholder value required/>
+                            <div class="invalid-feedback">Inserire una password valida</div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="repeat-password">Ripeti Password</label>
+                            <input type="text" class="form-control" name="repeat-password-store-form" id="repeat-password" placeholder value required/>
+                            <div class="invalid-feedback">Inserire una password valida</div>
+                        </div>
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="password">Password</label>
-                        <input type="text" class="form-control" name="password-store-form" id="password" placeholder value required/>
-                        <div class="invalid-feedback">Inserire una password valida</div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label for="repeat-password">Ripeti Password</label>
-                        <input type="text" class="form-control" name="repeat-password-store-form" id="repeat-password" placeholder value required/>
-                        <div class="invalid-feedback">Inserire una password valida</div>
-                    </div>
-                </div>
+                </section>
                 <hr class="mb-4">
-                <h4 class="mb-3">Dati anagrafici</h4>
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <label for="first-name">Nome</label>
-                        <input type="text" class="form-control" name="name-store-form" id="first-name" placeholder value required/>
-                        <div class="invalid-feedback">Inserire un nome valido</div>
+                <section class="registry">
+                    <h4 class="mb-3">Dati anagrafici</h4>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="first-name">Nome</label>
+                            <input type="text" class="form-control" name="name-store-form" id="first-name" placeholder value required/>
+                            <div class="invalid-feedback">Inserire un nome valido</div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="second-name">Cognome</label>
+                            <input type="text" class="form-control" name="surname-store-form" id="second-name" placeholder value required/>
+                            <div class="invalid-feedback">Inserire un cognome valido</div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="date-of-birth">Data di nascita</label>
+                            <input type="date" class="form-control" name="date-of-birth-store-form" id="date-of-birth" placeholder value required/>
+                            <div class="invalid-feedback">Inserire una data valida</div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="place-of-birth">Luogo di nascita</label>
+                            <input type="text" class="form-control" name="place-of-birth-store-form" id="place-of-birth" placeholder value required/>
+                            <div class="invalid-feedback">Inserire un luogo valido</div>
+                        </div>
                     </div>
-                    <div class="col-md-12 mb-3">
-                        <label for="second-name">Cognome</label>
-                        <input type="text" class="form-control" name="surname-store-form" id="second-name" placeholder value required/>
-                        <div class="invalid-feedback">Inserire un cognome valido</div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <label for="date-of-birth">Data di nascita</label>
-                        <input type="date" class="form-control" name="date-of-birth-store-form" id="date-of-birth" placeholder value required/>
-                        <div class="invalid-feedback">Inserire una data valida</div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <label for="place-of-birth">Luogo di nascita</label>
-                        <input type="text" class="form-control" name="place-of-birth-store-form" id="place-of-birth" placeholder value required/>
-                        <div class="invalid-feedback">Inserire un luogo valido</div>
-                    </div>
-                </div>
+                </section>
                 <hr class="mb-4">
-                <h4 class="mb-3">Contatti</h4>
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <label for="telephone">Telefono</label>
-                        <input type="tel" class="form-control" name="telephone-store-form" id="telephone" placeholder value required/>
-                        <div class="invalid-feedback">Inserire un numero valido</div>
+                <section class="contacts">
+                    <h4 class="mb-3">Contatti</h4>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="telephone">Telefono</label>
+                            <input type="tel" class="form-control" name="telephone-store-form" id="telephone" placeholder value required/>
+                            <div class="invalid-feedback">Inserire un numero valido</div>
+                        </div>
                     </div>
-                </div>
+                </section>
                 <hr class="mb-4">
-                <h4 class="mb-3">Dati venditore</h4>
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <label for="tax-id-code">Codice fiscale</label>
-                        <input type="text" class="form-control" name="tax-id-code-store-form" id="tax-id-code" placeholder value required/>
-                        <div class="invalid-feedback">Inserire un codice fiscale valido</div>
+                <section class="seller">
+                    <h4 class="mb-3">Dati venditore</h4>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="tax-id-code">Codice fiscale</label>
+                            <input type="text" class="form-control" name="tax-id-code-store-form" id="tax-id-code" placeholder value required/>
+                            <div class="invalid-feedback">Inserire un codice fiscale valido</div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="vat">Partita IVA</label>
+                            <input type="text" class="form-control" name="vat-store-form" id="vat" placeholder value required/>
+                            <div class="invalid-feedback">Inserire una partita IVA valida</div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="address">Indirizzo</label>
+                            <input type="text" class="form-control" name="address-store-form" id="address" placeholder value required/>
+                            <div class="invalid-feedback">Inserire un indirizzo valido</div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="postal-code">CAP</label>
+                            <input type="number" class="form-control" name="postal-code-store-form" id="postal-code" placeholder value required/>
+                            <div class="invalid-feedback">Inserire un CAP valido</div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="city">Città</label>
+                            <input type="text" class="form-control" name="city-store-form" id="city" placeholder value required/>
+                            <div class="invalid-feedback">Inserire una città valida</div>
+                        </div>
                     </div>
-                    <div class="col-md-12 mb-3">
-                        <label for="vat">Partita IVA</label>
-                        <input type="text" class="form-control" name="vat-store-form" id="vat" placeholder value required/>
-                        <div class="invalid-feedback">Inserire una partita IVA valida</div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <label for="address">Indirizzo</label>
-                        <input type="text" class="form-control" name="address-store-form" id="address" placeholder value required/>
-                        <div class="invalid-feedback">Inserire un indirizzo valido</div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <label for="postal-code">CAP</label>
-                        <input type="number" class="form-control" name="postal-code-store-form" id="postal-code" placeholder value required/>
-                        <div class="invalid-feedback">Inserire un CAP valido</div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <label for="city">Città</label>
-                        <input type="text" class="form-control" name="city-store-form" id="city" placeholder value required/>
-                        <div class="invalid-feedback">Inserire una città valida</div>
-                    </div>
-                </div>
+                </section>
+                <p class="error-occurs"></p>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Registrati</button>
             </form>
         </div>

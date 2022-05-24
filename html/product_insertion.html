@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/product_insertion_style.css">
+
+        <title>Inserimento prodotto</title>
+    </head>
+    <body class="text-center">
+        <div class="container-fluid p-0 overflow-hidden">
+            <form class="product">
+                <h4 class="mb-3">Prodotto</h4>
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label for="product-name">Nome</label>
+                        <input type="text" class="form-control" name="name-product-form" id="product-name" placeholder value required/>
+                        <div class="invalid-feedback">Inserire un nome valido</div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="product-category">Categoria</label>
+                        <input type="text" class="form-control" name="category-product-form" id="product-category" placeholder value required/>
+                        <div class="invalid-feedback">Inserire una categoria valida</div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="product-description">Descrizione</label>
+                        <input type="text" class="form-control" name="product-description-form" id="product-description" placeholder value required/>
+                        <div class="invalid-feedback">Inserire una descrizione valida</div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="product-price">Prezzo</label>
+                        <input type="number" class="form-control" name="product-price-form" id="product-price" placeholder value required/>
+                        <div class="invalid-feedback">Inserire un prezzo valido</div>
+                    </div>
+                    <div class="col-md-10 mb-3">
+                        <label for="product-quantity">Quantità</label>
+                        <input type="number" class="form-control" name="product-quantity-form" id="product-quantity" placeholder value required/>
+                        <div class="invalid-feedback">Inserire un prezzo valido</div>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <button type="button" class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                                <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="error-occurs"></p>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Inserisci prodotto</button>
+            </form>
+        </div>
+    </body>
+</html>
