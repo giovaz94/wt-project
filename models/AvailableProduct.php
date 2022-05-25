@@ -15,6 +15,7 @@ use yii\db\ActiveRecord;
  * @property int|null $refProduct
  *
  * @property CartItem[] $cartItems
+ * @property Product $product
  */
 class AvailableProduct extends ActiveRecord
 {

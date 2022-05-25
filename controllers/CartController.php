@@ -5,6 +5,9 @@ namespace app\controllers;
 use app\models\AddToCartForm;
 use app\models\Cart;
 use app\models\CartItem;
+use app\models\CheckoutForm;
+use app\models\Order;
+use app\models\OrderItem;
 use app\models\User;
 use Yii;
 use yii\db\StaleObjectException;
@@ -114,6 +117,65 @@ class CartController extends Controller
     }
 
     /**
+     * Checkout
+     * @throws ServerErrorHttpException
+     */
+    public function actionCheckout()
+    {
+        if (!$this->cart) {
+            throw new ServerErrorHttpException("Can't found the user's cart");
+        }
+
+        if($this->cart->getCartItems()->count() == 0) {
+            return $this->redirect(['site/index']);
+        }
+
+        $model = new CheckoutForm();
+        if($model->load(Yii::$app->request->post()) && $model->validate()) {
+
+            // Create a new order
+            $order = new Order();
+            $order->total = 0.0;
+            $order->refUser = Yii::$app->user->id;
+            $order->save();
+
+
+            $orderTotal = 0.0;
+            foreach ($this->cart->cartItems as $cartItem) {
+
+                // Create an order item
+                $orderItem = new OrderItem();
+                $orderItem->name = $cartItem->availableProduct->product->name;
+                $orderItem->unitPrice = $cartItem->availableProduct->sellingPrice;
+                $orderItem->description = $cartItem->availableProduct->product->description;
+                $orderItem->quantity = $cartItem->quantity;
+                $orderItem->subtotal = $cartItem->subtotal;
+                $orderItem->img = $cartItem->availableProduct->product->img;
+                $orderItem->save();
+                $order->link("orderItems", $orderItem);
+
+                $orderTotal += $orderItem->subtotal;
+
+                $ap = $cartItem->availableProduct;
+                $cartItem->scenario = CartItem::SCENARIO_CHECKOUT;
+                $cartItem->delete();
+                if($ap->availability <= 0 ) {
+                    $ap->delete();
+                }
+            }
+
+            // Update total
+            $order->total = $orderTotal;
+            $order->update();
+
+            return $this->redirect(['site/index']);
+        }
+
+        return $this->render("checkout", ['model' => $model]);
+    }
+
+
+    /**
      * @return void
      */
     public function actionIndex()
@@ -140,6 +202,4 @@ class CartController extends Controller
 
         return $cartItem;
     }
-
-
 }

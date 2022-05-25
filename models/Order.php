@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\AttributeBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
@@ -33,11 +34,30 @@ class Order extends ActiveRecord
     public function rules()
     {
         return [
-            [['dateOfCreation', 'total'], 'required'],
-            [['dateOfCreation'], 'safe'],
+            [['total'], 'required'],
+            [['dateOfCreation'], 'date', 'format' => 'php:Y-m-d'],
             [['total'], 'number'],
             [['refUser'], 'integer'],
             [['refUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['refUser' => 'idUser']],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => AttributeBehavior::class,
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => 'dateOfCreation',
+                    ActiveRecord::EVENT_BEFORE_UPDATE => false,
+                ],
+                'value' => function ($event) {
+                    return Yii::$app->formatter->asDate("now", 'php:Y-m-d');
+                },
+            ],
         ];
     }
 

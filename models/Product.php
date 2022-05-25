@@ -27,9 +27,9 @@ use yii\web\UploadedFile;
  * @property int|null $refUser
  * @property null|string $imageUrl
  *
- * @property-read ActiveQuery $user
- * @property-read ActiveQuery $category
- * @property-read ActiveQuery $typology
+ * @property-read User $user
+ * @property-read ProductCategory $category
+ * @property-read ProductTypology $typology
  * @property AvailableProduct[] $availableProducts
  */
 class Product extends ActiveRecord
