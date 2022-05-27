@@ -11,10 +11,19 @@
         <title>Inserimento prodotto</title>
     </head>
     <body class="text-center">
-        <div class="container-fluid p-0 overflow-hidden">
+        <div class="container">
             <form class="product">
                 <h4 class="mb-3">Prodotto</h4>
                 <div class="row">
+                    <label for="upload-image">
+                        <input type="file" name="upload-image" id="upload-image" class="upload pictures-wall" accept="image/*"/>
+                        <img class="logo-top-bar responsive bi me-2" id="logosvgheader"
+                        alt="Un libro aperto con qualche pagina svolazzante" width="40" title="Logo del sito"
+                        src="logo_vector.svg" aria-label="Profilo">
+                        </img>
+                        <span>Add photo</span>
+                    </label>
+                    <input value="Submit" type="submit" class="d-none" />
                     <div class="col-md-12 mb-3">
                         <label for="product-name">Nome</label>
                         <input type="text" class="form-control" name="name-product-form" id="product-name" placeholder value required/>
@@ -34,18 +43,6 @@
                         <label for="product-price">Prezzo</label>
                         <input type="number" class="form-control" name="product-price-form" id="product-price" placeholder value required/>
                         <div class="invalid-feedback">Inserire un prezzo valido</div>
-                    </div>
-                    <div class="col-md-10 mb-3">
-                        <label for="product-quantity">Quantità</label>
-                        <input type="number" class="form-control" name="product-quantity-form" id="product-quantity" placeholder value required/>
-                        <div class="invalid-feedback">Inserire un prezzo valido</div>
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <button type="button" class="btn btn-secondary">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
-                                <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
-                            </svg>
-                        </button>
                     </div>
                 </div>
                 <p class="error-occurs"></p>

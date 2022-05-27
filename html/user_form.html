@@ -11,7 +11,7 @@
         <title>User form</title>
     </head>
     <body>
-        <div class="container-fluid p-0 overflow-hidden">
+        <div class="container">
             <div class="row">
                 <div class="col-md-2 mb-3">
                     <a href="/store_form.html">
@@ -20,52 +20,55 @@
                 </div>
             </div>
             <form class="need-validation" novalidate>
-                <h4 class="mb-3">Account</h4>
+                <h4>Account</h4>
                 <div class="row">
-                    <div class="col-md-4 mb-3">
+                    <div id="dati" class="dati-account col-sm-4">
                         <label for="e-mail">E-mail</label>
-                        <input type="email" class="form-control" name="e-mail-user-form" id="e-mail" placeholder value required/>
+                        <input type="email" class="form-control" name="e-mail-user-form" id="e-mail" placeholder size="10" value required/>
                         <div class="invalid-feedback">Inserire un'e-mail valida</div>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div id="dati" class="dati-account col-sm-4">
                         <label for="password">Password</label>
-                        <input type="text" class="form-control" name="password-user-form" id="password" placeholder value required/>
+                        <input type="password" class="form-control" name="password-user-form" id="password" placeholder value required/>
                         <div class="invalid-feedback">Inserire una password valida</div>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div id="dati" class="dati-account col-sm-4">
                         <label for="repeat-password">Ripeti Password</label>
-                        <input type="text" class="form-control" name="repeat-password-user-form" id="repeat-password" placeholder value required/>
+                        <input type="password" class="form-control" name="repeat-password-user-form" id="repeat-password" placeholder value required/>
                         <div class="invalid-feedback">Inserire una password valida</div>
                     </div>
                 </div>
-                <hr class="mb-4">
-                <h4 class="mb-3">Dati anagrafici</h4>
+                <hr>
+                <h4>Dati anagrafici</h4>
                 <div class="row">
-                    <div class="col-md-12 mb-3">
+                    <div id="dati" class="dati-anagrafici col-sm-auto">
                         <label for="first-name">Nome</label>
                         <input type="text" class="form-control" name="name-user-form" id="first-name" placeholder value required/>
                         <div class="invalid-feedback">Inserire un nome valido</div>
                     </div>
-                    <div class="col-md-12 mb-3">
+                    <div id="separator" class="w-100"></div>
+                    <div id="dati" class="dati-anagrafici col-sm-auto">
                         <label for="second-name">Cognome</label>
                         <input type="text" class="form-control" name="surname-user-form" id="second-name" placeholder value required/>
                         <div class="invalid-feedback">Inserire un cognome valido</div>
                     </div>
-                    <div class="col-md-12 mb-3">
+                    <div id="separator" class="w-100"></div>
+                    <div id="dati" class="dati-anagrafici col-sm-auto">
                         <label for="date-of-birth">Data di nascita</label>
                         <input type="date" class="form-control" name="date-of-birth-user-form" id="date-of-birth" placeholder value required/>
                         <div class="invalid-feedback">Inserire una data valida</div>
                     </div>
-                    <div class="col-md-12 mb-3">
+                    <div id="separator" class="w-100"></div>
+                    <div id="dati" class="dati-anagrafici col-sm-auto">
                         <label for="place-of-birth">Luogo di nascita</label>
                         <input type="text" class="form-control" name="place-of-birth-user-form" id="place-of-birth" placeholder value required/>
                         <div class="invalid-feedback">Inserire un luogo valido</div>
                     </div>
                 </div>
-                <hr class="mb-4">
-                <h4 class="mb-3">Contatti</h4>
+                <hr>
+                <h4>Contatti</h4>
                 <div class="row">
-                    <div class="col-md-12 mb-3">
+                    <div id="dati" class="dati-contatti col-sm-auto">
                         <label for="telephone">Telefono</label>
                         <input type="tel" class="form-control" name="telephone-user-form" id="telephone" placeholder value required/>
                         <div class="invalid-feedback">Inserire un numero valido</div>
