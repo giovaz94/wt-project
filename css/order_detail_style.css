@@ -1,54 +1,85 @@
-/*.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
 }
 
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-}*/
+.text-small {
+  font-size: 85%;
+}
 
-  .bi {
-    vertical-align: -.125em;
-    fill: currentColor;
-  }
-  
-  .text-small {
-    font-size: 85%;
-  }
-  
-  .nav {
-    display: flex;
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    margin-top: -1px;
-    overflow-x: auto;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .responsive {
-    width: 100%;
-    max-width: 120px;
-    height: auto;
-  }
-  
-  .button-svg {
-    width: 24;
-    height: auto;
-  }
+.nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0.5rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
 
-  .order-bar-list {
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    margin-top: -1px;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    list-style-type: none;
-  }
+.footer-list-decor {
+  text-decoration: underline solid red 2px;
+}
+
+.section-list-decor {
+  text-decoration: underline solid red 2px;
+}
+
+.nav-nested {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.nav-nested-item {
+  text-decoration-line: none !important;
+}
+
+.responsive {
+  width: 80%;
+  max-width: 100px;
+  height: auto;
+}
+
+.button-svg {
+  width: 24;
+  height: auto;
+}
+
+.footer-container {
+  background-color: rgb(167, 167, 167);
+}
+
+.border-bottom-header {
+  border-bottom: solid red 1px;
+}
+
+.text-visibility {
+  display: none;
+}
+
+.order-bar-list {
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  list-style-type: none;
+}
+
+table {
+  border: none;
+}
+
+.order-table-header {
+  background-color: red;
+}
+
+.horizontal-line {
+  width: 70%;
+  margin-right: 5%;
+  margin-left: 25%;
+  color: red;
+  border-top: solid 3px;
+}
