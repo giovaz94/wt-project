@@ -1,0 +1,48 @@
+img {
+    max-width: 100%;
+}
+
+ins {
+    text-decoration: none;
+    color: red;
+}
+
+del {
+    text-decoration-color: red;
+}
+
+section a {
+    color: black;
+    text-decoration: none;
+}
+
+section a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+section a:hover .titolo{
+    color: blue;
+}
+
+section a:hover .autore{
+    color: blue;
+}
+
+/*
+section.product-header {
+    border: 5px solid black;
+}
+
+div.row {
+    border: 5px solid red;
+}
+
+#image-product {
+    border: 5px solid yellow;
+}
+
+#header-product {
+    border: 5px solid green;
+}
+*/

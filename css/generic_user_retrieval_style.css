@@ -1,0 +1,16 @@
+.form-control {
+    margin-bottom: 5%;
+    border-radius: 0%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+}
+
+div.card {
+    max-width: 330px;
+}
+
+img.logo-top-bar {
+    width: 300px;
+}

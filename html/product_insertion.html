@@ -6,47 +6,86 @@
 
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/product_insertion_style.css">
+        <link rel="stylesheet" href="file:///Users/luca/Desktop/Luca/Università/Corsi%20in%20svolgimento/Tecnologie%20web/Progetto/wt-project/css/product_insertion_style.css">
 
         <title>Inserimento prodotto</title>
     </head>
-    <body class="text-center">
+    <body>
         <div class="container">
-            <form class="product">
-                <h4 class="mb-3">Prodotto</h4>
-                <div class="row">
-                    <label for="upload-image">
-                        <input type="file" name="upload-image" id="upload-image" class="upload pictures-wall" accept="image/*"/>
-                        <img class="logo-top-bar responsive bi me-2" id="logosvgheader"
-                        alt="Un libro aperto con qualche pagina svolazzante" width="40" title="Logo del sito"
-                        src="logo_vector.svg" aria-label="Profilo">
-                        </img>
-                        <span>Add photo</span>
-                    </label>
-                    <input value="Submit" type="submit" class="d-none" />
-                    <div class="col-md-12 mb-3">
-                        <label for="product-name">Nome</label>
-                        <input type="text" class="form-control" name="name-product-form" id="product-name" placeholder value required/>
-                        <div class="invalid-feedback">Inserire un nome valido</div>
+            <form class="need-validation" novalidate>
+                <fieldset class="dati-prodotto">
+                    <legend>Prodotto</legend>
+                    <div class="row">
+                        <div class="row upload-image text-center">
+                            <div class="col-sm">
+                                <span>Inserisci foto<br/></span>
+                                <label class="input-image" for="upload-image">
+                                    <input class="input-image" type="file" name="upload-image" id="upload-image" class="upload pictures-wall" accept="image/*"/>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="dati-prodotto-nome" class="dati-prodotto col-sm-auto">
+                            <label for="product-name">Nome</label>
+                            <input type="text" class="form-control" name="name-product-form" id="product-name" placeholder="Nome" value required/>
+                            <div class="invalid-feedback">Inserire un nome valido</div>
+                        </div>
+                        <div class="separator w-100"></div>
+                        <div id="dati-prodotto-categoria" class="dati-prodotto col-sm-auto">
+                            <label for="product-category">Categoria</label>
+                            <input type="text" class="form-control" name="category-product-form" id="product-category" placeholder="Categoria" value required/>
+                            <div class="invalid-feedback">Inserire una categoria valida</div>
+                        </div>
+                        <div class="separator w-100"></div>
+                        <div id="dati-prodotto-descrizione" class="dati-prodotto col-sm-auto">
+                            <label for="product-description">Descrizione</label><br/>
+                            <textarea class="form-control-lg" name="dati-prodotto-descrizione" id="product-description" rows="3" placeholder="Inserire una descrizione del prodotto"></textarea>
+                        </div>
+                        <div class="separator w-100"></div>
+                        <div id="dati-prodotto-prezzo" class="dati-prodotto col-sm-auto">
+                            <label for="product-price">Prezzo</label>
+                            <input type="number" class="form-control" name="product-price-form" id="product-price" placeholder="Prezzo" value required/>
+                            <div class="invalid-feedback">Inserire un prezzo valido</div>
+                        </div>
                     </div>
-                    <div class="col-md-12 mb-3">
-                        <label for="product-category">Categoria</label>
-                        <input type="text" class="form-control" name="category-product-form" id="product-category" placeholder value required/>
-                        <div class="invalid-feedback">Inserire una categoria valida</div>
+                </fieldset>
+                <fieldset class="informazioni-prodotto">
+                    <legend>Informazioni</legend>
+                    <div class="row">
+                        <div id="informazioni-prodotto-numero-pagine" class="informazioni-prodotto col-sm-auto">
+                            <label for="pagine-prodotto">Numero pagine</label>
+                            <input type="number" class="form-control" name="form-pagine-prodotto" id="pagine-prodotto" placeholder="Numero pagine" value required/>
+                            <div class="invalid-feedback">Inserire un nome valido</div>
+                        </div>
+                        <div class="separator w-100"></div>
+                        <div id="informazioni-prodotto-anno-pubblicazione" class="informazioni-prodotto col-sm-auto">
+                            <label for="anno-pubblicazione-prodotto">Anno di pubblicazione</label>
+                            <input type="number" class="form-control" name="form-anno-pubblicazione-prodotto" id="anno-pubblicazione-prodotto" placeholder="Anno di pubblicazione" value required/>
+                            <div class="invalid-feedback">Inserire un nome valido</div>
+                        </div>
+                        <div class="separator w-100"></div>
+                        <div id="informazioni-prodotto-casa-editrice" class="informazioni-prodotto col-sm-auto">
+                            <label for="casa-editrice-prodotto">Casa editrice</label>
+                            <input type="text" class="form-control" name="form-casa-editrice-prodotto" id="casa-editrice-prodotto" placeholder="Casa editrice" value required/>
+                            <div class="invalid-feedback">Inserire un nome valido</div>
+                        </div>
+                        <div class="separator w-100"></div>
+                        <div id="informazioni-prodotto-tipologia" class="informazioni-prodotto col-sm-auto">
+                            <label for="tipologia-prodotto">Tipologia</label>
+                            <input type="text" class="form-control" name="form-tipologia-prodotto" id="tipologia-prodotto" placeholder="Tipologia" value required/>
+                            <div class="invalid-feedback">Inserire un nome valido</div>
+                        </div>
+                        <div class="separator w-100"></div>
+                        <div id="informazioni-prodotto-isbn" class="informazioni-prodotto col-sm-auto">
+                            <label for="isbn-prodotto">ISBN</label>
+                            <input type="number" class="form-control" name="form-isbn-prodotto" id="isbn-prodotto" placeholder="ISBN" value required/>
+                            <div class="invalid-feedback">Inserire un nome valido</div>
+                        </div>
                     </div>
-                    <div class="col-md-12 mb-3">
-                        <label for="product-description">Descrizione</label>
-                        <input type="text" class="form-control" name="product-description-form" id="product-description" placeholder value required/>
-                        <div class="invalid-feedback">Inserire una descrizione valida</div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <label for="product-price">Prezzo</label>
-                        <input type="number" class="form-control" name="product-price-form" id="product-price" placeholder value required/>
-                        <div class="invalid-feedback">Inserire un prezzo valido</div>
-                    </div>
+                </fieldset>
+                <div class="container text-center">
+                    <p class="error-occurs">Esempio</p>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Inserisci prodotto</button>
                 </div>
-                <p class="error-occurs"></p>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Inserisci prodotto</button>
             </form>
         </div>
     </body>
