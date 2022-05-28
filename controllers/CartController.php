@@ -10,6 +10,7 @@ use app\models\Order;
 use app\models\OrderItem;
 use app\models\User;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\db\StaleObjectException;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -76,6 +77,33 @@ class CartController extends Controller
         }
 
         return $this->render("_form", ["model" => $model]);
+    }
+
+
+    /**
+     * Increase the quantity of a cart item
+     * @param $idCartItem
+     */
+    public function actionEditQuantity($idCartItem)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $model = $this->findModel($idCartItem);
+
+        $operationResult = 0;
+        $operationMsg = "Cart updated successfully!";
+
+        $model->quantity = Yii::$app->request->post("quantity");
+        if(!$model->update()) {
+            $operationResult = 1;
+            $operationMsg = "Error, can't update the cart";
+        }
+
+        // Return the response from the server
+        return [
+            "result" => $operationResult,
+            "message" => $operationMsg
+        ];
     }
 
     /**
@@ -174,14 +202,20 @@ class CartController extends Controller
         return $this->render("checkout", ['model' => $model]);
     }
 
-
     /**
-     * @return void
+     * Render the cart
+     * @return string
      */
     public function actionIndex()
     {
-        echo "yai";
-        die;
+        $dataProvider = new ActiveDataProvider([
+            'query' => $this->cart->getCartItems(),
+            'pagination' => [
+                'pageSize' => 10
+            ]
+        ]);
+
+        return $this->render("index", ['dataProvider' => $dataProvider]);
     }
 
     /**

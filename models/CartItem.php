@@ -78,7 +78,7 @@ class CartItem extends ActiveRecord
 
             // Add all the product availability to the cart item.
             if($availableProduct->availability < $diff) {
-                $this->quantity += $availableProduct->availability - $diff;
+                return false;
             }
         }
         // Calculate the subtotal.

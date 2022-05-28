@@ -40,14 +40,13 @@ class AddToCartForm extends Model
 
         if(!$cartItem) {
             $cartItem = new CartItem();
+
             if($availableProduct->availability < $this->quantity) {
-                $this->quantity = $availableProduct->availability;
-                $availableProduct->availability = 0;
-            } else {
-                $cartItem->quantity = $this->quantity;
-                $availableProduct->availability -= $this->quantity;
+                return false;
             }
 
+            $cartItem->quantity = $this->quantity;
+            $availableProduct->availability -= $this->quantity;
             $availableProduct->update(false);
 
             $cartItem->refAvailableProduct = $availableProduct->idAvailableProduct;
@@ -58,8 +57,8 @@ class AddToCartForm extends Model
             return true;
         }
 
-        if ($this->quantity > $availableProduct->availability) {
-            $this->quantity = $availableProduct->availability;
+        if ($availableProduct->availability < $this->quantity ) {
+            return false;
         }
 
         $cartItem->quantity += $this->quantity;
