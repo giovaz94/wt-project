@@ -3,6 +3,13 @@
 namespace app\models;
 
 use Yii;
+use yii\base\Exception;
+use yii\behaviors\AttributeBehavior;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
+use yii\db\StaleObjectException;
+use yii\web\UploadedFile;
+
 
 /**
  * This is the model class for table "Product".
@@ -18,14 +25,19 @@ use Yii;
  * @property int|null $refProductCategory
  * @property int|null $refProductTypology
  * @property int|null $refUser
+ * @property null|string $imageUrl
  *
+ * @property-read User $user
+ * @property-read ProductCategory $category
+ * @property-read ProductTypology $typology
  * @property AvailableProduct[] $availableProducts
- * @property ProductCategory $refProductCategory0
- * @property ProductTypology $refProductTypology0
- * @property User $refUser0
  */
-class Product extends \yii\db\ActiveRecord
+class Product extends ActiveRecord
 {
+
+    // Used for loading the image of the product
+    public $fileLoader;
+
     /**
      * {@inheritdoc}
      */
@@ -40,15 +52,36 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'img', 'price', 'totalPages', 'releaseDate', 'author'], 'required'],
+            [['name', 'description', 'price', 'totalPages', 'releaseDate', 'author'], 'required'],
+            [['img'], 'required', 'message' => 'Please, upload an image'],
+            [['totalPages', 'refProductCategory', 'refProductTypology', 'refUser'], 'integer'],
+            [['name', 'img', 'author'], 'string', 'max' => 255],
+            [['fileLoader'], 'file', 'extensions' => 'png, jpg'],
             [['description'], 'string'],
             [['price'], 'number'],
-            [['totalPages', 'refProductCategory', 'refProductTypology', 'refUser'], 'integer'],
-            [['releaseDate'], 'safe'],
-            [['name', 'img', 'author'], 'string', 'max' => 255],
-            [['refProductCategory'], 'exist', 'skipOnError' => true, 'targetClass' => ProductCategory::className(), 'targetAttribute' => ['refProductCategory' => 'idProductCategory']],
-            [['refProductTypology'], 'exist', 'skipOnError' => true, 'targetClass' => ProductTypology::className(), 'targetAttribute' => ['refProductTypology' => 'idProductTypology']],
-            [['refUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['refUser' => 'idUser']],
+            [['releaseDate'], 'date', 'format' => 'd/m/Y'],
+            [['refProductCategory'], 'exist', 'skipOnError' => true, 'targetClass' => ProductCategory::class, 'targetAttribute' => ['refProductCategory' => 'idProductCategory']],
+            [['refProductTypology'], 'exist', 'skipOnError' => true, 'targetClass' => ProductTypology::class, 'targetAttribute' => ['refProductTypology' => 'idProductTypology']],
+            [['refUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['refUser' => 'idUser']],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => AttributeBehavior::class,
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => 'releaseDate',
+                    ActiveRecord::EVENT_BEFORE_UPDATE => 'releaseDate',
+                ],
+                'value' => function ($event) {
+                    return Yii::$app->formatter->asDate($this->releaseDate, 'php:Y/m/d');
+                },
+            ],
         ];
     }
 
@@ -73,51 +106,96 @@ class Product extends \yii\db\ActiveRecord
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function beforeDelete()
+    {
+        $availableProducts = $this->availableProducts;
+        foreach ($availableProducts as $availableProduct){
+            $availableProduct->delete();
+        }
+        return parent::beforeDelete();
+    }
+
+    /**
      * Gets query for [[AvailableProducts]].
      *
-     * @return \yii\db\ActiveQuery|AvailableProductQuery
+     * @return ActiveQuery
      */
     public function getAvailableProducts()
     {
-        return $this->hasMany(AvailableProduct::className(), ['refProduct' => 'idProduct']);
+        return $this->hasMany(AvailableProduct::class, ['refProduct' => 'idProduct']);
     }
 
     /**
      * Gets query for [[RefProductCategory0]].
      *
-     * @return \yii\db\ActiveQuery|ProductCategoryQuery
+     * @return ActiveQuery
      */
-    public function getRefProductCategory0()
+    public function getCategory()
     {
-        return $this->hasOne(ProductCategory::className(), ['idProductCategory' => 'refProductCategory']);
+        return $this->hasOne(ProductCategory::class, ['idProductCategory' => 'refProductCategory']);
     }
 
     /**
      * Gets query for [[RefProductTypology0]].
      *
-     * @return \yii\db\ActiveQuery|ProductTypologyQuery
+     * @return ActiveQuery
      */
-    public function getRefProductTypology0()
+    public function getTypology()
     {
-        return $this->hasOne(ProductTypology::className(), ['idProductTypology' => 'refProductTypology']);
+        return $this->hasOne(ProductTypology::class, ['idProductTypology' => 'refProductTypology']);
     }
 
     /**
      * Gets query for [[RefUser0]].
      *
-     * @return \yii\db\ActiveQuery|UserQuery
+     * @return ActiveQuery
      */
-    public function getRefUser0()
+    public function getUser()
     {
-        return $this->hasOne(User::className(), ['idUser' => 'refUser']);
+        return $this->hasOne(User::class, ['idUser' => 'refUser']);
     }
 
     /**
-     * {@inheritdoc}
-     * @return ProductQuery the active query used by this AR class.
+     * Upload an image, save the filename
+     * @throws StaleObjectException
+     * @throws Exception
      */
-    public static function find()
-    {
-        return new ProductQuery(get_called_class());
+    public function uploadImage() {
+        $image = UploadedFile::getInstance($this, 'fileLoader');
+        if (empty($image)) {
+            return false;
+        }
+        $this->img = Yii::$app->security->generateRandomString() . "." .$image->extension;
+        return $image;
+    }
+
+    /**
+     * fetch stored image url
+     * @return string
+     */
+    public function getImageUrl() {
+        return isset($this->img) ? Yii::getAlias('@webroot/uploads') . "/$this->img" : null;
+    }
+
+    /**
+     * Process deletion of image
+     * @return boolean the status of deletion
+     */
+    public function deleteImage() {
+        $file = $this->getImageUrl();
+
+        if (empty($file) || !file_exists($file)) {
+            return false;
+        }
+
+        if (!unlink($file)) {
+            return false;
+        }
+
+        $this->img = null;
+
+        return true;
     }
 }

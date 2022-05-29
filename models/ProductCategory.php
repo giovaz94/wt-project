@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "ProductCategory".
@@ -13,7 +14,7 @@ use Yii;
  *
  * @property Product[] $products
  */
-class ProductCategory extends \yii\db\ActiveRecord
+class ProductCategory extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -50,19 +51,10 @@ class ProductCategory extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Products]].
      *
-     * @return \yii\db\ActiveQuery|ProductQuery
+     * @return \yii\db\ActiveQuery
      */
     public function getProducts()
     {
-        return $this->hasMany(Product::className(), ['refProductCategory' => 'idProductCategory']);
-    }
-
-    /**
-     * {@inheritdoc}
-     * @return ProductCategoryQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new ProductCategoryQuery(get_called_class());
+        return $this->hasMany(Product::class, ['refProductCategory' => 'idProductCategory']);
     }
 }
