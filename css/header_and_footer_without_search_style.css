@@ -19,7 +19,7 @@
 }
 
 .footer-list-decor {
-  text-decoration: underline solid red 2px;
+  text-decoration: underline solid #dc3545 2px;
 }
 
 .nav-nested {
@@ -47,7 +47,7 @@
 }
 
 .border-bottom-header {
-  border-bottom: solid red 1px;
+  border-bottom: solid #dc3545 1px;
 }
 
 .text-visibility {

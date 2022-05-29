@@ -102,3 +102,10 @@ input[type="number"] {
 .visuallyhidden {
   display: none;
 }
+
+.product-cart-image {
+  width: 80%;
+  min-width: 40px;
+  max-width: 200px;
+  height: auto;
+}

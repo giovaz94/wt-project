@@ -28,91 +28,408 @@
             <path
                 d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
         </symbol>
+        <symbol fill="currentColor" id="search-icon" class="bi bi-search" viewBox="0 0 16 16">
+            <title>Cerca</title>
+            <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+        </symbol>
+        <symbol fill="currentColor" id="left-arrow-icon" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+            <title>Freccia a sinistra</title>
+            <path
+                d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+        </symbol>
+        <symbol fill="currentColor" id="right-arrow-icon" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+            <title>Freccia a sinistra</title>
+            <path
+                d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+        </symbol>
     </svg>
     <main>
-        <header>
+        <header class="border-bottom-header">
             <div class="px-3 py-2 bg-white text-black-50">
-                <div class="container">
-                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                        <a href="/"
-                            class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                            <img class="logo-top-bar responsive bi me-2" id="logosvgheader"
+                <div class="container-fluid">
+                    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start">
+                        <div class="d-flex align-items-center my-2 my-lg-0 me-lg-auto">
+                            <a href="/" class="d-flex justify-content-center text-white">
+                                <img class="logo-top-bar responsive bi" id="logosvgheader"
+                                    alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
+                                    src="logo_vector.svg" aria-label="Profilo">
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-auto my-2 align-items-center d-flex justify-content-center my-md-0">
+                            <ul class="nav text-small">
+                                <li>
+                                    <a href="#" class="nav-link text-black-50">
+                                        <svg class="bi button-svg d-block mx-auto mb-1" role="img">
+                                            <use xlink:href="#profile" />
+                                        </svg>
+                                        Profilo
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link text-black-50">
+                                        <svg class="bi button-svg d-block mx-auto mb-1" role="img">
+                                            <use xlink:href="#bell" />
+                                        </svg>
+                                        Notifiche
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link text-black-50">
+                                        <svg class="bi button-svg d-block mx-auto mb-1" role="img">
+                                            <use xlink:href="#cart" />
+                                        </svg>
+                                        Carrello
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="px-3 py-4 bg-color-custom col-lg-auto mb-4 border-bottom">
+            <div class="row search-bar-name">
+                <div class="container d-flex flex-wrap justify-content-center">
+                    <p class="font-section">Cerca tra i nostri titoli</p>
+                </div>
+            </div>
+            <div class="search-container d-flex justify-content-center input-group mb-3">
+                <form action="/action_page.php">
+                    <label for="search-input-bar-id" class="text-visibility">Barra di ricerca</label>
+                    <input class="search-input-bar" name="search-input-bar-id" id="search-input-bar-id" type="text" placeholder="Cerca..."
+                        aria-label="Ricerca prodotti">
+                    <button class="search-button" type="submit">
+                            <svg class="button-svg-search" role="img">
+                                <use xlink:href="#search-icon" />
+                            </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <section class="product-overview">
+        <div class="home-section-title d-flex flex-wrap justify-content-start align-items-center">
+            <p class="section-list-decor font-section">Nuovi</p>
+            <p class="font-section">&nbsp;arrivi</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="col-sm-auto">
+                <a href="#" class="nav-link-product text-black-50" title="freccia sinistra" >
+                    <svg class="nav-link-product" role="img">
+                        <use xlink:href="#left-arrow-icon" />
+                    </svg>
+                </a>
+            </div>
+            <div class="col-sm-auto d-flex justify-content-center">
+                <div class="col">
+                    <div class="row-cols-auto">
+                        <a href="/" class="text-white d-flex justify-content-center">
+                            <img class="product-overview-image bi"
                                 alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
-                                src="logo_vector.svg" aria-label="Profilo">
-                            </img>
+                                src="Untitled.png" aria-label="Profilo">
                         </a>
-                        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                    </div>
+                    <div class="row-cols-auto d-flex justify-content-center">
+                        <ul class="nav-nested">
                             <li>
-                                <a href="#" class="nav-link text-black-50">
-                                    <svg class="bi button-svg d-block mx-auto mb-1" width="24" height="24" role="img">
-                                        <use xlink:href="#profile" />
-                                    </svg>
-                                    Profilo
-                                </a>
+                                Titolo
                             </li>
                             <li>
-                                <a href="#" class="nav-link text-black-50">
-                                    <svg class="bi button-svg d-block mx-auto mb-1" width="24" height="24" role="img">
-                                        <use xlink:href="#bell" />
-                                    </svg>
-                                    Notifiche
-                                </a>
+                                Prezzo
                             </li>
                             <li>
-                                <a href="#" class="nav-link text-black-50">
-                                    <svg class="bi button-svg d-block mx-auto mb-1" width="24" height="24" role="img">
-                                        <use xlink:href="#cart" />
-                                    </svg>
-                                    Carrello
-                                </a>
+                                Nome Cognome
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="px-3 py-2 bg-secondary col-lg-auto mb-4 border-bottom">
-                <div class="row search-bar-name">
-                    <div class="container d-flex flex-wrap justify-content-center">
-                        Cerca tra i nostri titoli
+            <div class="col-sm-auto d-flex justify-content-center">
+                <div class="col">
+                    <div class="row-cols-auto">
+                        <a href="/" class="text-white d-flex justify-content-center">
+                            <img class="product-overview-image bi"
+                                alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
+                                src="Untitled.png" aria-label="Profilo">
+                        </a>
                     </div>
-                </div>
-                <div class="search-bar">
-                    <div class="container d-flex flex-wrap justify-content-center">
-                        <form class="search-bar-form mb-3 row-cols-lg-auto g-3 align-items-center" role="search">
-                            <div class="col-12">
-                                <input type="search" class="form-control" placeholder="Search..." aria-label="Barra di ricerca">
-                            </div>
-                            <div class="col-12">
-                                <button type="button" class="btn btn-light text-dark me-1" aria-label="Bottone di ricerca">Cerca</button>
-                            </div>
-                        </form>
+                    <div class="row-cols-auto d-flex justify-content-center">
+                        <ul class="nav-nested">
+                            <li>
+                                Titolo
+                            </li>
+                            <li>
+                                Prezzo
+                            </li>
+                            <li>
+                                Nome Cognome
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </header>
-    </main>
+            <div class="col-sm-auto d-flex justify-content-center">
+                <div class="col">
+                    <div class="row-cols-auto">
+                        <a href="/" class="text-white d-flex justify-content-center">
+                            <img class="product-overview-image bi"
+                                alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
+                                src="Untitled.png" aria-label="Profilo">
+                        </a>
+                    </div>
+                    <div class="row-cols-auto d-flex justify-content-center">
+                        <ul class="nav-nested">
+                            <li>
+                                Titolo
+                            </li>
+                            <li>
+                                Prezzo
+                            </li>
+                            <li>
+                                Nome Cognome
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto">
+                <a href="#" class="nav-link-product text-black-50" title="freccia destra" >
+                    <svg class="nav-link-product" role="img">
+                        <use xlink:href="#right-arrow-icon" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="home-section-title d-flex flex-wrap justify-content-start align-items-center">
+            <p class="section-list-decor font-section">Articoli</p>
+            <p class="font-section">&nbsp;in promozione</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="col-sm-auto">
+                <a href="#" class="nav-link-product text-black-50" title="freccia sinistra" >
+                    <svg class="nav-link-product" role="img">
+                        <use xlink:href="#left-arrow-icon" />
+                    </svg>
+                </a>
+            </div>
+            <div class="col-sm-auto d-flex justify-content-center">
+                <div class="col">
+                    <div class="row-cols-auto">
+                        <a href="/" class="text-white d-flex justify-content-center">
+                            <img class="product-overview-image bi"
+                                alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
+                                src="Untitled.png" aria-label="Profilo">
+                        </a>
+                    </div>
+                    <div class="row-cols-auto d-flex justify-content-center">
+                        <ul class="nav-nested">
+                            <li>
+                                Titolo
+                            </li>
+                            <li>
+                                Prezzo
+                            </li>
+                            <li>
+                                Nome Cognome
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto d-flex justify-content-center">
+                <div class="col">
+                    <div class="row-cols-auto">
+                        <a href="/" class="text-white d-flex justify-content-center">
+                            <img class="product-overview-image bi"
+                                alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
+                                src="Untitled.png" aria-label="Profilo">
+                        </a>
+                    </div>
+                    <div class="row-cols-auto d-flex justify-content-center">
+                        <ul class="nav-nested">
+                            <li>
+                                Titolo
+                            </li>
+                            <li>
+                                Prezzo
+                            </li>
+                            <li>
+                                Nome Cognome
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto d-flex justify-content-center">
+                <div class="col">
+                    <div class="row-cols-auto">
+                        <a href="/" class="text-white d-flex justify-content-center">
+                            <img class="product-overview-image bi"
+                                alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
+                                src="Untitled.png" aria-label="Profilo">
+                        </a>
+                    </div>
+                    <div class="row-cols-auto d-flex justify-content-center">
+                        <ul class="nav-nested">
+                            <li>
+                                Titolo
+                            </li>
+                            <li>
+                                Prezzo
+                            </li>
+                            <li>
+                                Nome Cognome
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto">
+                <a href="#" class="nav-link-product text-black-50" title="freccia destra" >
+                    <svg class="nav-link-product" role="img">
+                        <use xlink:href="#right-arrow-icon" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="home-section-title d-flex flex-wrap justify-content-start align-items-center">
+            <p class="section-list-decor font-section">Ebook</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="col-sm-auto">
+                <a href="#" class="nav-link-product text-black-50" title="freccia sinistra">
+                    <svg class="nav-link-product" role="img">
+                        <use xlink:href="#left-arrow-icon" />
+                    </svg>
+                </a>
+            </div>
+            <div class="col-sm-auto d-flex justify-content-center">
+                <div class="col">
+                    <div class="row-cols-auto">
+                        <a href="/" class="text-white d-flex justify-content-center">
+                            <img class="product-overview-image bi"
+                                alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
+                                src="Untitled.png" aria-label="Profilo">
+                        </a>
+                    </div>
+                    <div class="row-cols-auto d-flex justify-content-center">
+                        <ul class="nav-nested">
+                            <li>
+                                Titolo
+                            </li>
+                            <li>
+                                Prezzo
+                            </li>
+                            <li>
+                                Nome Cognome
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto d-flex justify-content-center">
+                <div class="col">
+                    <div class="row-cols-auto">
+                        <a href="/" class="text-white d-flex justify-content-center">
+                            <img class="product-overview-image bi"
+                                alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
+                                src="Untitled.png" aria-label="Profilo">
+                        </a>
+                    </div>
+                    <div class="row-cols-auto d-flex justify-content-center">
+                        <ul class="nav-nested">
+                            <li>
+                                Titolo
+                            </li>
+                            <li>
+                                Prezzo
+                            </li>
+                            <li>
+                                Nome Cognome
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto d-flex justify-content-center">
+                <div class="col">
+                    <div class="row-cols-auto">
+                        <a href="/" class="text-white d-flex justify-content-center">
+                            <img class="product-overview-image bi"
+                                alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
+                                src="Untitled.png" aria-label="Profilo">
+                        </a>
+                    </div>
+                    <div class="row-cols-auto d-flex justify-content-center">
+                        <ul class="nav-nested">
+                            <li>
+                                Titolo
+                            </li>
+                            <li>
+                                Prezzo
+                            </li>
+                            <li>
+                                Nome Cognome
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto">
+                <a href="#" class="nav-link-product text-black-50" title="freccia destra">
+                    <svg class="nav-link-product" role="img">
+                        <use xlink:href="#right-arrow-icon" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
 
-
-
-    <div class="container-fluid">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-            <p class="col-md-4 mb-0 text-muted">&copy; 2022 Company, Inc</p>
-
-            <a href="/"
-                class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                <img class="logo-top-bar responsive bi me-2" id="logosvgfooter"
-                    alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito" src="logo_vector.svg"
-                    aria-label="Profilo">
-                </img>
-            </a>
-
-            <ul class="nav col-md-4 justify-content-end">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+    <div class="container-fluid footer-container">
+        <footer class="d-flex flex-wrap justify-content-around align-items-center py-3 my-4 border-top">
+            <ul class="nav col-md-4 justify-content-start">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-white">
+                        <h6 class="footer-list-decor">Home</h6>
+                    </a>
+                    <ul class="nav-nested justify-content-start">
+                        <li class="nav-nested-item"><a href="#" class="nav-link px-2 text-black">Pricing</a></li>
+                        <li class="nav-nested-item"><a href="#" class="nav-link px-2 text-black">FAQs</a></li>
+                        <li class="nav-nested-item"><a href="#" class="nav-link px-2 text-black">About</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-white">
+                        <h6 class="footer-list-decor">Home</h6>
+                    </a>
+                    <ul class="nav-nested justify-content-start">
+                        <li class="nav-nested-item"><a href="#" class="nav-link px-2 text-black">Pricing</a></li>
+                        <li class="nav-nested-item"><a href="#" class="nav-link px-2 text-black">FAQs</a></li>
+                        <li class="nav-nested-item"><a href="#" class="nav-link px-2 text-black">About</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-white">
+                        <h6 class="footer-list-decor">Home</h6>
+                    </a>
+                    <ul class="nav-nested justify-content-start">
+                        <li class="nav-nested-item"><a href="#" class="nav-link px-2 text-black">Pricing</a></li>
+                        <li class="nav-nested-item"><a href="#" class="nav-link px-2 text-black">FAQs</a></li>
+                        <li class="nav-nested-item"><a href="#" class="nav-link px-2 text-black">About</a></li>
+                    </ul>
+                </li>
             </ul>
+
+            <div class="col-md-4 d-flex flex-column-reverse align-items-end me-sm-1">
+                <div class="mb-0">
+                    <p class="copyright text-muted">&copy; 2022 Company, Inc</p>
+                </div>
+                <div class="d-flex align-items-center mb-3 mb-md-0">
+                    <a href="./home.html" class="link-dark">
+                        <img class="logo-top-bar responsive bi me-2" id="logosvgfooter"
+                            alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
+                            src="logo_vector.svg" aria-label="Profilo">
+                    </a>
+                </div>
+            </div>
         </footer>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
