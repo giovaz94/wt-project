@@ -115,7 +115,6 @@ class m220506_224551_create_db extends Migration
         $this->createTable("CartItem", [
             "idCartItem" => $this->primaryKey(),
             "quantity" => $this->integer()->notNull(),
-            "unitPrice" => $this->float()->notNull(),
             "subtotal" => $this->float()->notNull(),
             "refCart" => $this->integer(),
             "refAvailableProduct" => $this->integer()

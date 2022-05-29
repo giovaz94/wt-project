@@ -2,9 +2,9 @@
 
 namespace app\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Product;
 
 /**
  * ProductSearch represents the model behind the search form of `app\models\Product`.
@@ -41,7 +41,8 @@ class ProductSearch extends Product
      */
     public function search($params)
     {
-        $query = Product::find();
+        $query = Product::find()
+            ->andWhere(['refUser' => Yii::$app->user->id]);
 
         // add conditions that should always apply here
 
@@ -65,7 +66,6 @@ class ProductSearch extends Product
             'releaseDate' => $this->releaseDate,
             'refProductCategory' => $this->refProductCategory,
             'refProductTypology' => $this->refProductTypology,
-            'refUser' => $this->refUser,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

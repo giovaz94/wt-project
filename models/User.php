@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\AttributeBehavior;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
@@ -18,7 +21,7 @@ use yii\web\IdentityInterface;
  * @property string|null $cityOfBirth
  * @property int|null $refTaxData
  *
- * @property Cart[] $carts
+ * @property Cart $cart
  * @property Order[] $orders
  * @property PaymentMethod[] $paymentMethods
  * @property Product[] $products
@@ -26,8 +29,24 @@ use yii\web\IdentityInterface;
  * @property TaxData $refTaxData0
  * @property UserNotification[] $userNotifications
  */
-class User extends \yii\db\ActiveRecord implements IdentityInterface
+class User extends ActiveRecord implements IdentityInterface
 {
+
+    // BUYER SCENARIO
+    const SCENARIO_BUYER_REGISTRATION = "buyer-registration";
+
+    // VENDOR SCENARIO
+    const SCENARIO_VENDOR_REGISTRATION = "vendor-registration";
+
+    // LOGIN SCENARIO
+    const SCENARIO_LOGIN = "login";
+
+    // UPDATE SCENARIO
+    const SCENARIO_UPDATE = "update";
+
+    // Password repeat attribute
+    public $password_repeat;
+
     /**
      * {@inheritdoc}
      */
@@ -42,14 +61,68 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['firstName', 'lastName', 'email', 'username', 'password'], 'required'],
-            [['firstName', 'lastName', 'email', 'username', 'password', 'cityOfBirth'], 'string', 'max' => 255],
-            [['dateOfBirth'], 'date', 'format' => 'd-m-Y'],
+            [['firstName', 'lastName', 'email', 'username'], 'required'],
+            [['firstName', 'lastName', 'email', 'username', 'password', 'password_repeat', 'cityOfBirth'], 'string', 'max' => 255],
+            [['dateOfBirth'], 'date', 'format' => 'd/m/Y'],
             [['email'], 'unique'],
             [['email'], 'email'],
+            [['password_repeat','password'], 'required', 'on' => [self::SCENARIO_VENDOR_REGISTRATION, self::SCENARIO_BUYER_REGISTRATION]],
+            ['password_repeat', 'compare', 'compareAttribute'=>'password',
+                'message'=>"Passwords should match between each other",
+                'skipOnEmpty' => false ,
+                'when' => function ($model) {
+                    return !empty($model->password);
+            },],
             [['username'], 'unique'],
             [['refTaxData'], 'integer'],
-            [['refTaxData'], 'exist', 'skipOnError' => true, 'targetClass' => TaxData::className(), 'targetAttribute' => ['refTaxData' => 'idTaxData']],
+            [['refTaxData'], 'exist', 'skipOnError' => true, 'targetClass' => TaxData::class, 'targetAttribute' => ['refTaxData' => 'idTaxData']],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_LOGIN] = ['username', 'password'];
+        $scenarios[self::SCENARIO_BUYER_REGISTRATION] = ['firstName', 'lastName', 'email', 'username', 'password', 'password_repeat', 'dateOfBirth', 'cityOfBirth'];
+        $scenarios[self::SCENARIO_VENDOR_REGISTRATION] = ['firstName', 'lastName', 'email', 'username', 'password', 'password_repeat', 'dateOfBirth', 'cityOfBirth', 'refTaxData'];
+        $scenarios[self::SCENARIO_UPDATE] = ['firstName', 'lastName', 'email', 'username', 'password', 'password_repeat', 'dateOfBirth', 'cityOfBirth'];
+        return $scenarios;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => AttributeBehavior::class,
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => 'dateOfBirth',
+                    ActiveRecord::EVENT_BEFORE_UPDATE => 'dateOfBirth',
+                ],
+                'value' => function ($event) {
+                    return Yii::$app->formatter->asDate($this->dateOfBirth, 'php:Y/m/d');
+                },
+            ],
+            [
+                'class' => AttributeBehavior::class,
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => 'password',
+                    ActiveRecord::EVENT_BEFORE_UPDATE => 'password',
+                ],
+                'value' => function ($event) {
+                    if(!empty($this->getDirtyAttributes(["password"])["password"])) {
+                        $hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+                    } else {
+                        $hash = $this->getOldAttribute("password");
+                    }
+                    return $hash;
+                },
+            ],
         ];
     }
 
@@ -72,82 +145,113 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function beforeDelete()
+    {
+        $products = $this->products;
+        foreach ($products as $product) {
+            $product->delete();
+        }
+
+        $this->cart->delete();
+        return parent::beforeDelete();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+
+        $cart = new Cart();
+        $cart->refUser = $this->idUser;
+        $cart->save();
+
+        $this->link('cart', $cart);
+        parent::afterSave($insert, $changedAttributes);
+    }
+
+
+    /**
      * Gets query for [[Carts]].
      *
-     * @return \yii\db\ActiveQuery|CartQuery
+     * @return ActiveQuery
      */
-    public function getCarts()
+    public function getCart()
     {
-        return $this->hasMany(Cart::className(), ['refUser' => 'idUser']);
+        return $this->hasOne(Cart::class, ['refUser' => 'idUser']);
     }
 
     /**
      * Gets query for [[Orders]].
      *
-     * @return \yii\db\ActiveQuery|OrderQuery
+     * @return ActiveQuery
      */
     public function getOrders()
     {
-        return $this->hasMany(Order::className(), ['refUser' => 'idUser']);
+        return $this->hasMany(Order::class, ['refUser' => 'idUser']);
     }
 
     /**
      * Gets query for [[PaymentMethods]].
      *
-     * @return \yii\db\ActiveQuery|PaymentMethodQuery
+     * @return ActiveQuery
      */
     public function getPaymentMethods()
     {
-        return $this->hasMany(PaymentMethod::className(), ['refUser' => 'idUser']);
+        return $this->hasMany(PaymentMethod::class, ['refUser' => 'idUser']);
     }
 
     /**
      * Gets query for [[Products]].
      *
-     * @return \yii\db\ActiveQuery|ProductQuery
+     * @return ActiveQuery
      */
     public function getProducts()
     {
-        return $this->hasMany(Product::className(), ['refUser' => 'idUser']);
+        return $this->hasMany(Product::class, ['refUser' => 'idUser']);
     }
 
     /**
      * Gets query for [[RefNotifications]].
      *
-     * @return \yii\db\ActiveQuery|NotificationQuery
+     * @return ActiveQuery
      */
-    public function getRefNotifications()
+    public function getNotifications()
     {
-        return $this->hasMany(Notification::className(), ['idNotification' => 'refNotification'])->viaTable('UserNotification', ['refUser' => 'idUser']);
-    }
-
-    /**
-     * Gets query for [[RefTaxData0]].
-     *
-     * @return \yii\db\ActiveQuery|TaxDataQuery
-     */
-    public function getRefTaxData0()
-    {
-        return $this->hasOne(TaxData::className(), ['idTaxData' => 'refTaxData']);
+        return $this->hasMany(Notification::class, ['idNotification' => 'refNotification'])->viaTable('UserNotification', ['refUser' => 'idUser']);
     }
 
     /**
      * Gets query for [[UserNotifications]].
      *
-     * @return \yii\db\ActiveQuery|UserNotificationQuery
+     * @return ActiveQuery
      */
     public function getUserNotifications()
     {
-        return $this->hasMany(UserNotification::className(), ['refUser' => 'idUser']);
+        return $this->hasMany(UserNotification::class, ['refUser' => 'idUser']);
     }
 
     /**
-     * {@inheritdoc}
-     * @return UserQuery the active query used by this AR class.
+     * Gets query for [[TaxData]].
+     *
+     * @return ActiveQuery
      */
-    public static function find()
+    public function getTaxData()
     {
-        return new UserQuery(get_called_class());
+        return $this->hasOne(TaxData::class, ['idTaxData' => 'refTaxData']);
+    }
+
+    /**
+     * Find a user by its username
+     *
+     * @param string $username the username
+     * @return User
+     */
+    public static function findByUsername($username)
+    {
+        return self::findOne(['username' => $username]);
     }
 
     /**
@@ -165,6 +269,13 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return $this->idUser;
     }
+
+
+    /**
+     * ===================
+     * BEGIN: UNUSED AUTH METHODS
+     * ===================
+     */
 
     /**
      * {@inheritDoc}
@@ -186,4 +297,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function validateAuthKey($authKey)
     {
     }
+
+    /**
+     * ===================
+     * END: UNUSED AUTH METHODS
+     * ===================
+     */
 }

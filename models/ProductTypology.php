@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "ProductTypology".
@@ -13,7 +15,7 @@ use Yii;
  *
  * @property Product[] $products
  */
-class ProductTypology extends \yii\db\ActiveRecord
+class ProductTypology extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -29,6 +31,7 @@ class ProductTypology extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['idProductTypology'], 'int'],
             [['name'], 'required'],
             [['description'], 'string'],
             [['name'], 'string', 'max' => 255],
@@ -50,19 +53,10 @@ class ProductTypology extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Products]].
      *
-     * @return \yii\db\ActiveQuery|ProductQuery
+     * @return ActiveQuery
      */
     public function getProducts()
     {
-        return $this->hasMany(Product::className(), ['refProductTypology' => 'idProductTypology']);
-    }
-
-    /**
-     * {@inheritdoc}
-     * @return ProductTypologyQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new ProductTypologyQuery(get_called_class());
+        return $this->hasMany(Product::class, ['refProductTypology' => 'idProductTypology']);
     }
 }

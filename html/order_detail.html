@@ -35,14 +35,10 @@
                 <div class="container-fluid">
                     <div class="d-flex flex-wrap justify-content-center justify-content-lg-start">
                         <div class="d-flex align-items-center my-2 my-lg-0 me-lg-auto">
-                            <a href="/" class=" text-white">
-                                <img class="logo-top-bar responsive bi me-2" id="logosvgheader"
+                            <a href="/" class="d-flex justify-content-center text-white">
+                                <img class="logo-top-bar responsive bi" id="logosvgheader"
                                     alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
                                     src="logo_vector.svg" aria-label="Profilo">
-                                </img>
-                                <label class="text-visibility">
-                                    Campus Books Home
-                                </label>
                             </a>
                         </div>
                         <div class="col-12 col-lg-auto my-2 align-items-center d-flex justify-content-center my-md-0">
@@ -83,13 +79,14 @@
         <div class="container-fluid">
             <div class="cart-sum row d-flex justify-content-between align-items-center py-3 my-2">
                 <div class="col d-flex justify-content-start align-items-center py-3">
-                    <p><h4 class="cart-sum-title section-list-decor">Ordine</h4><h4>&nbsp 12</h4></p>
+                    <p class="cart-sum-title section-list-decor">Ordine</p>
+                    <p>&nbsp; 12</p>
                 </div>
                 <div class="col">
-                    <h4 class="cart-sum-title">Stato: Dipende</h4>
+                    <p class="cart-sum-title">Stato: Dipende</p>
                 </div>
             </div>
-            <div class="container-fluid px-3 py-2">
+            <div class="container-fluid py-2">
                 <div class="table-responsive">
                     <table class="order-table table" style="width:100%">
                         <tr class="order-table-header text-white">
@@ -104,9 +101,46 @@
                             </th>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <div class="col d-flex justify-content-start">
+                                        <a href="#" class="nav-link text-black-50" aria-label="Immagine">
+                                            <img class="product-cart-image bi"
+                                                alt="Un libro aperto con qualche pagina svolazzante"
+                                                title="Logo del sito" src="Untitled.png" aria-label="Profilo">
+                                        </a>
+                                    </div>
+                                    <div class="col d-flex justify-content-start">
+                                        <ul class="nav-nested">
+                                            <li>
+                                                Titolo
+                                            </li>
+                                            <li>
+                                                Prezzo
+                                            </li>
+                                            <li>
+                                                <button type="button" class="btn btn-remove-product text-danger"
+                                                    aria-label="Bottone per l'acquisto">Rimuovi</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-start">
+                                    <form id="order-number-1">
+                                        <label for="product-quantity" class="visuallyhidden">Quantità di
+                                            prodotti</label>
+                                        <input type="number" name="product-quantity" aria-label="Numero di prodotti"
+                                            id="product-quantity">
+                                    </form>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-start flex-wrap">
+                                    Prezzo finale
+                                </div>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -129,10 +163,10 @@
                     </ul>
                 </div>
                 <div class="row">
-                    <form class="search-bar-form mb-3 row-cols-lg-auto g-3 align-items-center" role="order">
+                    <form class="order-bar-form mb-3 row-cols-lg-auto g-3 align-items-center" id="order-form-button">
                         <div class="col-12">
                             <button type="button" class="btn btn-danger text-white me-1"
-                                aria-label="Bottone di ricerca">Ordina</button>
+                                aria-label="Bottone per ordinare">Ordina</button>
                         </div>
                     </form>
                 </div>
@@ -181,10 +215,6 @@
                         <img class="logo-top-bar responsive bi me-2" id="logosvgfooter"
                             alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
                             src="logo_vector.svg" aria-label="Profilo">
-                        </img>
-                        <label class="text-visibility">
-                            Campus Books Home
-                        </label>
                     </a>
                 </div>
             </div>
