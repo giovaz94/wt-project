@@ -1,0 +1,153 @@
+.form-control {
+    margin-bottom: 5%;
+    border-radius: 0%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+}
+
+div.card {
+    max-width: 330px;
+}
+
+img.logo-top-bar {
+    width: 300px;
+}
+
+button.btn {
+    background-color: #D70000;
+    border: none;
+}
+
+button.btn:hover {
+    background-color: #D70000;
+}
+
+p.error-occurs {
+    color: #D70000;
+}
+
+img {
+    max-width: 100%;
+}
+
+ins {
+    text-decoration: none;
+    color: #D70000;
+}
+
+del {
+    text-decoration-color: #D70000;
+}
+
+section {
+    margin-bottom: 3%;
+}
+
+a.related-articles {
+    color: black;
+    text-decoration: none;
+}
+
+a.related-articles:hover {
+    color: black;
+    text-decoration: none;
+}
+
+a.related-articles:hover .titolo-libro{
+    color: #D70000;
+}
+
+a.related-articles:hover .autore{
+    color: #D70000;
+}
+
+a.related-articles p {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+a.related-articles h5 {
+    margin-bottom: 1%;
+    margin-top: 0;
+}
+
+h4.sezione {
+    display: inline-block;
+    border-bottom: 3px solid #D70000;
+    margin-bottom: 3%;
+}
+
+table.product-information td {
+    text-align: end;
+}
+
+table.product-information th {
+    padding-right: 5%;
+}
+
+section.product-header {
+    margin-bottom: 2%;
+}
+
+div#image-product {
+    margin-bottom: 3%;
+}
+
+div.related-articles:hover {
+    border: 3px solid #D70000;
+    padding: 1%;
+}
+
+label {
+    padding-left: 12px;
+}
+
+textarea {
+    width: 100%;
+    margin-top: 2%;
+}
+
+input.input-image {
+    margin-left: 15%;
+}
+
+a {
+    color: #D70000;
+}
+
+a:hover {
+    color: #D70000;
+}
+
+legend.form {
+    width: fit-content;
+    border-bottom: 3px solid #D70000;
+    margin-bottom: 3%;
+}
+
+input.input-image {
+    margin-top: 4%;
+}
+
+div.form {
+    margin-bottom: 3%;
+}
+
+div.upload-image {
+    margin-bottom: 5%;
+}
+
+/* Remove input number's slider */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}

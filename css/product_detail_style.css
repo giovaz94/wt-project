@@ -4,45 +4,85 @@ img {
 
 ins {
     text-decoration: none;
-    color: red;
+    color: #D70000;
 }
 
 del {
-    text-decoration-color: red;
+    text-decoration-color: #D70000;
 }
 
-section a {
+section {
+    margin-bottom: 3%;
+}
+
+a.related-articles {
     color: black;
     text-decoration: none;
 }
 
-section a:hover {
+a.related-articles:hover {
     color: black;
     text-decoration: none;
 }
 
-section a:hover .titolo{
-    color: blue;
+a.related-articles:hover .titolo-libro{
+    color: #D70000;
 }
 
-section a:hover .autore{
-    color: blue;
+a.related-articles:hover .autore{
+    color: #D70000;
 }
 
-/*
+a.related-articles p {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+a.related-articles h5 {
+    margin-bottom: 1%;
+    margin-top: 0;
+}
+
+button.btn {
+    background-color: #D70000;
+    border: none;
+}
+
+button.btn:hover {
+    background-color: #D70000;
+}
+
+a {
+    color: #D70000;
+}
+
+a:hover {
+    color: #D70000;
+}
+
+h4.sezione {
+    display: inline-block;
+    border-bottom: 3px solid #D70000;
+    margin-bottom: 3%;
+}
+
+table.product-information td {
+    text-align: end;
+}
+
+table.product-information th {
+    padding-right: 5%;
+}
+
 section.product-header {
-    border: 5px solid black;
+    margin-bottom: 2%;
 }
 
-div.row {
-    border: 5px solid red;
+div#image-product {
+    margin-bottom: 3%;
 }
 
-#image-product {
-    border: 5px solid yellow;
+div.related-articles:hover {
+    border: 3px solid #D70000;
+    padding: 1%;
 }
-
-#header-product {
-    border: 5px solid green;
-}
-*/

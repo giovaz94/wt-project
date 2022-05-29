@@ -14,3 +14,24 @@ div.card {
 img.logo-top-bar {
     width: 300px;
 }
+
+button.btn {
+    background-color: #D70000;
+    border: none;
+}
+
+button.btn:hover {
+    background-color: #D70000;
+}
+
+a {
+    color: #D70000;
+}
+
+a:hover {
+    color: #D70000;
+}
+
+p.error-occurs {
+    color: #D70000;
+}
