@@ -82,20 +82,3 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
-
-
-/*
-    CUSTOM CODE FROM HERE
-*/
-
-
-img.thumb-img{
-    width: 150px;
-    height: 150px;
-    aspect-ratio: auto;
-    float: left;
-}
-
-.cart-item-desc > p{
-
-}
