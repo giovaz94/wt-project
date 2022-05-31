@@ -85,6 +85,16 @@ class Order extends ActiveRecord
     }
 
     /**
+     * Return the order tax
+     * @param $tax
+     * @return float|int
+     */
+    public function getOrderTax($tax = 22)
+    {
+        return $this->total * ($tax / 100);
+    }
+
+    /**
      * Gets query for [[OrderItems]].
      *
      * @return ActiveQuery

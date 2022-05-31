@@ -13,7 +13,7 @@ use yii\web\View;
 
 <tr>
     <td> <?= $model->idOrder?> </td>
-    <td> <?= $model->getOrderItems()->count() ?></td>
+    <td> <?= $model->getItemCount() ?></td>
     <td> <?= $model->total ?> </td>
     <td> <?= Yii::$app->formatter->asDate( $model->dateOfCreation, 'php:d-m-Y') ?> </td>
     <td> <?= Html::a("View", ["order/detail", "idOrder" => $model->idOrder ])?></td>

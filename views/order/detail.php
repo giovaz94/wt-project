@@ -5,7 +5,6 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 
-
 /**
  * @var Order $model
  * @var ActiveDataProvider $dataProvider
@@ -35,6 +34,10 @@ $this->title = "Ordine " . $model->idOrder;
         ?>
         </tbody>
     </table>
+
+    <p> Totale: <?= $model->total ?> </p>
+    <p> IVA: <?= $model->getOrderTax() ?> </p>
+    <p> Finale: <?= $model->total + $model->getOrderTax() ?> </p>
 
 </section>
 
