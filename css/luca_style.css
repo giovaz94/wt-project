@@ -11,6 +11,22 @@ div.card {
     max-width: 330px;
 }
 
+div.image-product {
+    max-width: 40%;
+    margin-bottom: 3%;
+}
+
+div.product-detail {
+    margin-bottom: 5%;
+}
+
+img.product-img {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
 img.logo-top-bar {
     width: 300px;
 }
@@ -45,9 +61,38 @@ section {
     margin-bottom: 3%;
 }
 
+ul.control {
+    list-style: none;
+}
+
+ul.control li {
+    position: absolute;
+    z-index: 99;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+ul.control li:hover {
+    color: #D70000;
+    background: #000;
+}
+
+ul.control li.prev {
+    left: 20px;
+}
+
+ul.control li.next {
+    right: 20px;
+}
+
 a.related-articles {
     color: black;
     text-decoration: none;
+    display: inline-block;
 }
 
 a.related-articles:hover {
@@ -73,9 +118,13 @@ a.related-articles h5 {
     margin-top: 0;
 }
 
+a.related-articles:hover {
+    border: 3px solid #D70000;
+}
+
 h4.sezione {
     display: inline-block;
-    border-bottom: 3px solid #D70000;
+    text-decoration: 0.1em solid #D70000 underline;
     margin-bottom: 3%;
 }
 
@@ -89,15 +138,6 @@ table.product-information th {
 
 section.product-header {
     margin-bottom: 2%;
-}
-
-div#image-product {
-    margin-bottom: 3%;
-}
-
-div.related-articles:hover {
-    border: 3px solid #D70000;
-    padding: 1%;
 }
 
 label {
@@ -123,7 +163,7 @@ a:hover {
 
 legend.form {
     width: fit-content;
-    border-bottom: 3px solid #D70000;
+    text-decoration: 0.1em solid #D70000 underline;
     margin-bottom: 3%;
 }
 
@@ -137,6 +177,47 @@ div.form {
 
 div.upload-image {
     margin-bottom: 5%;
+}
+
+.tns-outer {
+    position: relative;
+}
+[data-controls] {
+    border: 0;
+    padding: 0;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    margin-top: -18px;
+    z-index: 1;
+    background: transparent;
+}
+[data-controls="prev"] {
+    left: 20px;
+}
+[data-controls="next"] {
+    right: 20px;
+}
+
+div.container-slider {
+    position: relative;
+}
+
+button.slider-button-prev, button.slider-button-next {
+    color: #D70000;
+}
+
+.tns-item{
+    text-align:center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.related-articles img {
+    width: 150px;
+    height: 150px;
 }
 
 /* Remove input number's slider */
