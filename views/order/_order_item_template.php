@@ -9,8 +9,6 @@ use yii\web\View;
  * @var View $this
  * @var OrderItem $model
  */
-
-
 ?>
 
 <td>
@@ -26,4 +24,7 @@ use yii\web\View;
 <td class="text-center">
     <?= $model->quantity ?>
 </td>
-<td class="text-center"> <?= $model->subtotal ?> </td>
+<td class="text-center">
+    <?= $model->subtotal ?>
+</td>
+

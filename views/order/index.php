@@ -19,7 +19,7 @@ $this->title = "Storico Ordini";
     <table class="table">
         <thead class="text-center">
         <tr>
-            <th> ID </th> <th> N° Articoli </th> <th> Totale </th> <th> Data </th> <th> Dettagli </th>
+            <th> ID </th> <th> N° Articoli </th> <th> Totale </th> <th> Data </th> <th> Status </th> <th> Dettagli </th>
         </tr>
         </thead>
         <tbody>

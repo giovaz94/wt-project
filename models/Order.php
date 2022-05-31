@@ -26,6 +26,12 @@ class Order extends ActiveRecord
     const ORDER_SENT = 2;
     const ORDER_DELIVERED = 3;
 
+    private $statues = [
+      self::ORDER_CREATE => "Create",
+      self::ORDER_SENT => "Sent",
+      self::ORDER_DELIVERED => "Delivered"
+    ];
+
     /**
      * {@inheritdoc}
      */
@@ -99,6 +105,15 @@ class Order extends ActiveRecord
     public function getOrderTax($tax = 22)
     {
         return $this->total * ($tax / 100);
+    }
+
+    /**
+     * Return the label of the status
+     * @return string
+     */
+    public function getStatusLabel()
+    {
+        return $this->statues[$this->status];
     }
 
     /**

@@ -16,6 +16,7 @@ use yii\web\View;
     <td> <?= $model->getItemCount() ?></td>
     <td> <?= $model->total ?> </td>
     <td> <?= Yii::$app->formatter->asDate( $model->dateOfCreation, 'php:d-m-Y') ?> </td>
+    <td> <?= $model->getStatusLabel() ?></td>
     <td> <?= Html::a("View", ["order/detail", "idOrder" => $model->idOrder ])?></td>
 </tr>
 

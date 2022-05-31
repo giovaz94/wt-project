@@ -21,7 +21,7 @@ $this->title = "Ordine " . $model->idOrder;
     <table class="table">
         <thead class="text-center">
         <tr>
-            <th> Articolo </th> <th> Quantità </th> <th> Totale </th>
+            <th> Articolo </th> <th> Quantità </th> <th> Totale </th> <th> Status </th>
         </tr>
         </thead>
         <tbody>
