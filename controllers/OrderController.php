@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Order;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -32,12 +33,13 @@ class OrderController extends Controller
 
     public function actionIndex()
     {
-        // Implemento la logica index del sito
+        $dataProvider = new ActiveDataProvider([
+            'query' => Order::find()->andWhere(['refUser' => Yii::$app->user->id])
+        ]);
 
-        // return $this->render("index", [
-        //  'searchModel' => $searchModel,
-        //  'dataProvider' => $dataProvider,
-        // ]);
+        return $this->render("index", [
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
 
