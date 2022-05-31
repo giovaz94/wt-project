@@ -12,6 +12,7 @@ use yii\db\Query;
  * This is the model class for table "Order".
  *
  * @property int $idOrder
+ * @property int $status
  * @property string $dateOfCreation
  * @property float $total
  * @property int|null $refUser
@@ -21,6 +22,10 @@ use yii\db\Query;
  */
 class Order extends ActiveRecord
 {
+    const ORDER_CREATE = 1;
+    const ORDER_SENT = 2;
+    const ORDER_DELIVERED = 3;
+
     /**
      * {@inheritdoc}
      */
@@ -35,9 +40,11 @@ class Order extends ActiveRecord
     public function rules()
     {
         return [
-            [['total'], 'required'],
+            [['total', 'status'], 'required'],
             [['dateOfCreation'], 'date', 'format' => 'php:Y-m-d'],
             [['total'], 'number'],
+            [['status'], 'in', 'range' => [self::ORDER_CREATE, self::ORDER_SENT, self::ORDER_DELIVERED]],
+            [['status'], 'default', 'value' => self::ORDER_CREATE],
             [['refUser'], 'integer'],
             [['refUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['refUser' => 'idUser']],
         ];
