@@ -6,6 +6,7 @@ use Yii;
 use yii\behaviors\AttributeBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
+use yii\db\Query;
 
 /**
  * This is the model class for table "Order".
@@ -72,6 +73,15 @@ class Order extends ActiveRecord
             'total' => 'Total',
             'refUser' => 'Ref User',
         ];
+    }
+
+    /**
+     * Return the count of the total items in the order
+     * @return bool|int|mixed|string|null
+     */
+    public function getItemCount()
+    {
+        return $this->getOrderItems()->sum("quantity");
     }
 
     /**

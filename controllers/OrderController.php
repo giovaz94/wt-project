@@ -47,10 +47,14 @@ class OrderController extends Controller
     {
         // Implemento la logica del dettaglio del prodotto
         $model = $this->findModel($idOrder);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $model->getOrderItems()
+        ]);
 
-        // return $this->render("detail", [
-        //  'model' => $model
-        //]);
+        return $this->render("detail", [
+            "model" => $model,
+            "dataProvider" => $dataProvider
+        ]);
     }
 
 
