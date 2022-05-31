@@ -73,6 +73,8 @@ del {
 
 div.card {
     max-width: 330px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 div.container {
@@ -88,9 +90,25 @@ div.form {
     margin-bottom: 3%;
 }
 
+div.form-top-button {
+    margin-bottom: 2%;
+}
+
+div.header-product {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.link-generic-retrieval, div.link-generic-login {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
 div.image-product {
     max-width: 40%;
     margin-bottom: 3%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 div.logo-generic-user-retrieval, div.logo-generic-login {
