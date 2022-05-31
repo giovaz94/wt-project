@@ -14,7 +14,7 @@ use yii\web\View;
     <td> <?= $model->idOrder?> </td>
     <td> <?= $model->getOrderItems()->count() ?></td>
     <td> <?= $model->total ?> </td>
-    <td> <?= $model->dateOfCreation ?> </td>
+    <td> <?= Yii::$app->formatter->asDate( $model->dateOfCreation, 'php:d-m-Y') ?> </td>
 </tr>
 
 
