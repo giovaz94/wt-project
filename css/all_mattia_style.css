@@ -90,16 +90,6 @@ table {
     margin-top: -5px;
 }
 
-/* Da cambiare per il merge */
-input[type="number"] {
-    width: 100%;
-    max-width: 70px;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-}
-
 .horizontal-line {
     width: 70%;
     margin-right: 4%;
@@ -181,6 +171,13 @@ input[type="number"] {
     height: auto;
 }
 
+.product-search-result-image {
+    width: 60%;
+    min-width: 80px;
+    max-width: 200px;
+    height: auto;
+}
+
 .home-section-title {
     padding-left: 7%;
     font-size: x-large;
@@ -193,4 +190,19 @@ input[type="number"] {
     width: 100%;
     max-width: 120px;
     height: auto;
+}
+
+.nav-nested-padding-search {
+    text-decoration-line: none !important;
+    font-size: 75%;
+    list-style-type: none;
+}
+
+.input-quantity-product {
+    width: 100%;
+    max-width: 70px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
 }
