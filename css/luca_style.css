@@ -36,6 +36,8 @@ a.slide:hover .titolo-libro{
     background-color: rgb(167, 167, 167);
 }
 
+/*Da cambiare*/
+
 button.btn {
     background-color: #D70000;
     border: none;
@@ -459,4 +461,70 @@ ul.control li:hover {
 
 .visuallyhidden {
     display: none;
+}
+
+.bi {
+    fill: currentColor;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0.5rem;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.order-bar-list {
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    list-style-type: none;
+}
+
+.button-svg-search {
+    width: 16px;
+    height: 16px;
+    background-color: white;
+}
+
+.search-button {
+    border: none;
+    background-color: white;
+}
+
+.nav-footer {
+    text-align: left !important;
+}
+
+.box-quantity {
+    padding: 10px; 
+    border: 1px solid rgb(167, 167, 167);
+}
+
+.line-break-custom {
+    white-space: pre-line;
+}
+
+.format-custom {
+    text-align:justify;
+}
+
+.vertical-align-top {
+    vertical-align: top;
+}
+
+.button-boxless {
+    background:none;
+    border:none;
+    cursor: pointer;
+    text-align: start;
+}
+
+.no-wrap-final-price {
+    white-space: nowrap;
 }

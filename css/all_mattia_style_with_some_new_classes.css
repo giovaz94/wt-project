@@ -1,12 +1,12 @@
-.bi {
+/*.bi {
     fill: currentColor;
-}
+}*/
 
-.text-small {
+/* .text-small {
     font-size: 85%;
-}
+} */
 
-.nav {
+/* .nav {
     display: flex;
     flex-wrap: nowrap;
     padding: 0.5rem;
@@ -14,9 +14,9 @@
     text-align: center;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-}
+} */
 
-.footer-list-decor {
+/* .footer-list-decor {
     text-decoration: underline solid #dc3545 2px;
 }
 
@@ -40,9 +40,9 @@
     list-style-type: none;
     padding-left: 0;
     font-size: 85%;
-}
+} */
 
-.line-break-custom {
+/* .line-break-custom {
     white-space: pre-line;
 }
 
@@ -59,9 +59,9 @@
     border:none;
     cursor: pointer;
     text-align: start;
-}
+} */
 
-.responsive {
+/* .responsive {
     width: 80%;
     max-width: 100px;
     height: auto;
@@ -82,30 +82,30 @@
 
 .text-visibility {
     display: none;
-}
+} */
 
-.order-bar-list {
+/* .order-bar-list {
     flex-wrap: nowrap;
     padding-bottom: 1rem;
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     list-style-type: none;
-}
+} */
 
-table {
+/* table {
     border: none;
 }
 
 .order-table-header {
     background-color: #dc3545;
-}
+} */
 
-.no-wrap-final-price {
+/* .no-wrap-final-price {
     white-space: nowrap;
-}
+} */
 
-.horizontal-line {
+/* .horizontal-line {
     width: 70%;
     margin-right: 4%;
     margin-left: 26%;
@@ -132,30 +132,30 @@ table {
 .bg-color-custom {
     background-color: rgb(167, 167, 167);
 }
-
+ */
 .nav-nested {
     list-style-type: none;
     padding-left: 0;
     font-size: 60%;
 }
 
-.button-svg-search {
+/* .button-svg-search {
     width: 16px;
     height: 16px;
     background-color: white;
-}
+} */
 
-.nav-search-link {
+/* .nav-search-link {
     padding: 0;
     cursor: pointer;
-}
+} */
 
-.search-button {
+/* .search-button {
     border: none;
     background-color: white;
-}
+} */
 
-.search-container {
+/* .search-container {
     float: none;
     display: block;
     text-align: left;
@@ -201,22 +201,22 @@ table {
     text-decoration-line: none !important;
     font-size: 75%;
     list-style-type: none;
-}
+} */
 
-.input-quantity-product {
+/* .input-quantity-product {
     width: 100%;
     max-width: 70px;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
-}
+} */
 
-.nav-footer {
+/* .nav-footer {
     text-align: left !important;
 }
 
 .box-quantity {
     padding: 10px; 
     border: 1px solid rgb(167, 167, 167);
-}
+} */
