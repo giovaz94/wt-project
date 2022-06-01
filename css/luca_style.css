@@ -36,8 +36,6 @@ a.slide:hover .titolo-libro{
     background-color: rgb(167, 167, 167);
 }
 
-/*Da cambiare*/
-
 button.btn {
     background-color: #D70000;
     border: none;
@@ -527,4 +525,8 @@ ul.control li:hover {
 
 .no-wrap-final-price {
     white-space: nowrap;
+}
+
+.btn-remove-product {
+    background-color:transparent !important;
 }
