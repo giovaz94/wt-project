@@ -2,18 +2,13 @@ a {
     color: #D70000;
 }
 
-a.related-articles {
+a.slide {
     color: black;
     text-decoration: none;
     display: inline-block;
 }
 
-a.related-articles h5 {
-    margin-bottom: 1%;
-    margin-top: 0;
-}
-
-a.related-articles p {
+a.slide p {
     margin-bottom: 0;
     margin-top: 0;
 }
@@ -22,18 +17,18 @@ a:hover {
     color: #D70000;
 }
 
-a.related-articles:hover {
+a.slide:hover {
     color: black;
     text-decoration: none;
     border: 0.5px solid #D70000;
     padding: 1%;
 }
 
-a.related-articles:hover .autore{
+a.slide:hover .autore{
     color: #D70000;
 }
 
-a.related-articles:hover .titolo-libro{
+a.slide:hover .titolo-libro{
     color: #D70000;
 }
 
@@ -130,14 +125,14 @@ div.product-detail {
     margin-bottom: 5%;
 }
 
-div.related-articles-img {
+div.slide-img {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1%;
 }
 
-div.related-articles-properties {
+div.slide-properties {
     text-align: left;
 }
 
@@ -181,10 +176,11 @@ div.upload-image {
     border-top: solid 3px;
 }
 
-h4.sezione {
-    display: inline-block;
-    text-decoration: 0.1em solid #D70000 underline;
-    margin-bottom: 3%;
+h1.titolo-libro {
+    margin-bottom: 1%;
+    margin-top: 0;
+    font-size: x-large;
+    font-weight: bold;
 }
 
 img {
@@ -307,50 +303,65 @@ p.error-occurs {
     height: auto;
 }
 
+p.titolo-libro {
+    margin-bottom: 1%;
+    margin-top: 0;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+p.titolo-sezione {
+    display: inline-block;
+    text-decoration: 0.1em solid #D70000 underline;
+    font-size: xx-large;
+    margin-bottom: 3%;
+    font-weight: bold;
+}
+
 @media (max-width: 399px) {
-    .related-articles img {
+    .slide img {
         width: 80px !important;
         height: 80px !important;
     }
 }
 
 @media (max-width: 575px) {
-    .related-articles img {
+    .slide img {
         width: 100px !important;
         height: 100px !important;
     }
 }
 
 @media (max-width: 767px) {
-    .related-articles img {
+    .slide img {
         width: 140px !important;
         height: 140px !important;
     }
 }
 
 @media (max-width: 991px) {
-    .related-articles img {
+    .slide img {
         width: 180px !important;
         height: 180px !important;
     }
 }
 
 @media (max-width: 1199px) {
-    .related-articles img {
+    .slide img {
         width: 120px !important;
         height: 120px !important;
     }
 }
 
 @media (max-width: 1263px) {
-    .related-articles img {
+    .slide img {
         width: 150px !important;
         height: 150px !important;
     }
 }
 
 @media (min-width: 1264px) {
-    .related-articles img {
+    .slide img {
         width: 200px !important;
         height: 200px !important;
     }
