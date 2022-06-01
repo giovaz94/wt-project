@@ -33,13 +33,6 @@
     margin-top: -5px;
 }
 
-/*To be changed*/
-.nav-nested {
-    list-style-type: none;
-    padding-left: 0;
-    font-size: 60%;
-}
-
 /* Da cambiare vertical negativo */
 .button-svg-search {
     width: 16px;
@@ -53,11 +46,4 @@
     border: none;
     background-color: white;
     margin-left: -4px;
-}
-
-/*To be changed*/
-.responsive {
-    width: 100%;
-    max-width: 120px;
-    height: auto;
 }

@@ -78,7 +78,7 @@
         </header>
         <div class="container-fluid">
             <div class="cart-sum row d-flex justify-content-between align-items-center py-3 my-2">
-                <div class="col d-flex justify-content-start align-items-center py-3">
+                <div class="col d-flex justify-content-start align-items-center">
                     <p class="cart-sum-title section-list-decor">Ordine</p>
                     <p>&nbsp; 12</p>
                 </div>
@@ -91,49 +91,38 @@
                     <table class="order-table table" style="width:100%">
                         <tr class="order-table-header text-white">
                             <th scope="col">
-                                Articolo
+                                <div class="d-flex justify-content-center">
+                                    Articolo
+                                </div>
                             </th>
                             <th scope="col">
                                 Quantitá
                             </th>
                             <th scope="col">
-                                Prezzo finale
+                                <p class="no-wrap-final-price">Prezzo finale</p>
                             </th>
                         </tr>
                         <tr>
                             <td>
-                                <div class="d-flex justify-content-center">
-                                    <div class="col d-flex justify-content-start">
+                                <div class="col d-flex justify-content-start">
+                                    <div class="row d-flex justify-content-start">
                                         <a href="#" class="nav-link text-black-50" aria-label="Immagine">
                                             <img class="product-cart-image bi"
                                                 alt="Un libro aperto con qualche pagina svolazzante"
                                                 title="Logo del sito" src="Untitled.png" aria-label="Profilo">
                                         </a>
                                     </div>
-                                    <div class="col d-flex justify-content-start">
-                                        <ul class="nav-nested-item-cart">
-                                            <li>
-                                                Titolo
-                                            </li>
-                                            <li>
-                                                Prezzo
-                                            </li>
-                                            <li>
-                                                <button type="button" class="btn btn-remove-product text-danger"
-                                                    aria-label="Bottone per l'acquisto">Rimuovi</button>
-                                            </li>
-                                        </ul>
+                                    <div class="row d-flex justify-content-center text-small align-items-center">
+                                        <p class="line-break-custom format-custom">Titolo</p>
+                                        <p class="format-custom">Prezzo</p>
+                                        <button type="button" class="btn btn-remove-product text-danger button-boxless"
+                                            aria-label="Bottone per l'acquisto">Rimuovi</button>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <div class="d-flex justify-content-start">
-                                    <form id="order-number-1">
-                                        <label for="product-quantity" class="visuallyhidden">Quantità di
-                                            prodotti</label>
-                                        <input type="number" name="product-quantity" aria-label="Numero di prodotti"
-                                            id="product-quantity">
-                                    </form>
+                                <div class="d-flex justify-content-center">
+                                    <p class="box-quantity">Quantità</p>
                                 </div>
                             </td>
                             <td>
@@ -162,23 +151,15 @@
                         </li>
                     </ul>
                 </div>
-                <div class="row">
-                    <form class="order-bar-form mb-3 row-cols-lg-auto g-3 align-items-center" id="order-form-button">
-                        <div class="col-12">
-                            <button type="button" class="btn btn-danger text-white me-1"
-                                aria-label="Bottone per ordinare">Ordina</button>
-                        </div>
-                    </form>
-                </div>
             </div>
         </section>
     </main>
 
     <div class="container-fluid footer-container">
         <footer class="d-flex flex-wrap justify-content-around align-items-center py-3 my-4 border-top">
-            <ul class="nav col-md-4 justify-content-start">
+            <ul class="nav nav-footer col-md-4 justify-content-start">
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-white">
-                        <h6 class="footer-list-decor">Home</h6>
+                        <p class="footer-list-decor">Home</p>
                     </a>
                     <ul class="nav-nested-item-footer justify-content-start">
                         <li><a href="#" class="nav-link px-2 text-black">Pricing</a></li>
@@ -187,7 +168,7 @@
                     </ul>
                 </li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-white">
-                        <h6 class="footer-list-decor">Home</h6>
+                        <p class="footer-list-decor">Home</p>
                     </a>
                     <ul class="nav-nested-item-footer justify-content-start">
                         <li><a href="#" class="nav-link px-2 text-black">Pricing</a></li>
@@ -196,7 +177,7 @@
                     </ul>
                 </li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-white">
-                        <h6 class="footer-list-decor">Home</h6>
+                        <p class="footer-list-decor">Home</p>
                     </a>
                     <ul class="nav-nested-item-footer justify-content-start">
                         <li><a href="#" class="nav-link px-2 text-black">Pricing</a></li>
