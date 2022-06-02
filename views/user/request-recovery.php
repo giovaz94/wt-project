@@ -7,18 +7,33 @@ use yii\widgets\ActiveForm;
  * @var $model \app\models\ResetPasswordForm
  */
 
-$this->title = "Reset Password";
+$this->title = "Recupero password";
 ?>
 
-<h1> <?= Html::encode($this->title)?> </h1>
 
-<?php $form = ActiveForm::begin() ?>
-
-    <?= $form->field($model, 'email')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Recupera', ['class' => 'btn btn-success']) ?>
+<div class="container container-luca">
+    <div class="d-flex align-items-center justify-content-center logo-generic-login">
+        <a href="/">
+            <img class="logo-top-bar responsive" id="logosvgheader"
+                 alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
+                 src="degrado.png" aria-label="Profilo">
+        </a>
     </div>
+    <div class="card card-generic-login">
+        <div class="card-body">
 
-<?php ActiveForm::end(); ?>
+            <?php $form = ActiveForm::begin(['class' => 'login-form']); ?>
+
+            <fieldset>
+                <legend class="user_login"><?=  Html::encode($this->title) ?> </legend>
+                <label for="ResetPasswordForm[email]" hidden>Email</label>
+                <?= $form->field($model, 'email')->textInput(["placeholder" => "Inserisci la tua mail"])->label(false) ?>
+                <?= Html::submitButton('Recupera', ['class' => 'btn btn-success']) ?>
+            </fieldset>
+
+            <?php ActiveForm::end(); ?>
+        </div>
+    </div>
+</div>
+
 

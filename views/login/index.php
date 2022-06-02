@@ -4,42 +4,41 @@
 /** @var yii\bootstrap5\ActiveForm $form */
 /** @var app\models\LoginForm $model */
 
-use yii\bootstrap5\ActiveForm;
+use yii\widgets\ActiveForm;
 use yii\bootstrap5\Html;
 
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Login Utente';
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n{input}\n{error}",
-            'labelOptions' => ['class' => 'col-lg-1 col-form-label mr-lg-3'],
-            'inputOptions' => ['class' => 'col-lg-3 form-control'],
-            'errorOptions' => ['class' => 'col-lg-7 invalid-feedback'],
-        ],
-    ]); ?>
+<div class="container container-luca">
+    <div class="d-flex align-items-center justify-content-center logo-generic-login">
+        <a href="/">
+            <img class="logo-top-bar responsive" id="logosvgheader"
+                 alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
+                 src="degrado.png" aria-label="Profilo">
+        </a>
+    </div>
+    <div class="card card-generic-login">
+        <div class="card-body">
 
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+            <?php $form = ActiveForm::begin(['class' => 'login-form']); ?>
 
-        <?= $form->field($model, 'password')->passwordInput() ?>
+            <fieldset>
+                <legend class="user_login">Login utente</legend>
+                <label for="LoginForm[username]" hidden>Username</label>
+                <?= $form->field($model, 'username')->textInput(["placeholder" => "Username"])->label(false) ?>
+                <label for="LoginForm[password]" hidden>Password</label>
+                <?= $form->field($model, 'password')->passwordInput(["placeholder" => "Password"])->label(false) ?>
 
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"offset-lg-1 col-lg-3 custom-control custom-checkbox\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
+                <button class="btn btn-lg btn-primary" type="submit">Log in</button>
+                <div class="row link-generic-login">
+                    <?= Html::a("Hai dimenticato la password?", ["user/request-password-reset"]) ?>
+                    <?= Html::a("Non hai un account? Iscriviti!", ["user/buyer-registration"]) ?>
+                </div>
+            </fieldset>
 
-        <div class="form-group">
-            <div class="offset-lg-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-            </div>
+            <?php ActiveForm::end(); ?>
         </div>
-
-    <?php ActiveForm::end(); ?>
-
+    </div>
 </div>

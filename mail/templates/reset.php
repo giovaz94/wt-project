@@ -10,7 +10,7 @@ use yii\helpers\Url;
 <h1>Password recovery </h1>
 
 <p> This mail was automatically generated from the server.</p>
-<p> Please click on this <?= Html::a('Link', Url::to(['user/reset-password', 'idUser' => 42, "token" => $model->resetKey], true)) ?>
+<p> Please click on this <?= Html::a('Link', Url::to(['user/reset-password', 'idUser' => $model->idUser, "token" => $model->resetKey], true)) ?>
     for resetting your password </p>
 
 

@@ -584,3 +584,24 @@ ul.control li:hover {
 .keep-full-size {
     width: 100%;
 }
+
+.box-quantity {
+    padding: 10px;
+    border: 1px solid rgb(167, 167, 167);
+    height: 10px;
+    width: 10px;
+}
+
+.detail-button {
+    all: initial;
+    border: 1px solid #dc3545 !important;
+    background-color: #dc3545 !important;
+    height: 4vw !important;
+    width: 6vw !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
+    color: white !important;
+    padding: 10px !important;
+    cursor: pointer !important;
+}

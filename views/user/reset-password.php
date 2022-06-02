@@ -7,27 +7,33 @@ use yii\widgets\ActiveForm;
  * @var $model \app\models\User
  */
 
-$this->title = "Nuova password";
+$this->title = "Modifica la password";
 ?>
 
+<div class="container container-luca">
+    <div class="d-flex align-items-center justify-content-center logo-generic-login">
+        <a href="/">
+            <img class="logo-top-bar responsive" id="logosvgheader"
+                 alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
+                 src="degrado.png" aria-label="Profilo">
+        </a>
+    </div>
+    <div class="card card-generic-login">
+        <div class="card-body">
 
+            <?php $form = ActiveForm::begin(['class' => 'login-form']); ?>
 
-<h1>
-    <?= Html::encode($this->title) ?>
-</h1>
+            <fieldset>
+                <legend class="user_login"><?=  Html::encode($this->title) ?> </legend>
+                <label for="ResetPasswordForm[password]" hidden>Password</label>
+                <?= $form->field($model, 'password')->passwordInput(["placeholder" => "Nuova password"])->label(false) ?>
+                <label for="ResetPasswordForm[password]" hidden>Ripeti Password</label>
+                <?= $form->field($model, 'password_repeat')->passwordInput(["placeholder" => "Ripeti password"])->label(false) ?>
+                <?= Html::submitButton('Modifica la password', ['class' => 'btn btn-success']) ?>
+            </fieldset>
 
-
-
-<?php $form = ActiveForm::begin() ?>
-
-<?= $form->field($model, 'password')->passwordInput() ?>
-
-<?= $form->field($model, 'password_repeat')->passwordInput() ?>
-
-<div class="form-group">
-    <?= Html::submitButton('Reset', ['class' => 'btn btn-success']) ?>
+            <?php ActiveForm::end(); ?>
+        </div>
+    </div>
 </div>
-
-
-<?php ActiveForm::end() ?>
 

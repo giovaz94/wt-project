@@ -4,11 +4,7 @@
 /** @var string $content */
 
 use app\assets\AppAsset;
-use app\widgets\Alert;
-use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
-use yii\bootstrap5\Nav;
-use yii\bootstrap5\NavBar;
 
 AppAsset::register($this);
 ?>
@@ -96,6 +92,18 @@ AppAsset::register($this);
                                 Carrello
                             </a>
                         </li>
+                        <?php
+                        /**
+                        '<li>'
+                            . Html::beginForm(['/login/logout'], 'post', ['class' => 'form-inline'])
+                            . Html::submitButton(
+                            'Logout (' . Yii::$app->user->identity->username . ')',
+                            ['class' => 'btn btn-link logout']
+                            )
+                            . Html::endForm()
+                            . '</li>'
+                         */
+                        ?>
                     </ul>
                 </div>
             </div>

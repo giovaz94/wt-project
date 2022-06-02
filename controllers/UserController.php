@@ -177,6 +177,7 @@ class UserController extends Controller
             $this->redirect(["site/index"]);
         }
 
+        $this->layout = "clear";
         return $this->render("request-recovery", [
             "model" => $model
         ]);
@@ -194,11 +195,9 @@ class UserController extends Controller
             return  $this->redirect(["site/index"]);
         }
 
+        $model->password = "";
+        $this->layout = "clear";
         return $this->render("reset-password", ["model" => $model]);
-
-
-
-
     }
 
 

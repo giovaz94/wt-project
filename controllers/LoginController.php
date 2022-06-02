@@ -51,6 +51,7 @@ class LoginController extends Controller
      */
     public function actionIndex()
     {
+
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -61,6 +62,8 @@ class LoginController extends Controller
         }
 
         $model->password = '';
+
+        $this->layout = "clear";
         return $this->render('index', [
             'model' => $model,
         ]);
