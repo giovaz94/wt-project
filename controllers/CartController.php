@@ -163,10 +163,10 @@ class CartController extends Controller
 
             // Create a new order
             $order = new Order();
+            $order->status = Order::ORDER_CREATE;
             $order->total = 0.0;
             $order->refUser = Yii::$app->user->id;
             $order->save();
-
 
             $orderTotal = 0.0;
             foreach ($this->cart->cartItems as $cartItem) {
