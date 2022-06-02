@@ -2,10 +2,15 @@ a {
     color: #D70000;
 }
 
+a, p, span, th, td, label, input, button {
+    font-family: normalFont;
+}
+
 a.slide {
     color: black;
     text-decoration: none;
     display: inline-block;
+    border: 0.5px solid transparent;
 }
 
 a.slide p {
@@ -20,11 +25,10 @@ a:hover {
 a.slide:hover {
     color: black;
     text-decoration: none;
-    border: 0.5px solid #D70000;
-    padding: 1%;
+    border-color: #D70000;
 }
 
-a.slide:hover .autore{
+a.slide:hover .autore-libro{
     color: #D70000;
 }
 
@@ -34,6 +38,22 @@ a.slide:hover .titolo-libro{
 
 .bg-color-custom {
     background-color: rgb(167, 167, 167);
+}
+
+.bi {
+    fill: currentColor;
+}
+
+.box-quantity {
+    padding: 10px; 
+    border: 1px solid rgb(167, 167, 167);
+}
+
+.button-boxless {
+    background:none;
+    border:none;
+    cursor: pointer;
+    text-align: start;
 }
 
 button.btn {
@@ -50,8 +70,18 @@ button.btn:hover {
     height: 24px;
 }
 
+.button-svg-search {
+    width: 16px;
+    height: 16px;
+    background-color: white;
+}
+
 .border-bottom-header {
     border-bottom: solid #dc3545 1px;
+}
+
+.btn-remove-product {
+    background-color:transparent !important;
 }
 
 /*Buttons tiny slider*/
@@ -140,6 +170,16 @@ div.upload-image {
     margin-bottom: 5%;
 }
 
+@font-face {
+    font-family: titleFont;
+    src: url("file:///Users/luca/Desktop/Luca/Università/Corsi%20in%20svolgimento/Tecnologie%20web/Progetto/wt-project/font/LibreBaskerville-Regular.ttf");
+}
+
+@font-face {
+    font-family: normalFont;
+    src: url("file:///Users/luca/Desktop/Luca/Università/Corsi%20in%20svolgimento/Tecnologie%20web/Progetto/wt-project/font/SourceSansPro-Regular.ttf");
+}
+
 .font-section {
     font-family: 'Times New Roman', Times, serif;
 }
@@ -151,6 +191,10 @@ div.upload-image {
     border-left: none;
     border-right: none;
     border-bottom: 1px solid #CECDCD;
+}
+
+.format-custom {
+    text-align:justify;
 }
 
 .footer-container {
@@ -176,10 +220,14 @@ div.upload-image {
     border-top: solid 3px;
 }
 
+h1, h2, h3, h4, h5, h6, legend {
+    font-family: titleFont;
+}
+
 h1.titolo-libro {
     margin-bottom: 1%;
     margin-top: 0;
-    font-size: x-large;
+    font-size: x-large !important;
     font-weight: bold;
 }
 
@@ -240,6 +288,24 @@ legend.form {
     margin-bottom: 3%;
 }
 
+.line-break-custom {
+    white-space: pre-line;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0.5rem;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-footer {
+    text-align: left !important;
+}
+
 .nav-link-product {
     width: 12px;
     height: auto;
@@ -274,8 +340,26 @@ legend.form {
     cursor: pointer;
 }
 
+.no-wrap-final-price {
+    white-space: nowrap;
+}
+
+.order-bar-list {
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    list-style-type: none;
+}
+
 .order-table-header {
     background-color: #dc3545;
+}
+
+p.autore-libro {
+    font-size: large;
+    font-weight: bold;
 }
 
 p.error-occurs {
@@ -296,6 +380,11 @@ p.error-occurs {
     height: auto;
 }
 
+p.prezzo-libro {
+    font-size: large;
+    font-weight: bold;
+}
+
 .product-search-result-image {
     width: 60%;
     min-width: 80px;
@@ -303,17 +392,17 @@ p.error-occurs {
     height: auto;
 }
 
-p.titolo-libro {
+.titolo-libro {
     margin-bottom: 1%;
     margin-top: 0;
-    font-size: x-large;
+    font-size: large;
     font-weight: bold;
 }
 
-p.titolo-sezione {
+.titolo-sezione {
     display: inline-block;
     text-decoration: 0.1em solid #D70000 underline;
-    font-size: xx-large;
+    font-size: x-large;
     margin-bottom: 3%;
     font-weight: bold;
 }
@@ -378,6 +467,11 @@ p.titolo-sezione {
     font-size: 2rem;
 }
 
+.search-button {
+    border: none;
+    background-color: white;
+}
+
 .search-container {
     float: none;
     display: block;
@@ -436,6 +530,10 @@ textarea {
     width: 50%;
 }
 
+tr.spacer {
+    height: 3px;
+}
+
 ul.control {
     list-style: none;
 }
@@ -454,79 +552,13 @@ ul.control li {
 
 ul.control li:hover {
     color: #D70000;
-    opacity: 1;
-}
-
-.visuallyhidden {
-    display: none;
-}
-
-.bi {
-    fill: currentColor;
-}
-
-.nav {
-    display: flex;
-    flex-wrap: nowrap;
-    padding: 0.5rem;
-    overflow-x: auto;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-}
-
-.order-bar-list {
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    list-style-type: none;
-}
-
-.button-svg-search {
-    width: 16px;
-    height: 16px;
-    background-color: white;
-}
-
-.search-button {
-    border: none;
-    background-color: white;
-}
-
-.nav-footer {
-    text-align: left !important;
-}
-
-.box-quantity {
-    padding: 10px; 
-    border: 1px solid rgb(167, 167, 167);
-}
-
-.line-break-custom {
-    white-space: pre-line;
-}
-
-.format-custom {
-    text-align:justify;
+    opacity: 0.6;
 }
 
 .vertical-align-top {
     vertical-align: top;
 }
 
-.button-boxless {
-    background:none;
-    border:none;
-    cursor: pointer;
-    text-align: start;
-}
-
-.no-wrap-final-price {
-    white-space: nowrap;
-}
-
-.btn-remove-product {
-    background-color:transparent !important;
+.visuallyhidden {
+    display: none;
 }
