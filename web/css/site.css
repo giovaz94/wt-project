@@ -180,6 +180,10 @@ div.upload-image {
     src: url("./font/SourceSansPro-Regular.ttf");
 }
 
+.font-section {
+    font-family: 'Times New Roman', Times, serif;
+}
+
 .form-control {
     margin-bottom: 5%;
     border-radius: 0%;
@@ -199,6 +203,13 @@ div.upload-image {
 
 .footer-list-decor {
     text-decoration: underline solid #dc3545 2px;
+}
+
+.home-section-title {
+    padding-left: 7%;
+    font-size: x-large;
+    margin-bottom: 2vw;
+    margin-top: 2vw;
 }
 
 .home-section-title {
@@ -558,4 +569,18 @@ ul.control li:hover {
 
 .visuallyhidden {
     display: none;
+}
+
+.result-padding {
+    padding: 0 !important;
+    padding-left: 7% !important;
+}
+
+.font-additional-modification {
+    width:100%;
+    text-align: center;
+}
+
+.keep-full-size {
+    width: 100%;
 }

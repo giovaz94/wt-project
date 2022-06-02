@@ -12,9 +12,7 @@ class SearchForm extends Model
         $query = AvailableProduct::find()->joinWith("product");
         $queryStr = !empty($params["query"]) ? $params["query"] : "";
         $query->andWhere("MATCH(name,description) AGAINST (:query IN NATURAL LANGUAGE MODE)", [":query" => $queryStr]);
-        return new ActiveDataProvider([
-            'query' => $query
-        ]);
+        return $query;
     }
 
 }

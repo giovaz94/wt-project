@@ -12,8 +12,14 @@ class SearchController extends Controller
     public function actionIndex() {
 
         $model = new SearchForm();
-        $dataProvider = $model->search($this->request->queryParams);
+        $query = $model->search($this->request->queryParams);
 
-        return $this->render("index", ["dataProvider" => $dataProvider]);
+
+        $count = $query->count();
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query
+        ]);
+
+        return $this->render("index", ["count" => $count, "dataProvider" => $dataProvider]);
     }
 }
