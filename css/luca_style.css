@@ -212,6 +212,13 @@ div.upload-image {
     margin-top: 2vw;
 }
 
+.home-section-title {
+    padding-left: 7%;
+    font-size: x-large;
+    margin-bottom: 2vw;
+    margin-top: 2vw;
+}
+
 .horizontal-line {
     width: 70%;
     margin-right: 4%;
@@ -562,4 +569,9 @@ ul.control li:hover {
 
 .visuallyhidden {
     display: none;
+}
+
+.result-padding {
+    padding: 0 !important;
+    padding-left: 7% !important;
 }
