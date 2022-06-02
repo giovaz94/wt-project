@@ -2,11 +2,13 @@
 
 namespace app\controllers;
 
-use app\models\Cart;
+use app\models\ResetPasswordForm;
 use app\models\TaxData;
 use app\models\User;
 
 use Yii;
+use yii\base\Exception;
+use yii\db\StaleObjectException;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
@@ -26,7 +28,7 @@ class UserController extends Controller
                     'rules' => [
                         [
                             'allow' => true,
-                            'actions' => ['buyer-registration', 'vendor-registration'],
+                            'actions' => ['buyer-registration', 'vendor-registration', 'request-password-reset', "reset-password"],
                         ],
                         [
                             'allow' => true,
@@ -160,6 +162,45 @@ class UserController extends Controller
             'taxData' => $taxData
         ]);
     }
+
+    /**
+     * Action for requesting a password reset on the account
+     * @return string
+     * @throws Exception
+     * @throws StaleObjectException
+     */
+    public function actionRequestPasswordReset() {
+
+        $model = new ResetPasswordForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->sendRecovery();
+            $this->redirect(["site/index"]);
+        }
+
+        return $this->render("request-recovery", [
+            "model" => $model
+        ]);
+    }
+
+    public function actionResetPassword($idUser, $token) {
+
+        $model = User::findOne(["idUser" => $idUser, "resetKey" => $token]);
+        if(!$model) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        $model->scenario = User::SCENARIO_RESET_PASSWORD;
+        if($model->load(Yii::$app->request->post()) && $model->update()) {
+            return  $this->redirect(["site/index"]);
+        }
+
+        return $this->render("reset-password", ["model" => $model]);
+
+
+
+
+    }
+
 
     /**
      * Finds the User model based on its primary key value.
