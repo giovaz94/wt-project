@@ -5,7 +5,7 @@ use yii\db\Migration;
 
 
 /**
- * This class will define the database for the project.
+ * This migration will define the database for the project.
  * Transactions should be supported and enabled in the DB engine.
  */
 class m220506_224551_create_db extends Migration
