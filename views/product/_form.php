@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'totalPages')->textInput() ?>
 
-    <?= $form->field($model, 'releaseDate')->textInput() ?>
+    <?= $form->field($model, 'publication')->textInput() ?>
 
     <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
 

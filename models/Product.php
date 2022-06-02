@@ -22,6 +22,7 @@ use yii\web\UploadedFile;
  * @property int $totalPages
  * @property string $releaseDate
  * @property string $author
+ * @property string $publication
  * @property int|null $refProductCategory
  * @property int|null $refProductTypology
  * @property int|null $refUser
@@ -52,14 +53,14 @@ class Product extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'price', 'totalPages', 'releaseDate', 'author'], 'required'],
+            [['name', 'description', 'price', 'totalPages', 'publication', 'author'], 'required'],
             [['img'], 'required', 'message' => 'Please, upload an image'],
             [['totalPages', 'refProductCategory', 'refProductTypology', 'refUser'], 'integer'],
             [['name', 'img', 'author'], 'string', 'max' => 255],
             [['fileLoader'], 'file', 'extensions' => 'png, jpg'],
             [['description'], 'string'],
             [['price'], 'number'],
-            [['releaseDate'], 'date', 'format' => 'd/m/Y'],
+            [['releaseDate', 'publication'], 'date', 'format' => 'd/m/Y'],
             [['refProductCategory'], 'exist', 'skipOnError' => true, 'targetClass' => ProductCategory::class, 'targetAttribute' => ['refProductCategory' => 'idProductCategory']],
             [['refProductTypology'], 'exist', 'skipOnError' => true, 'targetClass' => ProductTypology::class, 'targetAttribute' => ['refProductTypology' => 'idProductTypology']],
             [['refUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['refUser' => 'idUser']],
@@ -75,11 +76,21 @@ class Product extends ActiveRecord
             [
                 'class' => AttributeBehavior::class,
                 'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => 'publication',
+                    ActiveRecord::EVENT_BEFORE_UPDATE => 'publication',
+                ],
+                'value' => function ($event) {
+                    return Yii::$app->formatter->asDate($this->publication, 'php:Y-m-d');
+                },
+            ],
+            [
+                'class' => AttributeBehavior::class,
+                'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => 'releaseDate',
                     ActiveRecord::EVENT_BEFORE_UPDATE => 'releaseDate',
                 ],
                 'value' => function ($event) {
-                    return Yii::$app->formatter->asDate($this->releaseDate, 'php:Y/m/d');
+                    return Yii::$app->formatter->asDate("now", 'php:Y-m-d');
                 },
             ],
         ];
@@ -98,6 +109,7 @@ class Product extends ActiveRecord
             'price' => 'Price',
             'totalPages' => 'Total Pages',
             'releaseDate' => 'Release Date',
+            'publication' => 'Publication',
             'author' => 'Author',
             'refProductCategory' => 'Ref Product Category',
             'refProductTypology' => 'Ref Product Typology',

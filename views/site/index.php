@@ -1,10 +1,18 @@
 <?php
 
-/** @var yii\web\View $this */
 
+use app\models\AvailableProduct;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
-$this->title = 'My Yii Application';
+/**
+ * @var yii\web\View $this
+ * @var AvailableProduct $li
+ * @var AvailableProduct $pr
+ * @var AvailableProduct $eb
+ */
+
+$this->title = 'Campus Book';
 ?>
 
 <section class="px-3 py-4 bg-color-custom col-lg-auto mb-4 border-bottom">
@@ -23,10 +31,9 @@ $this->title = 'My Yii Application';
 
 <section class="product-overview">
     <section class="product-overview-new-arrivals">
-        <div class="home-section-title d-flex flex-wrap justify-content-start align-items-center">
-            <p class="section-list-decor font-section">Nuovi</p>
-            <p class="font-section">&nbsp;arrivi</p>
-        </div>
+        <header class="home-section-title d-flex flex-wrap justify-content-start align-items-center">
+            <h1 class="section-list-decor font-section">Nuovi arrivi</h1>
+        </header>
         <div class="container container-slider">
             <ul class="control custom-control-1">
                 <li class="prev text-center">
@@ -37,104 +44,38 @@ $this->title = 'My Yii Application';
                 </li>
             </ul>
             <div class="my-slider">
+                <?php foreach ($li as $ap) : ?>
                 <div class="slide new-arrivals">
-                    <a class="slide new-arrivals" href="prodotto">
+                    <a class="slide new-arrivals" href="<?= Url::toRoute(["available-product/view", "idAvailableProduct" => $ap->idAvailableProduct]) ?>">
                         <div class="slide-img new-arrivals-img">
-                            <img class="product-img product-related-img"
-                                 alt="Immagine del prodotto nuovo"
-                                 src="degrado.png">
+                            <?= Html::img("@web/uploads/{$ap->product->img}", [
+                                "alt" => $ap->product->name,
+                                "class" => "product-img product-related-img"
+                            ]) ?>
                         </div>
                         <div class="slide-properties new-arrivals-properties">
-                            <p class="titolo-libro" style="font-size: 80% !important;">Titolo Libro</p>
-                            <p class="prezzo"  style="font-size: 70% !important;">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
+                            <p class="titolo-libro" > <?= $ap->product->name ?></p>
+                            <p class="prezzo-libro" >
+                                <?php if($ap->sellingPrice < $ap->product->price): ?>
+                                <del> <?= $ap->product->price ?> €</del>&ensp;<ins><?= $ap->sellingPrice ?> €</ins>
+                                <?php else: ?>
+                                    <?= $ap->sellingPrice ?> €
+                                <?php endif; ?>
                             </p>
-                            <p class="autore"  style="font-size: 70% !important;">
-                                Autore: Pinco Pallo
+                            <p class="autore-libro" >
+                                Autore: <?= $ap->product->author ?>
                             </p>
                         </div>
                     </a>
                 </div>
-                <div class="slide new-arrivals">
-                    <a class="slide new-arrivals" href="prodotto">
-                        <div class="slide-img new-arrivals-img">
-                            <img class="product-img product-related-img"
-                                 alt="Immagine del prodotto nuovo"
-                                 src="degrado.png">
-                        </div>
-                        <div class="slide-properties new-arrivals-properties">
-                            <p class="titolo-libro">Titolo Libro</p>
-                            <p class="autore">
-                                Autore: Pinco Pallo
-                            </p>
-                            <p class="prezzo">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="slide new-arrivals">
-                    <a class="slide new-arrivals" href="prodotto">
-                        <div class="slide-img new-arrivals-img">
-                            <img class="product-img product-related-img"
-                                 alt="Immagine del prodotto nuovo"
-                                 src="logo_vector.svg">
-                        </div>
-                        <div class="slide-properties new-arrivals-properties">
-                            <p class="titolo-libro">Titolo Libro</p>
-                            <p class="autore">
-                                Autore: Pinco Pallo
-                            </p>
-                            <p class="prezzo">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="slide new-arrivals">
-                    <a class="slide new-arrivals" href="prodotto">
-                        <div class="slide-img new-arrivals-img">
-                            <img class="product-img product-related-img"
-                                 alt="Immagine del prodotto nuovo"
-                                 src="logo_vector.svg">
-                        </div>
-                        <div class="slide-properties new-arrivals-properties">
-                            <p class="titolo-libro">Titolo Libro</p>
-                            <p class="autore">
-                                Autore: Pinco Pallo
-                            </p>
-                            <p class="prezzo">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="slide new-arrivals">
-                    <a class="slide new-arrivals" href="prodotto">
-                        <div class="slide-img new-arrivals-img">
-                            <img class="product-img product-related-img"
-                                 alt="Immagine del prodotto nuovo"
-                                 src="degrado.png">
-                        </div>
-                        <div class="slide-properties new-arrivals-properties">
-                            <p class="titolo-libro">Titolo Libro</p>
-                            <p class="autore">
-                                Autore: Pinco Pallo
-                            </p>
-                            <p class="prezzo">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
-                            </p>
-                        </div>
-                    </a>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
     <section class="product-overview-promo-articles">
-        <div class="home-section-title d-flex flex-wrap justify-content-start align-items-center">
-            <p class="section-list-decor font-section">Articoli</p>
-            <p class="font-section">&nbsp;in promozione</p>
-        </div>
+        <header class="home-section-title d-flex flex-wrap justify-content-start align-items-center">
+            <h1 class="section-list-decor font-section">Articoli in promozione</h1>
+        </header>
         <div class="container container-slider">
             <ul class="control custom-control-2">
                 <li class="prev text-center">
@@ -145,103 +86,38 @@ $this->title = 'My Yii Application';
                 </li>
             </ul>
             <div class="my-slider">
-                <div class="slide promo-articles">
-                    <a class="slide promo-articles" href="prodotto">
-                        <div class="slide-img promo-articles-img">
-                            <img class="product-img product-promo-img"
-                                 alt="Immagine del prodotto in promozione"
-                                 src="degrado.png">
-                        </div>
-                        <div class="slide-properties promo-articles-properties">
-                            <p class="titolo-libro">Titolo Libro</p>
-                            <p class="autore">
-                                Autore: Pinco Pallo
-                            </p>
-                            <p class="prezzo">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="slide promo-articles">
-                    <a class="slide promo-articles" href="prodotto">
-                        <div class="slide-img promo-articles-img">
-                            <img class="product-img product-promo-img"
-                                 alt="Immagine del prodotto in promozione"
-                                 src="degrado.png">
-                        </div>
-                        <div class="slide-properties promo-articles-properties">
-                            <p class="titolo-libro">Titolo Libro</p>
-                            <p class="autore">
-                                Autore: Pinco Pallo
-                            </p>
-                            <p class="prezzo">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="slide promo-articles">
-                    <a class="slide promo-articles" href="prodotto">
-                        <div class="slide-img promo-articles-img">
-                            <img class="product-img product-promo-img"
-                                 alt="Immagine del prodotto in promozione"
-                                 src="logo_vector.svg">
-                        </div>
-                        <div class="slide-properties promo-articles-properties">
-                            <p class="titolo-libro">Titolo Libro</p>
-                            <p class="autore">
-                                Autore: Pinco Pallo
-                            </p>
-                            <p class="prezzo">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="slide promo-articles">
-                    <a class="slide promo-articles" href="prodotto">
-                        <div class="slide-img promo-articles-img">
-                            <img class="product-img product-promo-img"
-                                 alt="Immagine del prodotto in promozione"
-                                 src="logo_vector.svg">
-                        </div>
-                        <div class="slide-properties promo-articles-properties">
-                            <p class="titolo-libro">Titolo Libro</p>
-                            <p class="autore">
-                                Autore: Pinco Pallo
-                            </p>
-                            <p class="prezzo">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="slide promo-articles">
-                    <a class="slide promo-articles" href="prodotto">
-                        <div class="slide-img promo-articles-img">
-                            <img class="product-img product-promo-img"
-                                 alt="Immagine del prodotto in promozione"
-                                 src="degrado.png">
-                        </div>
-                        <div class="slide-properties promo-articles-properties">
-                            <p class="titolo-libro">Titolo Libro</p>
-                            <p class="autore">
-                                Autore: Pinco Pallo
-                            </p>
-                            <p class="prezzo">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
-                            </p>
-                        </div>
-                    </a>
-                </div>
+                <?php foreach ($pr as $ap) : ?>
+                    <div class="slide promo-articles">
+                        <a class="slide promo-articles" href="<?= Url::toRoute(["available-product/view", "idAvailableProduct" => $ap->idAvailableProduct]) ?>">
+                            <div class="slide-img promo-articles-img">
+                                <?= Html::img("@web/uploads/{$ap->product->img}", [
+                                    "alt" => $ap->product->name,
+                                    "class" => "product-img product-related-img"
+                                ]) ?>
+                            </div>
+                            <div class="slide-properties promo-articles-properties">
+                                <p class="titolo-libro" > <?= $ap->product->name ?></p>
+                                <p class="prezzo-libro" >
+                                    <?php if($ap->sellingPrice < $ap->product->price): ?>
+                                        <del> <?= $ap->product->price ?> €</del>&ensp;<ins><?= $ap->sellingPrice ?> €</ins>
+                                    <?php else: ?>
+                                        <?= $ap->sellingPrice ?> €
+                                    <?php endif; ?>
+                                </p>
+                                <p class="autore-libro" >
+                                    Autore: <?= $ap->product->author ?>
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
     <section class="product-overview-ebook">
-        <div class="home-section-title d-flex flex-wrap justify-content-start align-items-center">
-            <p class="section-list-decor font-section">Ebook</p>
-        </div>
+        <header class="home-section-title d-flex flex-wrap justify-content-start align-items-center">
+            <h1 class="section-list-decor font-section">Ebook</h1>
+        </header>
         <div class="container container-slider">
             <ul class="control custom-control-3">
                 <li class="prev text-center">
@@ -252,100 +128,64 @@ $this->title = 'My Yii Application';
                 </li>
             </ul>
             <div class="my-slider">
-                <div class="slide ebook">
-                    <a class="slide ebook" href="prodotto">
-                        <div class="slide-img ebook-img">
-                            <img class="product-img product-related-img"
-                                 alt="Immagine del prodotto ebook"
-                                 src="degrado.png">
-                        </div>
-                        <div class="slide-properties ebook-properties">
-                            <p class="titolo-libro">Titolo Libro</p>
-                            <p class="autore">
-                                Autore: Pinco Pallo
-                            </p>
-                            <p class="prezzo">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="slide ebook">
-                    <a class="slide ebook" href="prodotto">
-                        <div class="slide-img ebook-img">
-                            <img class="product-img product-related-img"
-                                 alt="Immagine del prodotto ebook"
-                                 src="degrado.png">
-                        </div>
-                        <div class="slide-properties ebook-properties">
-                            <p class="titolo-libro">Titolo Libro</p>
-                            <p class="autore">
-                                Autore: Pinco Pallo
-                            </p>
-                            <p class="prezzo">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="slide ebook">
-                    <a class="slide ebook" href="prodotto">
-                        <div class="slide-img ebook-img">
-                            <img class="product-img product-related-img"
-                                 alt="Immagine del prodotto ebook"
-                                 src="logo_vector.svg">
-                        </div>
-                        <div class="slide-properties ebook-properties">
-                            <p class="titolo-libro">Titolo Libro</p>
-                            <p class="autore">
-                                Autore: Pinco Pallo
-                            </p>
-                            <p class="prezzo">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="slide ebook">
-                    <a class="slide ebook" href="prodotto">
-                        <div class="slide-img ebook-img">
-                            <img class="product-img product-related-img"
-                                 alt="Immagine del prodotto ebook"
-                                 src="logo_vector.svg">
-                        </div>
-                        <div class="slide-properties ebook-properties">
-                            <p class="titolo-libro">Titolo Libro</p>
-                            <p class="autore">
-                                Autore: Pinco Pallo
-                            </p>
-                            <p class="prezzo">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="slide ebook">
-                    <a class="slide ebook" href="prodotto">
-                        <div class="slide-img ebook-img">
-                            <img class="product-img product-related-img"
-                                 alt="Immagine del prodotto ebook"
-                                 src="degrado.png">
-                        </div>
-                        <div class="slide-properties ebook-properties">
-                            <p class="titolo-libro">Titolo Libro</p>
-                            <p class="autore">
-                                Autore: Pinco Pallo
-                            </p>
-                            <p class="prezzo">
-                                <!-- Normal price (if not discounted) --><del><!-- Normal price (if discounted) -->5,00€</del>&ensp;<ins><!-- Discounted price (if discounted) -->2,50€</ins>
-                            </p>
-                        </div>
-                    </a>
-                </div>
+                <?php foreach ($eb as $ap) : ?>
+                    <div class="slide ebook">
+                        <a class="slide ebook" href="<?= Url::toRoute(["available-product/view", "idAvailableProduct" => $ap->idAvailableProduct]) ?>">
+                            <div class="slide-img ebook-img">
+                                <?= Html::img("@web/uploads/{$ap->product->img}", [
+                                    "alt" => $ap->product->name,
+                                    "class" => "product-img product-related-img"
+                                ]) ?>
+                            </div>
+                            <div class="slide-properties ebook-properties">
+                                <p class="titolo-libro" > <?= $ap->product->name ?></p>
+                                <p class="prezzo-libro" >
+                                    <?php if($ap->sellingPrice < $ap->product->price): ?>
+                                        <del> <?= $ap->product->price ?> €</del>&ensp;<ins><?= $ap->sellingPrice ?> €</ins>
+                                    <?php else: ?>
+                                        <?= $ap->sellingPrice ?> €
+                                    <?php endif; ?>
+                                </p>
+                                <p class="autore-libro" >
+                                    Autore: <?= $ap->product->author ?>
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
 </section>
 
 
-
+<?php
+    $this->registerJs("
+        const tnsCarousel = document.querySelectorAll('.my-slider');
+        let idController = 1;
+        tnsCarousel.forEach(slider => {
+                const tnsSlider = tns({
+                    container: slider,
+                    items: 2,
+                    slideBy: 'page',
+                    nav: false,
+                    controlsContainer: '.custom-control' + '-' + idController++,
+                    responsive: {
+                    576: {
+                        edgePadding: 20,
+                        gutter: 20
+                    },
+                    768: {
+                        gutter: 30
+                    },
+                    992: {
+                        items: 3
+                    },
+                    1200: {
+                        items: 4
+                    }
+                }
+            });
+        });
+    ");
+?>

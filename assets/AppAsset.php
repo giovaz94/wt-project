@@ -20,10 +20,12 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css'
+        "css/site.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css"
     ];
     public $js = [
-        "js/modal-loader.js"
+        "js/modal-loader.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"
     ];
     public $depends = [
         'yii\web\YiiAsset',
