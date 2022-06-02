@@ -575,3 +575,12 @@ ul.control li:hover {
     padding: 0 !important;
     padding-left: 7% !important;
 }
+
+.font-additional-modification {
+    width:100%;
+    text-align: center;
+}
+
+.keep-full-size {
+    width: 100%;
+}
