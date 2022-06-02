@@ -1,0 +1,532 @@
+a {
+    color: #D70000;
+}
+
+a.slide {
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a.slide p {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+a:hover {
+    color: #D70000;
+}
+
+a.slide:hover {
+    color: black;
+    text-decoration: none;
+    border: 0.5px solid #D70000;
+    padding: 1%;
+}
+
+a.slide:hover .autore{
+    color: #D70000;
+}
+
+a.slide:hover .titolo-libro{
+    color: #D70000;
+}
+
+.bg-color-custom {
+    background-color: rgb(167, 167, 167);
+}
+
+button.btn {
+    background-color: #D70000;
+    border: none;
+}
+
+button.btn:hover {
+    background-color: #D70000;
+}
+
+.button-svg {
+    width: 24px;
+    height: 24px;
+}
+
+.border-bottom-header {
+    border-bottom: solid #dc3545 1px;
+}
+
+/*Buttons tiny slider*/
+[data-controls] {
+    border: 0;
+    padding: 0;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    margin-top: -18px;
+    z-index: 1;
+    background: transparent;
+}
+[data-controls="prev"] {
+    left: 20px;
+}
+[data-controls="next"] {
+    right: 20px;
+}
+
+del {
+    text-decoration-color: #D70000;
+}
+
+div.card-generic-retrieval,  div.card-generic-login{
+    max-width: 330px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.container-luca {
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+div.container-slider {
+    position: relative;
+}
+
+div.form {
+    margin-bottom: 3%;
+}
+
+div.form-top-button {
+    margin-bottom: 2%;
+}
+
+div.header-product {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.link-generic-retrieval, div.link-generic-login {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+div.image-product {
+    max-width: 40%;
+    margin-bottom: 3%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.logo-generic-user-retrieval, div.logo-generic-login {
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+div.product-detail {
+    margin-bottom: 5%;
+}
+
+div.slide-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1%;
+}
+
+div.slide-properties {
+    text-align: left;
+}
+
+div.upload-image {
+    margin-bottom: 5%;
+}
+
+.font-section {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.form-control {
+    margin-bottom: 5%;
+    border-radius: 0%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #CECDCD;
+}
+
+.footer-container {
+    background-color: rgb(167, 167, 167);
+}
+
+.footer-list-decor {
+    text-decoration: underline solid #dc3545 2px;
+}
+
+.home-section-title {
+    padding-left: 7%;
+    font-size: x-large;
+    margin-bottom: 2vw;
+    margin-top: 2vw;
+}
+
+.horizontal-line {
+    width: 70%;
+    margin-right: 4%;
+    margin-left: 26%;
+    color: #dc3545;
+    border-top: solid 3px;
+}
+
+h1.titolo-libro {
+    margin-bottom: 1%;
+    margin-top: 0;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+img {
+    max-width: 100%;
+}
+
+img.logo-top-bar {
+    width: 300px;
+}
+
+img.product-img {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+input.input-image {
+    margin-left: 15%;
+    margin-top: 4%;
+}
+
+/* Remove input number's slider */
+/* Chrome, Safari, Edge, Opera */
+input.number-no-slider::-webkit-outer-spin-button,
+input.number-no-slider::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input.number-no-slider {
+    -moz-appearance: textfield;
+}
+
+.input-quantity-product {
+    width: 100%;
+    max-width: 70px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+ins {
+    text-decoration: none;
+    color: #D70000;
+}
+
+label {
+    padding-left: 12px;
+}
+
+legend.form {
+    width: fit-content;
+    text-decoration: 0.1em solid #D70000 underline;
+    margin-bottom: 3%;
+}
+
+.nav-link-product {
+    width: 12px;
+    height: auto;
+}
+
+.nav-nested-item {
+    text-decoration-line: none !important;
+    font-size: 60%;
+}
+
+.nav-nested-item-cart {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 85%;
+}
+
+.nav-nested-item-footer {
+    text-decoration-line: none !important;
+    font-size: 75%;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.nav-nested-padding-search {
+    text-decoration-line: none !important;
+    font-size: 75%;
+    list-style-type: none;
+}
+
+.nav-search-link {
+    padding: 0;
+    cursor: pointer;
+}
+
+.order-table-header {
+    background-color: #dc3545;
+}
+
+p.error-occurs {
+    color: #DC3545;
+}
+
+.product-cart-image {
+    width: 80%;
+    min-width: 40px;
+    max-width: 200px;
+    height: auto;
+}
+
+.product-overview-image {
+    width: 80%;
+    min-width: 80px;
+    max-width: 350px;
+    height: auto;
+}
+
+.product-search-result-image {
+    width: 60%;
+    min-width: 80px;
+    max-width: 200px;
+    height: auto;
+}
+
+p.titolo-libro {
+    margin-bottom: 1%;
+    margin-top: 0;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+p.titolo-sezione {
+    display: inline-block;
+    text-decoration: 0.1em solid #D70000 underline;
+    font-size: xx-large;
+    margin-bottom: 3%;
+    font-weight: bold;
+}
+
+@media (max-width: 399px) {
+    .slide img {
+        width: 80px !important;
+        height: 80px !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .slide img {
+        width: 100px !important;
+        height: 100px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .slide img {
+        width: 140px !important;
+        height: 140px !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .slide img {
+        width: 180px !important;
+        height: 180px !important;
+    }
+}
+
+@media (max-width: 1199px) {
+    .slide img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+}
+
+@media (max-width: 1263px) {
+    .slide img {
+        width: 150px !important;
+        height: 150px !important;
+    }
+}
+
+@media (min-width: 1264px) {
+    .slide img {
+        width: 200px !important;
+        height: 200px !important;
+    }
+}
+
+.responsive {
+    width: 80%;
+    max-width: 100px;
+    height: auto;
+}
+
+.search-bar-name {
+    padding-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.search-container {
+    float: none;
+    display: block;
+    text-align: left;
+}
+
+.search-input-bar {
+    border: none;
+    width: 40vw;
+    min-width: 220px;
+}
+
+section {
+    margin-bottom: 3%;
+}
+
+.section-list-decor {
+    text-decoration: underline solid #dc3545 2px;
+}
+
+section.product-header {
+    margin-bottom: 2%;
+}
+
+table {
+    border: none;
+}
+
+table.product-information td {
+    text-align: end;
+}
+
+table.product-information th {
+    padding-right: 5%;
+}
+
+textarea {
+    width: 100%;
+    margin-top: 2%;
+}
+
+.text-small {
+    font-size: 85%;
+}
+
+.text-visibility {
+    display: none;
+}
+
+/*Slider elements*/
+.tns-item {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+ul.control {
+    list-style: none;
+}
+
+ul.control li {
+    width: 50px;
+    height: 50px;
+    color: white;
+    opacity: 0.3;
+    background: #c4c4c4;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+ul.control li:hover {
+    color: #D70000;
+    opacity: 1;
+}
+
+.visuallyhidden {
+    display: none;
+}
+
+.bi {
+    fill: currentColor;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0.5rem;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.order-bar-list {
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    list-style-type: none;
+}
+
+.button-svg-search {
+    width: 16px;
+    height: 16px;
+    background-color: white;
+}
+
+.search-button {
+    border: none;
+    background-color: white;
+}
+
+.nav-footer {
+    text-align: left !important;
+}
+
+.box-quantity {
+    padding: 10px; 
+    border: 1px solid rgb(167, 167, 167);
+}
+
+.line-break-custom {
+    white-space: pre-line;
+}
+
+.format-custom {
+    text-align:justify;
+}
+
+.vertical-align-top {
+    vertical-align: top;
+}
+
+.button-boxless {
+    background:none;
+    border:none;
+    cursor: pointer;
+    text-align: start;
+}
+
+.no-wrap-final-price {
+    white-space: nowrap;
+}
+
+.btn-remove-product {
+    background-color:transparent !important;
+}

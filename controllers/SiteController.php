@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\SearchForm;
 use Yii;
 
 use app\models\ContactForm;
@@ -51,6 +52,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
+
         return $this->render('index');
     }
 

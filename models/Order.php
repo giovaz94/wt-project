@@ -6,11 +6,13 @@ use Yii;
 use yii\behaviors\AttributeBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
+use yii\db\Query;
 
 /**
  * This is the model class for table "Order".
  *
  * @property int $idOrder
+ * @property int $status
  * @property string $dateOfCreation
  * @property float $total
  * @property int|null $refUser
@@ -20,6 +22,16 @@ use yii\db\ActiveRecord;
  */
 class Order extends ActiveRecord
 {
+    const ORDER_CREATE = 1;
+    const ORDER_SENT = 2;
+    const ORDER_DELIVERED = 3;
+
+    private $statues = [
+      self::ORDER_CREATE => "Create",
+      self::ORDER_SENT => "Sent",
+      self::ORDER_DELIVERED => "Delivered"
+    ];
+
     /**
      * {@inheritdoc}
      */
@@ -34,9 +46,11 @@ class Order extends ActiveRecord
     public function rules()
     {
         return [
-            [['total'], 'required'],
+            [['total', 'status'], 'required'],
             [['dateOfCreation'], 'date', 'format' => 'php:Y-m-d'],
             [['total'], 'number'],
+            [['status'], 'in', 'range' => [self::ORDER_CREATE, self::ORDER_SENT, self::ORDER_DELIVERED]],
+            [['status'], 'default', 'value' => self::ORDER_CREATE],
             [['refUser'], 'integer'],
             [['refUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['refUser' => 'idUser']],
         ];
@@ -72,6 +86,34 @@ class Order extends ActiveRecord
             'total' => 'Total',
             'refUser' => 'Ref User',
         ];
+    }
+
+    /**
+     * Return the count of the total items in the order
+     * @return bool|int|mixed|string|null
+     */
+    public function getItemCount()
+    {
+        return $this->getOrderItems()->sum("quantity");
+    }
+
+    /**
+     * Return the order tax
+     * @param $tax
+     * @return float|int
+     */
+    public function getOrderTax($tax = 22)
+    {
+        return $this->total * ($tax / 100);
+    }
+
+    /**
+     * Return the label of the status
+     * @return string
+     */
+    public function getStatusLabel()
+    {
+        return $this->statues[$this->status];
     }
 
     /**
