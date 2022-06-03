@@ -32,9 +32,9 @@ $this->title = 'Campus Book';
                 </li>
             </ul>
             <div class="my-slider">
-                <?php foreach ($li as $ap) : ?>
+                <?php foreach ($li as $ap): ?>
                 <div class="slide new-arrivals">
-                    <a class="slide new-arrivals" href="<?= Url::toRoute(["available-product/view", "idAvailableProduct" => $ap->idAvailableProduct]) ?>">
+                    <a class="slide new-arrivals" href="<?= Url::toRoute(["search/detail", "idAvailableProduct" => $ap->idAvailableProduct]) ?>">
                         <div class="slide-img new-arrivals-img">
                             <?= Html::img("@web/uploads/{$ap->product->img}", [
                                 "alt" => $ap->product->name,
@@ -76,7 +76,7 @@ $this->title = 'Campus Book';
             <div class="my-slider">
                 <?php foreach ($pr as $ap) : ?>
                     <div class="slide promo-articles">
-                        <a class="slide promo-articles" href="<?= Url::toRoute(["available-product/view", "idAvailableProduct" => $ap->idAvailableProduct]) ?>">
+                        <a class="slide promo-articles" href="<?= Url::toRoute(["search/detail", "idAvailableProduct" => $ap->idAvailableProduct]) ?>">
                             <div class="slide-img promo-articles-img">
                                 <?= Html::img("@web/uploads/{$ap->product->img}", [
                                     "alt" => $ap->product->name,
@@ -118,7 +118,7 @@ $this->title = 'Campus Book';
             <div class="my-slider">
                 <?php foreach ($eb as $ap) : ?>
                     <div class="slide ebook">
-                        <a class="slide ebook" href="<?= Url::toRoute(["available-product/view", "idAvailableProduct" => $ap->idAvailableProduct]) ?>">
+                        <a class="slide ebook" href="<?= Url::toRoute(["search/detail", "idAvailableProduct" => $ap->idAvailableProduct]) ?>">
                             <div class="slide-img ebook-img">
                                 <?= Html::img("@web/uploads/{$ap->product->img}", [
                                     "alt" => $ap->product->name,
