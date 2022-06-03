@@ -9,7 +9,7 @@ use yii\helpers\Url;
  * @var AvailableProduct[] $rp
  */
 
-
+$this->title = $model->product->name;
 ?>
 
 <div class="container external-container">
@@ -29,9 +29,8 @@ use yii\helpers\Url;
                             <?= $model->sellingPrice ?> €
                         <?php endif; ?>
                     </p>
-
                     <?php if(!Yii::$app->user->isGuest): ?>
-                        <button class="btn btn-lg btn-primary btn-block">Aggiungi al carrello</button>
+                        <?= Html::a("Aggiungi al carrello", ["cart/add-to-cart", "idAvailableProduct" => $model->idAvailableProduct], ["class" => "btn btn-lg btn-primary btn-block"]) ?>
                     <?php else : ?>
                         <p> Effettua il login per aggiungere il prodotto al carrello </p>
                     <?php endif; ?>

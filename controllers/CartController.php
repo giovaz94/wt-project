@@ -58,25 +58,21 @@ class CartController extends Controller
     }
 
     /**
-     * Add a new cart item.
+     * Add a new product to the cart
      * @param $idAvailable
-     * @return string|Response
+     * @return Response
      */
-    public function actionAddItem($idAvailable)
+    public function actionAddToCart($idAvailableProduct)
     {
         $model = new AddToCartForm();
-        $model->idAvailable = $idAvailable;
+        $model->idAvailable = $idAvailableProduct;
+        $model->quantity = 1;
 
-        if ($model->load($this->request->post()) && $model->validate()) {
+        if ($model->validate()) {
             $model->addItemTo($this->cart);
             return $this->redirect(["index"]);
         }
-
-        if($this->request->isAjax) {
-            return $this->renderAjax("_form", ["model" => $model]);
-        }
-
-        return $this->render("_form", ["model" => $model]);
+        return $this->redirect(['search/detail', 'idAvailableProduct' => $idAvailableProduct]);
     }
 
 
@@ -87,22 +83,24 @@ class CartController extends Controller
     public function actionEditQuantity($idCartItem)
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
-
         $model = $this->findModel($idCartItem);
 
         $operationResult = 0;
         $operationMsg = "Cart updated successfully!";
+        $errorDetail = "";
 
         $model->quantity = Yii::$app->request->post("quantity");
+
         if(!$model->update()) {
             $operationResult = 1;
             $operationMsg = "Error, can't update the cart";
+            $errorDetail = $model->firstErrors;
         }
 
-        // Return the response from the server
         return [
             "result" => $operationResult,
-            "message" => $operationMsg
+            "message" => $operationMsg,
+            "error-detail" => $errorDetail
         ];
     }
 

@@ -8,6 +8,16 @@
     src: url("./font/SourceSansPro-Regular.ttf");
 }
 
+.btn-primary {
+    background-color: #D70000;
+    border-color: #D70000;
+}
+
+.btn-primary:hover {
+    background-color: #D70000;
+    border-color: #D70000;
+}
+
 a {
     color: #D70000;
 }

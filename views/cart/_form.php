@@ -1,7 +1,7 @@
 <?php
 
 use app\models\AddToCartForm;
-use yii\bootstrap4\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */

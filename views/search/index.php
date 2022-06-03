@@ -8,10 +8,10 @@
 
 use yii\widgets\ListView;
 
+$this->title = "Risultati di ricerca";
 ?>
 
 <?= $this->render("@app/views/site/_search_bar")?>
-
 
 <section class="search-result-section">
     <div class="container-fluid">

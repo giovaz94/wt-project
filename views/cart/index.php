@@ -10,19 +10,11 @@ $this->title = "Riepilogo Carrello";
  * @var \yii\data\ActiveDataProvider $dataProvider
  * @var \yii\web\View $this
  */
-
-$this->registerCss("
-
-
-
-
-");
-
 ?>
 
 
 
-<?php Pjax::begin(['id' => 'cart']) ?>
+<?php Pjax::begin(['id' => 'cart-pjax-container']) ?>
     <section>
         <header>
             <h1> <?= Html::encode($this->title)?> </h1>
@@ -51,8 +43,9 @@ $this->registerCss("
             $(\"input[name=quantity]\").change(function() {
                 let requestUrl = $(this).parent().attr(\"action\");
                 $.post( requestUrl, $(this).parent().serialize()).done(function( data ) {
-                    $.pjax.reload({container:\"#cart\", timeout: false});
+                    $.pjax.reload({container:\"#cart-pjax-container\", timeout: false});
                 });
+                
             });
         ");
     ?>

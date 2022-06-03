@@ -3,7 +3,6 @@
 namespace app\models;
 
 use app\utils\NotificationFactory;
-use SebastianBergmann\CodeCoverage\Util;
 use Yii;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
@@ -108,6 +107,7 @@ class CartItem extends ActiveRecord
             // Update the item.
             $availableProduct->update(false);
         }
+        $this->cart->updateTotal();
         parent::afterSave($insert, $changedAttributes);
     }
 

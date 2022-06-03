@@ -24,7 +24,8 @@ use yii\helpers\Html;
             <p class="format-custom"><?= $model->sellingPrice?> €</p>
             <p class="format-custom"><?= $model->product->description ?>
             </p>
-            <a href="#" class="nav-link detail-button"> Dettagli </a>
+            <?= Html::a("Dettagli", ["search/detail", "idAvailableProduct" => $model->idAvailableProduct], ["class" => "btn btn-lg btn-primary btn-block"])?>
+
         </div>
     </div>
 </li>

@@ -81,4 +81,21 @@ class Cart extends ActiveRecord
     {
         return $this->hasOne(User::class, ['idUser' => 'refUser']);
     }
+
+    /**
+     * Update the total of the cart
+     * @return false|int
+     * @throws \yii\db\StaleObjectException
+     */
+    public function updateTotal()
+    {
+        $cartItems = $this->cartItems;
+        $total = 0.0;
+        foreach ($cartItems as $cartItem) {
+            $total += $cartItem->subtotal;
+        }
+
+        $this->total = $total;
+        return $this->update();
+    }
 }
