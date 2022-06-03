@@ -13,7 +13,8 @@
     <body>
         <div class="container external-container">
             <h1 class="titolo-pagina">Account di Username</h1>
-            <section class="dati-anagrafici-area-utente">
+            <section class="dati-area-utente">
+                <h2 class="titolo-dati-utente">Dati anagrafici</h2>
                 <list class="lista-dati-utente lista-dati-anagrafici-area-utente">
                     <li>
                         Nome: Pinco
@@ -27,25 +28,22 @@
                         Data di nascita: 01/01/1990
                     </li>
                 </list>
-            </section>
-            <div class="separator-section-liste"></div>
-            <section class="contatti-venditore-area-utente">
+                <div class="separator-section-liste"></div>
+                <h2 class="titolo-dati-utente">Contatti</h2>
                 <list class="lista-dati-utente lista-contatti-venditore-area-utente">
                     <li>
                         Telefono: bla bla
                     </li>
                 </list>
-            </section>
-            <div class="separator-section-liste"></div>
-            <section class="account-venditore-area-utente">
+                <div class="separator-section-liste"></div>
+                <h2 class="titolo-dati-utente">Account</h2>
                 <list class="lista-dati-utente lista-account-venditore-area-utente">
                     <li>
                         E-mail: bla bla
                     </li>
                 </list>
-            </section>
-            <div class="separator-section-liste"></div>
-            <section class="dati-venditore-area-utente">
+                <div class="separator-section-liste"></div>
+                <h2 class="titolo-dati-utente">Contatti venditore</h2>
                 <list class="lista-dati-utente lista-dati-venditore-area-utente">
                     <li>
                         Codice Fiscale: Pinco
@@ -67,48 +65,156 @@
                         Città: 01/01/1990
                     </li>
                 </list>
+                <div class="separator-button"></div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Modifica</button>
             </section>
-            <div class="separator-button"></div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Modifica</button>
             <div class="separator-section"></div>
-            <section class="prodotti-venditore">
-                <h2 class="titolo-sezione">Prodotti inseriti</h2>
+            <!-- Da eliminare -->
+            <section class="inserimento-prodotti-venditore">
+                <h2 class="titolo-sezione">Prodotti da inserire</h2>
                 <div class="table-responsive">
                     <table class="order-table table font-additional-modification">
                         <tr class="order-table-header text-white">
+                            <th id="id-articolo-da-inserire" scope="col">
+                                <p>Articolo</p>
+                            </th>
+                            <th id="prezzo-articolo-da-inserire" scope="col">
+                                <p>Prezzo</p>
+                            </th>
+                            <th id="sconto-articolo-da-inserire" scope="col">
+                                <p class="no-wrap-final-price">Sconto da applicare</p>
+                            </th>
+                            <th id="quantita-articolo-da-inserire" scope="col">
+                                <p class="no-wrap-final-price">Quantità</p>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td headers="id-articolo-da-inserire">
+                                ID articolo
+                            </td>
+                            <td headers="prezzo-articolo-da-inserire">
+                                Prezzo non scontato
+                            </td>
+                            <td headers="sconto-articolo-da-inserire">
+                                Sconto da applicare
+                            </td>
+                            <td headers="quantita-articolo-da-inserire">
+                                Quantità da aggiungere
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <div class="separator-section"></div>
+            <!-- Fino a qui -->
+            <section class="prodotti-inseriti-venditore">
+                <h2 class="titolo-sezione">Prodotti in vendita</h2>
+                <div class="table-responsive">
+                    <table class="order-table table keep-full-size">
+                        <tr class="order-table-header text-white">
                             <th scope="col">
-                                <div>
-                                    <p>ID</p>
+                                <div class="d-flex justify-content-center">
+                                    Articolo
                                 </div>
                             </th>
                             <th scope="col">
-                                <p>N Articoli</p>
+                                Quantitá
                             </th>
                             <th scope="col">
-                                <p class="no-wrap-final-price">Totale</p>
-                            </th>
-                            <th scope="col">
-                                <p class="no-wrap-final-price">Data</p>
-                            </th>
-                            <th scope="col">
-                                <p class="no-wrap-final-price">Status</p>
+                                <p class="no-wrap-final-price">Prezzo di vendita</p>
                             </th>
                         </tr>
                         <tr>
                             <td>
-                                Numero Ordine
+                                <div class="col d-flex justify-content-start">
+                                    <div class="row d-flex justify-content-start">
+                                        <a href="#" class="nav-link text-black-50" aria-label="Immagine">
+                                            <img class="product-cart-image bi"
+                                                alt="Un libro aperto con qualche pagina svolazzante"
+                                                title="Logo del sito" src="Untitled.png" aria-label="Profilo">
+                                        </a>
+                                    </div>
+                                    <div class="row d-flex justify-content-center text-small align-items-center">
+                                        <p>ID Articolo: bla bla</p>
+                                        <p class="line-break-custom format-custom">Titolo: </p>
+                                        <p class="format-custom">Prezzo originale: </p>
+                                        <div>
+                                            <a class="modifica-articolo-tabella" href="#">Modifica</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                             <td>
-                                Numero Articoli
+                                <div class="d-flex justify-content-start">
+                                    Quantità ancora in vendita: 3
+                                </div>
                             </td>
                             <td>
-                                Totale
+                                <div class="d-flex justify-content-start flex-wrap">
+                                    Prezzo di vendita: 3
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="col d-flex justify-content-start">
+                                    <div class="row d-flex justify-content-start">
+                                        <a href="#" class="nav-link text-black-50" aria-label="Immagine">
+                                            <img class="product-cart-image bi"
+                                                alt="Un libro aperto con qualche pagina svolazzante"
+                                                title="Logo del sito" src="Untitled.png" aria-label="Profilo">
+                                        </a>
+                                    </div>
+                                    <div class="row d-flex justify-content-center text-small align-items-center">
+                                        <p>ID Articolo: bla bla</p>
+                                        <p class="line-break-custom format-custom">Titolo: </p>
+                                        <p class="format-custom">Prezzo originale: </p>
+                                        <div>
+                                            <a class="modifica-articolo-tabella" href="#">Modifica</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                             <td>
-                                Data
+                                <div class="d-flex justify-content-start">
+                                    Quantità ancora in vendita: 3
+                                </div>
                             </td>
                             <td>
-                                Status
+                                <div class="d-flex justify-content-start flex-wrap">
+                                    Prezzo di vendita: 3
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="col d-flex justify-content-start">
+                                    <div class="row d-flex justify-content-start">
+                                        <a href="#" class="nav-link text-black-50" aria-label="Immagine">
+                                            <img class="product-cart-image bi"
+                                                alt="Un libro aperto con qualche pagina svolazzante"
+                                                title="Logo del sito" src="Untitled.png" aria-label="Profilo">
+                                        </a>
+                                    </div>
+                                    <div class="row d-flex justify-content-center text-small align-items-center">
+                                        <p>ID Articolo: bla bla</p>
+                                        <p class="line-break-custom format-custom">Titolo: </p>
+                                        <p class="format-custom">Prezzo originale: </p>
+                                        <div>
+                                            <a class="modifica-articolo-tabella" href="#">Modifica</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-start">
+                                    Quantità ancora in vendita: 3
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-start flex-wrap">
+                                    Prezzo di vendita: 3
+                                </div>
                             </td>
                         </tr>
                     </table>

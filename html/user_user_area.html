@@ -13,7 +13,8 @@
     <body>
         <div class="container external-container">
             <h1 class="titolo-pagina">Account di Username</h1>
-            <section class="dati-anagrafici-area-utente">
+            <section class="dati-area-utente">
+                <h2 class="titolo-dati-utente">Dati anagrafici</h2>
                 <list class="lista-dati-utente lista-dati-anagrafici-area-utente">
                     <li>
                         Nome: Pinco
@@ -27,55 +28,52 @@
                         Data di nascita: 01/01/1990
                     </li>
                 </list>
-            </section>
-            <div class="separator-section-liste"></div>
-            <section class="contatti-venditore-area-utente">
+                <div class="separator-section-liste"></div>
+                <h2 class="titolo-dati-utente">Contatti</h2>
                 <list class="lista-dati-utente lista-contatti-venditore-area-utente">
                     <li>
                         Telefono: bla bla
                     </li>
                 </list>
+                <div class="separator-button"></div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Modifica</button>
             </section>
-            <div class="separator-button"></div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Modifica</button>
             <div class="separator-section"></div>
             <section class="ultimi-ordini">
                 <h2 class="titolo-sezione">Ultimi ordini</h2>
                 <div class="table-responsive">
                     <table class="order-table table font-additional-modification">
                         <tr class="order-table-header text-white">
-                            <th scope="col">
-                                <div>
-                                    <p>ID</p>
-                                </div>
+                            <th id="id-ordine" scope="col">
+                                <p>ID</p>
                             </th>
-                            <th scope="col">
-                                <p>N Articoli</p>
+                            <th id="numero-articoli" scope="col">
+                                <p>N° Articoli</p>
                             </th>
-                            <th scope="col">
+                            <th id="prezzo-ordine" scope="col">
                                 <p class="no-wrap-final-price">Totale</p>
                             </th>
-                            <th scope="col">
+                            <th id="data-ordine" scope="col">
                                 <p class="no-wrap-final-price">Data</p>
                             </th>
-                            <th scope="col">
+                            <th id="status-ordine" scope="col">
                                 <p class="no-wrap-final-price">Status</p>
                             </th>
                         </tr>
                         <tr>
-                            <td>
+                            <td headers="id-ordine">
                                 Numero Ordine
                             </td>
-                            <td>
+                            <td headers="numero-articoli">
                                 Numero Articoli
                             </td>
-                            <td>
+                            <td headers="prezzo-ordine">
                                 Totale
                             </td>
-                            <td>
+                            <td headers="data-ordine">
                                 Data
                             </td>
-                            <td>
+                            <td headers="status-ordine">
                                 Status
                             </td>
                         </tr>

@@ -77,7 +77,7 @@ button.btn:hover {
 }
 
 .border-bottom-header {
-    border-bottom: solid #dc3545 1px;
+    border-bottom: solid #D70000 1px;
 }
 
 .btn-remove-product {
@@ -202,7 +202,7 @@ div.upload-image {
 }
 
 .footer-list-decor {
-    text-decoration: underline solid #dc3545 2px;
+    text-decoration: underline solid #D70000 2px;
 }
 
 .home-section-title {
@@ -223,7 +223,7 @@ div.upload-image {
     width: 70%;
     margin-right: 4%;
     margin-left: 26%;
-    color: #dc3545;
+    color: #D70000;
     border-top: solid 3px;
 }
 
@@ -372,7 +372,7 @@ legend.form {
 }
 
 .order-table-header {
-    background-color: #dc3545;
+    background-color: #D70000;
 }
 
 p.autore-libro {
@@ -381,7 +381,7 @@ p.autore-libro {
 }
 
 p.error-occurs {
-    color: #DC3545;
+    color: #D70000;
 }
 
 .product-cart-image {
@@ -414,12 +414,23 @@ p.prezzo-libro {
     height: 10px;
 }
 
+.separator-button {
+    height: 30px;
+}
+
 .separator-section {
     height: 20px;
 }
 
-.separator-section-liste, .separator-button {
-    height: 1px;
+.separator-section-liste {
+    height: 15px;
+}
+
+.titolo-dati-utente {
+    margin-bottom: 1%;
+    margin-top: 2%;
+    font-size: large;
+    font-weight: bold;
 }
 
 .titolo-libro {
@@ -519,7 +530,7 @@ section {
 }
 
 .section-list-decor {
-    text-decoration: underline solid #dc3545 2px;
+    text-decoration: underline solid #D70000 2px;
 }
 
 section.product-header {
@@ -616,8 +627,8 @@ ul.control li:hover {
 
 .detail-button {
     all: initial;
-    border: 1px solid #dc3545 !important;
-    background-color: #dc3545 !important;
+    border: 1px solid #D70000 !important;
+    background-color: #D70000 !important;
     height: 4vw !important;
     width: 6vw !important;
     text-align: center !important;
