@@ -69,7 +69,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['resetKey'], 'safe'],
             [['resetKey'], 'string'],
             [['firstName', 'lastName', 'email', 'username', 'password', 'password_repeat', 'cityOfBirth'], 'string', 'max' => 255],
-            [['dateOfBirth'], 'date', 'format' => 'd/m/Y'],
+            [['dateOfBirth'], 'date', 'format' => 'php:Y-m-d'],
             [['email'], 'unique'],
             [['email'], 'email'],
             [['password_repeat','password'], 'required', 'on' => [self::SCENARIO_VENDOR_REGISTRATION, self::SCENARIO_BUYER_REGISTRATION, self::SCENARIO_RESET_PASSWORD]],

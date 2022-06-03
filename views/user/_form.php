@@ -7,43 +7,79 @@ use yii\widgets\ActiveForm;
 /* @var $user app\models\User */
 /* @var $taxData app\models\TaxData */
 /* @var $form yii\widgets\ActiveForm */
+
 ?>
 
-<div class="registration-form">
+<div class="container container-luca">
+    <?php $form = ActiveForm::begin(["class" => "need-validation"]); ?>
+    <form class="need-validation">
+        <fieldset class="account">
+            <legend class="form">Account</legend>
+            <div class="row">
+                <div id="dati-account-email" class="form dati-account col-sm-3">
+                    <?= $form->field($user, 'username')->textInput(['class'=> 'form-control', 'maxlength' => true]) ?>
+                </div>
+                <div id="dati-account-email" class="form dati-account col-sm-3">
+                    <?= $form->field($user, 'email')->textInput(['class'=> 'form-control', 'maxlength' => true]) ?>
+                </div>
+                <div id="dati-account-password" class="form dati-account col-sm-3">
+                    <?= $form->field($user, 'password')->passwordInput(['class'=> 'form-control', 'maxlength' => true]) ?>
+                </div>
+                <div id="dati-account-ripeti-password" class="form dati-account col-sm-3">
+                    <?= $form->field($user, 'password_repeat')->passwordInput(['class'=> 'form-control', 'maxlength' => true]) ?>
+                </div>
+            </div>
+        </fieldset>
+        <hr>
+        <fieldset class="dati-anagrafici">
+            <legend class="form">Dati anagrafici</legend>
+            <div class="row">
+                <div id="dati-anagrafici-nome" class="form dati-anagrafici col-sm-7 col-lg-5">
+                    <?= $form->field($user, 'firstName')->textInput(['class' => 'form-control', 'maxlength' => true]) ?>
+                </div>
+                <div class="separator"></div>
+                <div id="dati-anagrafici-cognome" class="form dati-anagrafici col-sm-7 col-lg-5">
+                    <?= $form->field($user, 'lastName')->textInput(['class' => 'form-control', 'maxlength' => true]) ?>
+                </div>
+                <div class="separator"></div>
+                <div id="dati-anagrafici-dob" class="form dati-anagrafici col-sm-7 col-lg-5">
+                    <?= $form->field($user, 'dateOfBirth')->input('date', ['class' => "form-control"]) ?>
+                </div>
+                <div class="separator"></div>
+                <div id="dati-anagrafici-pob" class="form dati-anagrafici col-sm-7 col-lg-5">
+                    <?= $form->field($user, 'cityOfBirth')->textInput(['class' => 'form-control', 'maxlength' => true]) ?>
+                </div>
+            </div>
+        </fieldset>
+        <hr>
 
-    <?php $form = ActiveForm::begin(); ?>
+        <?php if(isset($taxData)) : ?>
 
-    <?= $form->field($user, 'firstName')->textInput(['maxlength' => true]) ?>
+            <fieldset class="seller">
+                <legend class="form">Dati attività</legend>
+                <div class="row">
+                    <div id="dati-venditore-cf" class="form dati-venditore col-sm-7 col-lg-5">
+                        <?= $form->field($taxData, 'businessName')->textInput(['class' => 'form-control', 'maxlength' => true]) ?>
+                    </div>
+                    <div class="separator"></div>
+                    <div id="dati-venditore-piva" class="form dati-venditore col-sm-7 col-lg-5">
+                        <?= $form->field($taxData, 'vatNumber')->textInput(['class' => 'form-control', 'maxlength' => true]) ?>
+                    </div>
+                    <div class="separator"></div>
+                    <div id="dati-venditore-indirizzo" class="form dati-venditore col-sm-7 col-lg-5">
+                        <?= $form->field($taxData, 'businessAddress')->textInput(['class' => 'form-control', 'maxlength' => true]) ?>
+                    </div>
+                    <div class="separator"></div>
+                    <div id="dati-venditore-citta" class="form dati-venditore col-sm-7 col-lg-5">
+                        <?= $form->field($taxData, 'businessCity')->textInput(['class' => 'form-control', 'maxlength' => true]) ?>
+                    </div>
+                </div>
+            </fieldset>
 
-    <?= $form->field($user, 'lastName')->textInput(['maxlength' => true]) ?>
+        <?php endif; ?>
 
-    <?= $form->field($user, 'email')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($user, 'username')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($user, 'password')->passwordInput(['maxlength' => true]) ?>
-
-    <?= $form->field($user, 'password_repeat')->passwordInput(['maxlength' => true]) ?>
-
-    <?= $form->field($user, 'dateOfBirth')->textInput() ?>
-
-    <?= $form->field($user, 'cityOfBirth')->textInput(['maxlength' => true]) ?>
-
-    <?php if(isset($taxData)) : ?>
-
-        <?= $form->field($taxData, 'businessName')->textInput(['maxlength' => true]) ?>
-
-        <?= $form->field($taxData, 'vatNumber')->textInput(['maxlength' => true]) ?>
-
-        <?= $form->field($taxData, 'businessAddress')->textInput(['maxlength' => true]) ?>
-
-        <?= $form->field($taxData, 'businessCity')->textInput(['maxlength' => true]) ?>
-
-    <?php endif; ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
-
+        <div class="container text-center">
+            <?= Html::submitButton('Registrati', ['class' => 'btn btn-lg btn-primary btn-block']) ?>
+        </div>
     <?php ActiveForm::end(); ?>
 </div>

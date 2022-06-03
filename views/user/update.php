@@ -6,10 +6,7 @@ use yii\helpers\Html;
 /* @var $user app\models\User */
 /* @var $taxData app\models\TaxData */
 
-$this->title = 'Update User: ' . $user->idUser;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $user->idUser, 'url' => ['view', 'idUser' => $user->idUser]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Update User: ' . $user->username;
 ?>
 <div class="user-update">
 

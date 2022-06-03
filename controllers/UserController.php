@@ -64,6 +64,10 @@ class UserController extends Controller
         $model->scenario = User::SCENARIO_BUYER_REGISTRATION;
 
         if ($this->request->isPost) {
+
+            $model->load($this->request->post());
+            $model->validate();
+
             if ($model->load($this->request->post()) && $model->save()) {
 
                 $auth = Yii::$app->authManager;
