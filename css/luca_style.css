@@ -180,10 +180,6 @@ div.upload-image {
     src: url("file:///Users/luca/Desktop/Luca/Università/Corsi%20in%20svolgimento/Tecnologie%20web/Progetto/wt-project/font/SourceSansPro-Regular.ttf");
 }
 
-.font-section {
-    font-family: 'Times New Roman', Times, serif;
-}
-
 .form-control {
     margin-bottom: 5%;
     border-radius: 0%;
@@ -637,4 +633,12 @@ ul.control li:hover {
     color: white !important;
     padding: 10px !important;
     cursor: pointer !important;
+}
+
+.text-red-chosen {
+    color: #D70000;
+}
+
+.btn-red-chosen {
+    background-color: #D70000;
 }
