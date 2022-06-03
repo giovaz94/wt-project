@@ -9,7 +9,6 @@ use yii\web\View;
  * @var View $this
  * @var CartItem $model
  */
-
 ?>
 
 <tr>

@@ -22,7 +22,7 @@ class CheckoutForm extends Model
         return [
             [['creditCardNumber', 'creditCardSecureNumber', 'creditCardOwnerName', 'creditCardOwnerSurname', 'expiryDate'], 'required'],
             [['creditCardSecureNumber', 'creditCardSecureNumber'], 'integer'],
-            [['expiryDate'], 'date', 'format' => 'd/m/Y'],
+            [['expiryDate'], 'date', 'format' => 'php:Y-m-d'],
             [['expiryDate'], 'validateExpiringDate'],
             [['creditCardOwnerName', 'creditCardOwnerSurname'], 'string', 'max' => 255],
         ];

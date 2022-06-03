@@ -197,6 +197,7 @@ class CartController extends Controller
             return $this->redirect(['site/index']);
         }
 
+        $this->layout = "clear";
         return $this->render("checkout", ['model' => $model]);
     }
 

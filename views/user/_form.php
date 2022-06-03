@@ -1,12 +1,12 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap5\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $user app\models\User */
 /* @var $taxData app\models\TaxData */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $form yii\bootstrap5\ActiveForm */
 
 ?>
 

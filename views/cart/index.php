@@ -2,6 +2,7 @@
 
 use app\models\Cart;
 use yii\data\ActiveDataProvider;
+use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
@@ -24,7 +25,7 @@ $total = $price + $tax;
 <section class="cart-summary-list-impagination">
     <div class="container-fluid">
         <div class="home-section-title cart-sum d-flex flex-wrap justify-content-start align-items-center d-inline py-3 my-2">
-            <h1 class="cart-sum-title section-list-decor font-section">Riepilogo Carrello</h1>
+            <h1 class="cart-sum-title section-list-decor font-section"><?= Html::encode($this->title)?></h1>
         </div>
         <div class="container-fluid py-2">
             <div class="table-responsive">
@@ -76,7 +77,7 @@ $total = $price + $tax;
                 <form class="order-bar-form mb-3 row-cols-lg-auto g-3 align-items-center"
                       id="purchase-form-button">
                     <div class="col-12">
-                        <button type="button" class="btn btn-danger text-white me-1">Acquista</button>
+                        <?= Html::a("Acquista", ["cart/checkout"], ["class" => "btn btn-lg btn-primary btn-block"])?>
                     </div>
                 </form>
             </div>
