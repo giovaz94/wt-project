@@ -11,20 +11,28 @@ use yii\web\View;
  */
 ?>
 
-<td>
-    <?= Html::img("@web/uploads/{$model->img}", [
-        "alt" => $model->name,
-        "class" => "thumb-img"
-    ]) ?>
-    <div>
-        <p> <?= $model->name ?> </p>
-        <p> Prezzo: <?= $model->unitPrice ?> €</p>
-    </div>
-</td>
-<td class="text-center">
-    <?= $model->quantity ?>
-</td>
-<td class="text-center">
-    <?= $model->subtotal ?>
-</td>
-
+<tr>
+    <td>
+        <div class="col d-flex justify-content-start">
+            <div class="row d-flex justify-content-start">
+                    <?= Html::img("@web/uploads/{$model->img}", [
+                        "alt" => $model->name,
+                        "class" => "product-cart-image bi"
+                    ]) ?>
+            </div>
+            <div class="row d-flex justify-content-center text-small vertical-align-top">
+                <p><?= $model->unitPrice ?> €</p>
+            </div>
+        </div>
+    </td>
+    <td>
+        <div class="d-flex justify-content-center">
+            <p><?= $model->quantity ?></p>
+        </div>
+    </td>
+    <td>
+        <div class="d-flex justify-content-start flex-wrap">
+            <?= $model->subtotal ?> €
+        </div>
+    </td>
+</tr>
