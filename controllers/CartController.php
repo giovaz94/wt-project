@@ -213,7 +213,10 @@ class CartController extends Controller
             ]
         ]);
 
-        return $this->render("index", ['dataProvider' => $dataProvider]);
+        return $this->render("index", [
+            'dataProvider' => $dataProvider,
+            'cart' => $this->cart,
+        ]);
     }
 
     /**
