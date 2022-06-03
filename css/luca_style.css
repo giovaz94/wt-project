@@ -77,7 +77,7 @@ button.btn:hover {
 }
 
 .border-bottom-header {
-    border-bottom: solid #dc3545 1px;
+    border-bottom: solid #D70000 1px;
 }
 
 .btn-remove-product {
@@ -180,10 +180,6 @@ div.upload-image {
     src: url("file:///Users/luca/Desktop/Luca/Università/Corsi%20in%20svolgimento/Tecnologie%20web/Progetto/wt-project/font/SourceSansPro-Regular.ttf");
 }
 
-.font-section {
-    font-family: 'Times New Roman', Times, serif;
-}
-
 .form-control {
     margin-bottom: 5%;
     border-radius: 0%;
@@ -202,7 +198,7 @@ div.upload-image {
 }
 
 .footer-list-decor {
-    text-decoration: underline solid #dc3545 2px;
+    text-decoration: underline solid #D70000 2px;
 }
 
 .home-section-title {
@@ -223,7 +219,7 @@ div.upload-image {
     width: 70%;
     margin-right: 4%;
     margin-left: 26%;
-    color: #dc3545;
+    color: #D70000;
     border-top: solid 3px;
 }
 
@@ -371,7 +367,7 @@ legend.form {
 }
 
 .order-table-header {
-    background-color: #dc3545;
+    background-color: #D70000;
 }
 
 p.autore-libro {
@@ -380,7 +376,7 @@ p.autore-libro {
 }
 
 p.error-occurs {
-    color: #DC3545;
+    color: #D70000;
 }
 
 .product-cart-image {
@@ -514,7 +510,7 @@ section {
 }
 
 .section-list-decor {
-    text-decoration: underline solid #dc3545 2px;
+    text-decoration: underline solid #D70000 2px;
 }
 
 section.product-header {
@@ -611,8 +607,8 @@ ul.control li:hover {
 
 .detail-button {
     all: initial;
-    border: 1px solid #dc3545 !important;
-    background-color: #dc3545 !important;
+    border: 1px solid #D70000 !important;
+    background-color: #D70000 !important;
     height: 4vw !important;
     width: 6vw !important;
     text-align: center !important;
@@ -621,4 +617,12 @@ ul.control li:hover {
     color: white !important;
     padding: 10px !important;
     cursor: pointer !important;
+}
+
+.text-red-chosen {
+    color: #D70000;
+}
+
+.btn-red-chosen {
+    background-color: #D70000;
 }
