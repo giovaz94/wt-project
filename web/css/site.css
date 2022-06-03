@@ -1,3 +1,13 @@
+@font-face {
+    font-family: titleFont;
+    src: url("./font/LibreBaskerville-Regular.ttf");
+}
+
+@font-face {
+    font-family: normalFont;
+    src: url("./font/SourceSansPro-Regular.ttf");
+}
+
 a {
     color: #D70000;
 }
@@ -112,7 +122,7 @@ div.card-generic-retrieval,  div.card-generic-login{
     margin-right: auto;
 }
 
-div.container-luca {
+.external-container {
     margin-top: 3%;
     margin-bottom: 3%;
 }
@@ -168,16 +178,6 @@ div.slide-properties {
 
 div.upload-image {
     margin-bottom: 5%;
-}
-
-@font-face {
-    font-family: titleFont;
-    src: url("./font/LibreBaskerville-Regular.ttf");
-}
-
-@font-face {
-    font-family: normalFont;
-    src: url("./font/SourceSansPro-Regular.ttf");
 }
 
 .font-section {
@@ -236,6 +236,11 @@ h1.titolo-libro {
     margin-top: 0;
     font-size: x-large !important;
     font-weight: bold;
+}
+
+h1.titolo-pagina {
+    text-decoration: 0.1em solid #D70000 underline;
+    margin-bottom: 3%;
 }
 
 img {
@@ -297,6 +302,10 @@ legend.form {
 
 .line-break-custom {
     white-space: pre-line;
+}
+
+.lista-dati-anagrafici-area-utente {
+    list-style-type: none;
 }
 
 .nav {
@@ -398,6 +407,14 @@ p.prezzo-libro {
     min-width: 80px;
     max-width: 200px;
     height: auto;
+}
+
+.separator {
+    height: 10px;
+}
+
+.separator-table {
+    height: 30px;
 }
 
 .titolo-libro {
