@@ -64,6 +64,8 @@ $this->title = "Account di $model->username";
 
         <?= Html::a("Modifica", ["user/update"], ["class" => "btn btn-lg btn-primary btn-block"]) ?>
     </section>
+
+    <?php if(Yii::$app->user->can("vendor")) : ?>
     <div class="separator-section"></div>
     <section class="prodotti-inseriti-venditore">
         <h2 class="titolo-sezione">Prodotti in vendita</h2>
@@ -93,5 +95,6 @@ $this->title = "Account di $model->username";
             </table>
         </div>
     </section>
+    <?php endif; ?>
 
 </div>
