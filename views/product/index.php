@@ -1,7 +1,6 @@
 <?php
 
 use app\models\Product;
-use yii\grid\DataColumn;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -45,7 +44,7 @@ $this->title = 'Prodotti caricati';
                     'class' => ActionColumn::class,
                     'urlCreator' => static function ($action, Product $model, $key, $index, $column) {
                         return Url::toRoute([$action, 'idProduct' => $model->idProduct]);
-                     }
+                    }
                 ],
             ],
         ]); ?>

@@ -15,12 +15,10 @@ use yii\web\View;
     <td>
         <div class="col d-flex justify-content-start">
             <div class="row d-flex justify-content-start">
-                <a href="#" class="nav-link text-black-50" aria-label="Immagine">
-                    <?= Html::img("@web/uploads/{$model->availableProduct->product->img}", [
-                        "alt" => $model->availableProduct->product->name,
-                        "class" => "product-cart-image bi"
-                    ]) ?>
-                </a>
+                <?= Html::img("@web/uploads/{$model->availableProduct->product->img}", [
+                    "alt" => $model->availableProduct->product->name,
+                    "class" => "product-cart-image bi"
+                ]) ?>
             </div>
             <div class="row d-flex justify-content-center text-small align-items-center">
                 <p class="line-break-custom format-custom"><?= $model->availableProduct->product->name ?></p>

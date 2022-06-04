@@ -140,6 +140,11 @@ class Product extends ActiveRecord
         return $this->hasMany(AvailableProduct::class, ['refProduct' => 'idProduct']);
     }
 
+    public function countTotalAvailability()
+    {
+        return $this->getAvailableProducts()->sum("availability");
+    }
+
     /**
      * Gets query for [[RefProductCategory0]].
      *

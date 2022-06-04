@@ -2,11 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\AvailableProduct;
 use app\models\Product;
 use app\models\ProductSearch;
 use app\models\User;
 use Yii;
 use yii\base\Exception;
+use yii\data\ActiveDataProvider;
 use yii\db\StaleObjectException;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -77,7 +79,6 @@ class ProductController extends Controller
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }

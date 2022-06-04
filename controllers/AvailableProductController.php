@@ -40,6 +40,12 @@ class AvailableProductController extends Controller
                             'roles' => ['addAvailableProduct'],
                             'roleParams' => ['productId' => Yii::$app->request->get('idProduct')],
                         ],
+                        [
+                            'allow' => true,
+                            'actions' => ['delete'],
+                            'roles' => ['removeAvailableProduct'],
+                            'roleParams' => ['availableProductId' => Yii::$app->request->get('idAvailableProduct')],
+                        ],
                     ],
                 ],
             ]
@@ -114,6 +120,19 @@ class AvailableProductController extends Controller
             'model' => $model,
             'product' => $product
         ]);
+    }
+
+    /**
+     * Deletes an existing AvailableProduct model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param int $idAvailableProduct Id Available Product
+     * @return Response
+     * @throws NotFoundHttpException|StaleObjectException if the model cannot be found
+     */
+    public function actionDelete($idAvailableProduct)
+    {
+        $this->findModel($idAvailableProduct)->delete();
+        return $this->redirect(['index']);
     }
 
     /**

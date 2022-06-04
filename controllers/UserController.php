@@ -2,12 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\AvailableProduct;
 use app\models\ResetPasswordForm;
 use app\models\TaxData;
 use app\models\User;
 
 use Yii;
 use yii\base\Exception;
+use yii\data\ActiveDataProvider;
 use yii\db\StaleObjectException;
 use yii\web\Controller;
 use yii\filters\AccessControl;
@@ -48,8 +50,15 @@ class UserController extends Controller
      */
     public function actionView()
     {
+        $dataProvider = new ActiveDataProvider([
+            'query' => AvailableProduct::find()
+                ->joinWith("product")
+                ->andWhere(['product.refUser' => Yii::$app->user->id])
+        ]);
+
         return $this->render('view', [
-            'model' => $this->findModel()
+            'model' => $this->findModel(),
+            'dataProvider' => $dataProvider,
         ]);
     }
 

@@ -1,44 +1,97 @@
 <?php
 
+use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
-use yii\widgets\DetailView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
+/* @var $dataProvider ActiveDataProvider */
 
-$this->title = $model->idUser;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+$this->title = "Account di $model->username";
 ?>
-<div class="user-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container external-container">
+    <h1 class="titolo-pagina"> <?= Html::encode($this->title) ?> </h1>
+    <section class="dati-area-utente">
+        <h2 class="titolo-dati-utente">Dati anagrafici</h2>
+        <ul class="lista-dati-utente lista-dati-anagrafici-area-utente">
+            <li>
+                Nome: <?= $model->firstName ?>
+            </li>
+            <div class="separator"></div>
+            <li>
+                Cognome: <?= $model->lastName ?>
+            </li>
+            <div class="separator"></div>
+            <li>
+                Data di nascita: <?= Yii::$app->formatter->asDate($model->dateOfBirth, "php: d/m/Y") ?>
+            </li>
+        </ul>
+        <div class="separator-section-liste"></div>
+        <h2 class="titolo-dati-utente">Account</h2>
+        <ul class="lista-dati-utente lista-account-venditore-area-utente">
+            <li>
+                Username: <?= $model->username ?>
+            </li>
+            <li>
+                E-mail: <?= $model->email ?>
+            </li>
+        </ul>
 
-    <p>
-        <?= Html::a('Update', ['update', 'idUser' => $model->idUser], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'idUser' => $model->idUser], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+        <?php if(Yii::$app->user->can("vendor")) : ?>
+        <div class="separator-section-liste"></div>
+        <h2 class="titolo-dati-utente">Dati Attività</h2>
+        <ul class="lista-dati-utente lista-dati-venditore-area-utente">
+            <li>
+                Nome Attività: <?= $model->taxData->businessName ?>
+            </li>
+            <div class="separator"></div>
+            <li>
+                Partita iva: <?= $model->taxData->vatNumber ?>
+            </li>
+            <div class="separator"></div>
+            <li>
+                Indirizzo: <?= $model->taxData->businessAddress ?>
+            </li>
+            <div class="separator"></div>
+            <li>
+                Città: <?= $model->taxData->businessCity ?>
+            </li>
+        </ul>
+        <div class="separator-button"></div>
+        <?php endif; ?>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'idUser',
-            'firstName',
-            'lastName',
-            'email:email',
-            'username',
-            'password',
-            'dateOfBirth',
-            'cityOfBirth',
-            'refTaxData',
-        ],
-    ]) ?>
+        <?= Html::a("Modifica", ["user/update"], ["class" => "btn btn-lg btn-primary btn-block"]) ?>
+    </section>
+    <div class="separator-section"></div>
+    <section class="prodotti-inseriti-venditore">
+        <h2 class="titolo-sezione">Prodotti in vendita</h2>
+        <div class="table-responsive">
+            <table class="order-table table keep-full-size">
+                <tr class="order-table-header text-white">
+                    <th scope="col">
+                        <div class="d-flex justify-content-center">
+                            Articolo
+                        </div>
+                    </th>
+                    <th scope="col">
+                        Quantitá
+                    </th>
+                    <th scope="col">
+                        <p class="no-wrap-final-price">Prezzo di vendita</p>
+                    </th>
+                </tr>
+                <?=
+                    ListView::widget([
+                        'dataProvider' => $dataProvider,
+                        'layout' => "{items}\n{pager}",
+                        'itemView' => '_selling_item_template',
+                        "emptyText" => false
+                    ])
+                ?>
+            </table>
+        </div>
+    </section>
 
 </div>

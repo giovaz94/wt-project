@@ -32,7 +32,10 @@ $this->title = 'Prodotti in vendita';
                 'sellingPrice',
                 [
                     'class' => ActionColumn::class,
-                    'template' => "{delete}"
+                    'template' => "{delete}",
+                    'urlCreator' => static function ($action, \app\models\AvailableProduct $model, $key, $index, $column) {
+                        return Url::toRoute([$action, 'idAvailableProduct' => $model->idAvailableProduct]);
+                    }
                 ],
             ],
         ]); ?>
