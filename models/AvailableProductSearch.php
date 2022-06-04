@@ -46,6 +46,7 @@ class AvailableProductSearch extends AvailableProduct
             }]);
         // add conditions that should always apply here
 
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);

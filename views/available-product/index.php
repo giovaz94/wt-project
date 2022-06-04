@@ -9,37 +9,36 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\AvailableProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Available Products';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Prodotti in vendita';
 ?>
-<div class="available-product-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container-fluid">
 
-    <p>
-        <?= Html::a('Create Available Product', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="home-section-title cart-sum d-flex flex-wrap justify-content-start align-items-center d-inline py-3 my-2">
+        <h1 class="cart-sum-title section-list-decor font-section"><?= Html::encode($this->title)?></h1>
+    </div>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'idAvailableProduct',
-            'availability',
-            'sellingPrice',
-            'refProduct',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'idAvailableProduct' => $model->idAvailableProduct]);
-                 }
+    <div class="table-responsive" >
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'columns' => [
+                [
+                        'label' => "Nome",
+                        'value' => static function($model) {
+                            return $model->product->name;
+                        }
+                ],
+                'availability',
+                'sellingPrice',
+                [
+                    'class' => ActionColumn::class,
+                    'template' => "{delete}"
+                ],
             ],
-        ],
-    ]); ?>
+        ]); ?>
+
+    </div>
+
 
 
 </div>

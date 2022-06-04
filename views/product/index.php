@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Product;
+use yii\grid\DataColumn;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -10,44 +11,43 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Products';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Prodotti caricati';
 ?>
-<div class="product-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container-fluid">
 
+    <div class="home-section-title cart-sum d-flex flex-wrap justify-content-start align-items-center d-inline py-3 my-2">
+        <h1 class="cart-sum-title section-list-decor font-section"><?= Html::encode($this->title)?></h1>
+    </div>
     <p>
-        <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crea un prodotto', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'idProduct',
-            'name',
-            'description:ntext',
-            'img',
-            'price',
-            //'totalPages',
-            //'releaseDate',
-            //'author',
-            //'refProductCategory',
-            //'refProductTypology',
-            //'refUser',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Product $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'idProduct' => $model->idProduct]);
-                 }
+    <div class="table-responsive">
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'layout'=> "{items}\n{pager}",
+            'columns' => [
+                'name',
+                [
+                        'attribute' => 'price',
+                        'value' =>  static function (Product $model) {
+                            return $model->price . "€";
+                        }
+                ],
+                'totalPages',
+                'author',
+                [
+                    'attribute' => 'releaseDate',
+                    'format' => ['date', 'php:d/m/Y']
+                ],
+                [
+                    'class' => ActionColumn::class,
+                    'urlCreator' => static function ($action, Product $model, $key, $index, $column) {
+                        return Url::toRoute([$action, 'idProduct' => $model->idProduct]);
+                     }
+                ],
             ],
-        ],
-    ]); ?>
-
-
+        ]); ?>
+    </div>
 </div>
