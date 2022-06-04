@@ -53,14 +53,15 @@ class Product extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'price', 'totalPages', 'publication', 'author'], 'required'],
+            [['name', 'description', 'price', 'totalPages', 'publication', 'author', 'refProductTypology', 'refProductCategory'], 'required'],
             [['img'], 'required', 'message' => 'Please, upload an image'],
             [['totalPages', 'refProductCategory', 'refProductTypology', 'refUser'], 'integer'],
             [['name', 'img', 'author'], 'string', 'max' => 255],
             [['fileLoader'], 'file', 'extensions' => 'png, jpg'],
             [['description'], 'string'],
             [['price'], 'number'],
-            [['releaseDate', 'publication'], 'date', 'format' => 'd/m/Y'],
+            [['publication'], 'date', 'format' => 'php:Y-m-d'],
+            [['releaseDate'], 'date', 'format' => 'php:Y-m-d'],
             [['refProductCategory'], 'exist', 'skipOnError' => true, 'targetClass' => ProductCategory::class, 'targetAttribute' => ['refProductCategory' => 'idProductCategory']],
             [['refProductTypology'], 'exist', 'skipOnError' => true, 'targetClass' => ProductTypology::class, 'targetAttribute' => ['refProductTypology' => 'idProductTypology']],
             [['refUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['refUser' => 'idUser']],
@@ -87,7 +88,7 @@ class Product extends ActiveRecord
                 'class' => AttributeBehavior::class,
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => 'releaseDate',
-                    ActiveRecord::EVENT_BEFORE_UPDATE => 'releaseDate',
+                    ActiveRecord::EVENT_BEFORE_UPDATE => false,
                 ],
                 'value' => function ($event) {
                     return Yii::$app->formatter->asDate("now", 'php:Y-m-d');
