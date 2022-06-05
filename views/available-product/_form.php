@@ -16,7 +16,7 @@ use yii\bootstrap5\ActiveForm;
 
     <?= $form->field($model, 'availability')->input("number") ?>
 
-    <?= $form->field($model, 'sellingPrice')->input("number", ["id" => "selling-price"]) ?>
+    <?= $form->field($model, 'sellingPrice')->input("number", ["id" => "selling-price", "step" => "any"]) ?>
 
     <table class="order-table table keep-full-size">
         <tr class="order-table-header text-white">

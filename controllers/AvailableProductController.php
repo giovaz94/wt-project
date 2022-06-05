@@ -68,18 +68,6 @@ class AvailableProductController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single AvailableProduct model.
-     * @param int $idAvailableProduct Id Available Product
-     * @return string
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($idAvailableProduct)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($idAvailableProduct),
-        ]);
-    }
 
     /**
      * Creates a new AvailableProduct model.

@@ -87,7 +87,7 @@ $this->title = $model->product->name;
             <div class="my-slider">
             <?php foreach ($rp as $ap) : ?>
                 <div class="slide related-articles">
-                    <a class="slide related-articles" href="<?= Url::toRoute(["available-product/view", "idAvailableProduct" => $ap->idAvailableProduct]) ?>">
+                    <a class="slide related-articles" href="<?= Url::toRoute(["search/detail", "idAvailableProduct" => $ap->idAvailableProduct]) ?>">
                         <div class="slide-img related-articles-img">
                             <?= Html::img("@web/uploads/{$ap->product->img}", [
                                 "alt" => $ap->product->name,
