@@ -54,64 +54,63 @@ AppAsset::register($this);
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
-<header class="border-bottom-header">
-    <div class="px-3 py-2 bg-white text-black-50">
-        <div class="container-fluid">
-            <div class="d-flex flex-wrap justify-content-center justify-content-lg-start">
-                <div class="d-flex align-items-center my-2 my-lg-0 me-lg-auto">
-                    <a href="<?= Url::toRoute(["site/index"])?>" class=" text-white">
-                        <?= Html::img("@web/imgs/logo-campus-book.png", [
-                            "alt" => "Campus Books",
-                            "class" => "logo-top-bar responsive bi me-2"
-                        ]) ?>
+
+<nav class="navbar navbar-expand-lg order-bottom-header">
+    <div class="container-fluid">
+        <a href="<?= Url::toRoute(["site/index"]) ?>" class="navbar-brand">
+            <?= Html::img("@web/imgs/logo-campus-book.png", [
+                "alt" => "Campus Books",
+                "class" => "logo-top-bar responsive"
+            ]) ?>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="btn btn-dropdown dropdown-toggle nav-link text-black-50" id="dropdown-menu-header" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <svg class="bi button-svg d-block mx-auto mb-1" role="img">
+                            <use xlink:href="#profile" />
+                        </svg>
+                        Profilo
                     </a>
-                </div>
-                <div class="col-12 col-lg-auto my-2 align-items-center d-flex justify-content-center my-md-0">
-                    <ul class="nav text-small">
-                        <li>
-                            <a href="#" class="nav-link text-black-50">
-                                <svg class="bi button-svg d-block mx-auto mb-1" width="24" height="24" role="img">
-                                    <use xlink:href="#profile" />
-                                </svg>
-                                Profilo
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link text-black-50">
-                                <svg class="bi button-svg d-block mx-auto mb-1" width="24" height="24"
-                                     role="img">
-                                    <use xlink:href="#bell" />
-                                </svg>
-                                Notifiche
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link text-black-50">
-                                <svg class="bi button-svg d-block mx-auto mb-1" width="24" height="24"
-                                     role="img">
-                                    <use xlink:href="#cart" />
-                                </svg>
-                                Carrello
-                            </a>
-                        </li>
-                        <?php
-                        /**
-                        '<li>'
-                            . Html::beginForm(['/login/logout'], 'post', ['class' => 'form-inline'])
-                            . Html::submitButton(
-                            'Logout (' . Yii::$app->user->identity->username . ')',
-                            ['class' => 'btn btn-link logout']
-                            )
-                            . Html::endForm()
-                            . '</li>'
-                         */
-                        ?>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown-menu-header">
+                        <?php if(!Yii::$app->user->isGuest) : ?>
+                        <li><a href="<?= Url::to(["order/index"])?>" class="dropdown-item">Ordini</a></li>
+                        <li><a href="<?= Url::to(["user/view"])?>" class="dropdown-item">Area utente</a></li>
+                        <?php if(Yii::$app->user->can("vendor") ) : ?>
+                        <li><a href="<?= Url::to(["product/create"])?>" class="dropdown-item">Inserisci prodotto</a></li>
+                        <li><a href="<?= Url::to(["available-product/index"])?>" class="dropdown-item">Prodotti in vendita</a></li>
+                        <?php endif; ?>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><?= Html::a('Log out', Url::to(['login/logout']), ["class" => "dropdown-item" ,'data-method' => 'POST']) ?></li>
+                        <?php else: ?>
+                        <li><a href="<?= Url::toRoute(["login/index"])?>" class="dropdown-item">Accedi</a></li>
+                        <?php endif; ?>
                     </ul>
-                </div>
-            </div>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= Url::toRoute(["notification/index"])?> "class="nav-link text-center text-black-50">
+                        <svg class="bi button-svg d-block mx-auto mb-1" role="img">
+                            <use xlink:href="#bell" />
+                        </svg>
+                        Notifiche
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= Url::toRoute(["cart/index"])?>" class="nav-link text-center text-black-50">
+                        <svg class="bi button-svg d-block mx-auto mb-1" role="img">
+                            <use xlink:href="#cart" />
+                        </svg>
+                        Carrello
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
-</header>
+</nav>
+
 
 <main>
     <?= $content ?>
@@ -121,25 +120,25 @@ AppAsset::register($this);
     <footer class="d-flex flex-wrap justify-content-around align-items-center py-3 my-4 border-top">
         <ul class="nav nav-footer col-md-4 justify-content-start">
             <li class="nav-item"><a href="#" class="nav-link px-2 text-white">
-                    <p class="footer-list-decor">Home</p>
+                    <p class="footer-list-decor">Link</p>
                 </a>
                 <ul class="nav-nested-item-footer justify-content-start">
-                    <li><a href="#" class="nav-link px-2 text-black">Pricing</a></li>
-                    <li><a href="#" class="nav-link px-2 text-black">FAQs</a></li>
-                    <li><a href="#" class="nav-link px-2 text-black">About</a></li>
+                    <li><a href="<?= Url::to(["site/index"])?>" class="nav-link px-2 text-black">Home</a></li>
+                    <li><a href="<?= Url::to(["notification/index"])?>" class="nav-link px-2 text-black">Notifiche</a></li>
+                    <li><a href="<?= Url::to(["cart/index"])?>" class="nav-link px-2 text-black">Carrello</a></li>
                 </ul>
             </li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-white">
-                    <p class="footer-list-decor">Home</p>
+                    <p class="footer-list-decor">Social</p>
                 </a>
                 <ul class="nav-nested-item-footer justify-content-start">
-                    <li><a href="#" class="nav-link px-2 text-black">Pricing</a></li>
-                    <li><a href="#" class="nav-link px-2 text-black">FAQs</a></li>
-                    <li><a href="#" class="nav-link px-2 text-black">About</a></li>
+                    <li><a href="#" class="nav-link px-2 text-black">Github</a></li>
+                    <li><a href="#" class="nav-link px-2 text-black">Facebook</a></li>
+                    <li><a href="#" class="nav-link px-2 text-black">Linkedin</a></li>
                 </ul>
             </li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-white">
-                    <p class="footer-list-decor">Home</p>
+                    <p class="footer-list-decor">Info</p>
                 </a>
                 <ul class="nav-nested-item-footer justify-content-start">
                     <li><a href="#" class="nav-link px-2 text-black">Pricing</a></li>

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap5\ActiveForm;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\PaymentMethod */
@@ -12,10 +13,11 @@ $this->title = "Pagamento";
 
 <div class="container container-luca">
     <div class="d-flex align-items-center justify-content-center logo-generic-login">
-        <a href="/">
-            <img class="logo-top-bar responsive" id="logosvgheader"
-                 alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
-                 src="degrado.png" aria-label="Profilo">
+        <a href="<?= Url::toRoute(["site/index"]) ?>">
+            <?= Html::img("@web/imgs/logo-campus-book.png", [
+                "alt" => "Campus Books",
+                "class" => "logo-top-bar responsive"
+            ]) ?>
         </a>
     </div>
     <div class="card card-generic-login">
