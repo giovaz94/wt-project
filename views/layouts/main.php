@@ -4,6 +4,7 @@
 /** @var string $content */
 
 use app\assets\AppAsset;
+use yii\helpers\Url;
 use yii\bootstrap5\Html;
 
 AppAsset::register($this);
@@ -58,10 +59,11 @@ AppAsset::register($this);
         <div class="container-fluid">
             <div class="d-flex flex-wrap justify-content-center justify-content-lg-start">
                 <div class="d-flex align-items-center my-2 my-lg-0 me-lg-auto">
-                    <a href="/" class=" text-white">
-                        <img class="logo-top-bar responsive bi me-2" id="logosvgheader"
-                             alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
-                             src="logo_vector.svg" aria-label="Profilo">
+                    <a href="<?= Url::toRoute(["site/index"])?>" class=" text-white">
+                        <?= Html::img("@web/imgs/logo-campus-book.png", [
+                            "alt" => "Campus Books",
+                            "class" => "logo-top-bar responsive bi me-2"
+                        ]) ?>
                     </a>
                 </div>
                 <div class="col-12 col-lg-auto my-2 align-items-center d-flex justify-content-center my-md-0">
@@ -152,10 +154,12 @@ AppAsset::register($this);
                 <p class="copyright text-muted">&copy; 2022 Company, Inc</p>
             </div>
             <div class="d-flex align-items-center mb-3 mb-md-0">
-                <a href="./home.html" class="link-dark">
-                    <img class="logo-top-bar responsive bi me-2" id="logosvgfooter"
-                         alt="Un libro aperto con qualche pagina svolazzante" title="Logo del sito"
-                         src="logo_vector.svg">
+
+                <a href="<?= Url::toRoute(["site/index"]) ?>" class="link-dark">
+                    <?= Html::img("@web/imgs/logo-campus-book.png", [
+                        "alt" => "Campus Books",
+                        "class" => "logo-top-bar responsive bi me-2"
+                    ]) ?>
                 </a>
             </div>
         </div>
