@@ -124,13 +124,10 @@ class CartItem extends ActiveRecord
             $availableProduct->update(false);
         } else if($availableProduct->availability == 0) {
 
-            $title = "Product {$availableProduct->product->name} sold out!";
+            $title = "Scorte del prodotto {$availableProduct->product->name} esaurite";
             $body = <<<BODY
-            
-            If you receive this notification is because the product "{$availableProduct->product->name}"
-            is now sold out.
-            
-            Thank you for your attention.
+            Hai esaurito le scorte del prodotto "{$availableProduct->product->name}". 
+            L'articolo, in vendita al prezzo di {$availableProduct->sellingPrice} €, è stato ora rimosso.
 BODY;
             NotificationFactory::sendToUser($title, $body, $this->availableProduct->product->user);
         }

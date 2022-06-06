@@ -64,9 +64,15 @@ a.slide:hover .titolo-libro{
     fill: currentColor;
 }
 
-.box-quantity {
+.box-quantity, .box-read-inactive {
     padding: 10px;
     border: 1px solid rgb(167, 167, 167);
+}
+
+.box-read-active {
+    padding: 10px;
+    border: 1px solid rgb(167, 167, 167);
+    background-color: #3BF31D;
 }
 
 .button-boxless {

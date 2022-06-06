@@ -7,11 +7,11 @@ use yii\helpers\Url;
 /* @var $message \yii\mail\BaseMessage instance of newly created mail message */
 /* @var $model \app\models\User instance of user */
 ?>
-<h1>Password recovery </h1>
+<h1> Recupero password  </h1>
 
-<p> This mail was automatically generated from the server.</p>
-<p> Please click on this <?= Html::a('Link', Url::to(['user/reset-password', 'idUser' => $model->idUser, "token" => $model->resetKey], true)) ?>
-    for resetting your password </p>
+<p> Se hai ricevuto la seguente mail è perchè hai richiesto un recupero della password .</p>
+<p> Per proseguire clicca sul seguente <?= Html::a('Link', Url::to(['user/reset-password', 'idUser' => $model->idUser, "token" => $model->resetKey], true)) ?>
+    per completare la procedura di recupero </p>
 
 
 

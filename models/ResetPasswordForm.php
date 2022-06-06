@@ -55,7 +55,7 @@ class ResetPasswordForm extends Model
             ->compose('templates/reset', ['model' => $model])
             ->setFrom('info.campusbooks.media@gmail.com')
             ->setTo($model->email)
-            ->setSubject('Reset password');
+            ->setSubject('Richiesta reset password');
 
         return $mail->send();
     }

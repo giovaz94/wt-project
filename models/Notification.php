@@ -72,7 +72,7 @@ class Notification extends ActiveRecord
     }
 
     /**
-     * Gets query for [[RefUsers]].
+     * Gets query for User
      *
      * @return ActiveQuery
      */
@@ -81,4 +81,12 @@ class Notification extends ActiveRecord
         return $this->hasMany(User::class, ['idUser' => 'refUser'])->viaTable('UserNotification', ['refNotification' => 'idNotification']);
     }
 
+    /**
+     * Gets query for UserNotification
+     * @return ActiveQuery
+     */
+    public function getUserNotifications()
+    {
+        return $this->hasMany(UserNotification::class, ['refNotification' => 'idNotification']);
+    }
 }

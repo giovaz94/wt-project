@@ -19,7 +19,7 @@ $this->title = 'Prodotti caricati';
         <h1 class="cart-sum-title section-list-decor font-section"><?= Html::encode($this->title)?></h1>
     </div>
     <p>
-        <?= Html::a('Crea un prodotto', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crea un prodotto', ['create'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <div class="table-responsive">
