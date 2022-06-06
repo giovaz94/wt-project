@@ -80,7 +80,7 @@ AppAsset::register($this);
                         <li><a href="<?= Url::to(["order/index"])?>" class="dropdown-item">Ordini</a></li>
                         <li><a href="<?= Url::to(["user/view"])?>" class="dropdown-item">Area utente</a></li>
                         <?php if(Yii::$app->user->can("vendor") ) : ?>
-                        <li><a href="<?= Url::to(["product"])?>" class="dropdown-item">Prodotti caricati</a></li>
+                        <li><a href="<?= Url::to(["product/index"])?>" class="dropdown-item">Prodotti caricati</a></li>
                         <li><a href="<?= Url::to(["available-product/index"])?>" class="dropdown-item">Prodotti in vendita</a></li>
                         <li><a href="<?= Url::to(["product/create"])?>" class="dropdown-item">Inserisci prodotto</a></li>
                         <?php endif; ?>
