@@ -15,7 +15,7 @@ ModalAsset::register($this);
 ?>
 
 <section class="cart-summary-list-impagination">
-    <div class="container-fluid">
+    <div class="container">
         <div class="home-section-title d-flex flex-wrap justify-content-start align-items-center d-inline py-3 my-2">
             <h1 class="section-list-decor font-section"><?= Html::encode($this->title)?></h1>
         </div>
@@ -41,7 +41,7 @@ ModalAsset::register($this);
                             <p class="no-wrap-final-price">Status</p>
                         </th>
                         <th scope="col">
-                            <p class="no-wrap-final-price">Dettaglio</p>
+                            <p class="no-wrap-final-price">Azioni</p>
                         </th>
                     </tr>
                     <?=

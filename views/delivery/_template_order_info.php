@@ -28,7 +28,6 @@ use yii\web\View;
         <?= $model->getStatusLabel() ?>
     </td>
     <td>
-        <?= Html::a("Visualizza", ["order/detail", "idOrder" => $model->idOrder ])?>
         <?= Html::a("Modifica Status", ["delivery/update-status", "idOrder" => $model->idOrder], ["class" => "showAjaxModal"])?>
     </td>
 </tr>
