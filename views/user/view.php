@@ -34,6 +34,7 @@ $this->title = "Account di $model->username";
             <li>
                 Username: <?= $model->username ?>
             </li>
+            <div class="separator"></div>
             <li>
                 E-mail: <?= $model->email ?>
             </li>

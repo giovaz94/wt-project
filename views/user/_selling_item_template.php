@@ -29,12 +29,12 @@ use yii\helpers\Html;
     </td>
     <td>
         <div class="d-flex justify-content-start">
-            Quantità ancora in vendita: <?= $model->availability ?>
+            <?= $model->availability ?>
         </div>
     </td>
     <td>
         <div class="d-flex justify-content-start flex-wrap">
-            Prezzo di vendita: <?= $model->sellingPrice ?> €
+            <?= $model->sellingPrice ?> €
         </div>
     </td>
 </tr>

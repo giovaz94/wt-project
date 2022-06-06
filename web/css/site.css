@@ -8,16 +8,6 @@
     src: url("./font/SourceSansPro-Regular.ttf");
 }
 
-.btn-primary {
-    background-color: #D70000;
-    border-color: #D70000;
-}
-
-.btn-primary:hover {
-    background-color: #D70000;
-    border-color: #D70000;
-}
-
 a {
     color: #D70000;
 }
@@ -75,6 +65,16 @@ a.slide:hover .titolo-libro{
     background-color: #3BF31D;
 }
 
+.btn-primary {
+    background-color: #D70000;
+    border-color: #D70000;
+}
+
+.btn-primary:hover {
+    background-color: #D70000;
+    border-color: #D70000;
+}
+
 .button-boxless {
     background:none;
     border:none;
@@ -103,7 +103,7 @@ button.btn:hover {
 }
 
 .border-bottom-header {
-    border-bottom: solid #dc3545 1px;
+    border-bottom: solid #D70000 1px;
 }
 
 .btn-remove-product {
@@ -214,7 +214,7 @@ div.upload-image {
 }
 
 .footer-list-decor {
-    text-decoration: underline solid #dc3545 2px;
+    text-decoration: underline solid #D70000 2px;
 }
 
 .home-section-title {
@@ -227,7 +227,7 @@ div.upload-image {
     width: 70%;
     margin-right: 4%;
     margin-left: 26%;
-    color: #dc3545;
+    color: #D70000;
     border-top: solid 3px;
 }
 
@@ -308,7 +308,7 @@ legend.form {
     white-space: pre-line;
 }
 
-.lista-dati-anagrafici-area-utente {
+.lista-dati-utente {
     list-style-type: none;
 }
 
@@ -379,7 +379,7 @@ legend.form {
 }
 
 .order-table-header {
-    background-color: #dc3545;
+    background-color: #D70000;
 }
 
 p.autore-libro {
@@ -388,7 +388,7 @@ p.autore-libro {
 }
 
 p.error-occurs {
-    color: #DC3545;
+    color: #D70000;
 }
 
 .product-cart-image {
@@ -419,6 +419,10 @@ p.prezzo-libro {
 
 .separator {
     height: 10px;
+}
+
+.separator-notifiche {
+    width: 30px;
 }
 
 .separator-table {
@@ -522,7 +526,7 @@ section {
 }
 
 .section-list-decor {
-    text-decoration: underline solid #dc3545 2px;
+    text-decoration: underline solid #D70000 2px;
 }
 
 section.product-header {
@@ -619,8 +623,8 @@ ul.control li:hover {
 
 .detail-button {
     all: initial;
-    border: 1px solid #dc3545 !important;
-    background-color: #dc3545 !important;
+    border: 1px solid #D70000 !important;
+    background-color: #D70000 !important;
     height: 4vw !important;
     width: 6vw !important;
     text-align: center !important;
