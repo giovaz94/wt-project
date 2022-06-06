@@ -26,7 +26,10 @@ class Order extends ActiveRecord
     const ORDER_SENT = 2;
     const ORDER_DELIVERED = 3;
 
-    private $statues = [
+    // MODIFY STATUS SCENARIO
+    const SCENARIO_MODIFY_STATUS = "order-modify-status";
+
+    private $statusArray = [
       self::ORDER_CREATE => "Create",
       self::ORDER_SENT => "Sent",
       self::ORDER_DELIVERED => "Delivered"
@@ -54,6 +57,16 @@ class Order extends ActiveRecord
             [['refUser'], 'integer'],
             [['refUser'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['refUser' => 'idUser']],
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios[self::SCENARIO_MODIFY_STATUS] = ['status'];
+        return $scenarios;
     }
 
     /**
@@ -113,7 +126,16 @@ class Order extends ActiveRecord
      */
     public function getStatusLabel()
     {
-        return $this->statues[$this->status];
+        return $this->statusArray[$this->status];
+    }
+
+    /**
+     * Return an associative array containing statuses
+     * @return string[]
+     */
+    public function getStatuses()
+    {
+        return $this->statusArray;
     }
 
     /**

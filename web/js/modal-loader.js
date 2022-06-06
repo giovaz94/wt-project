@@ -1,8 +1,9 @@
 
-$(document).on('click', '.showAjaxModal', function() {
+$(document).on('click', '.showAjaxModal', function(e) {
+    e.preventDefault();
     if ($('#ajax-modal').is(':visible')) {
-        $('#ajax-modal').find('#modalContent').load($(this).attr('value'));
+        $('#ajax-modal').find('#modalContent').load($(this).attr('href'));
     } else {
-        $('#ajax-modal').modal('show').find('#modalContent').load($(this).attr('value'));
+        $('#ajax-modal').modal('show').find('#modalContent').load($(this).attr('href'));
     }
 });

@@ -1,5 +1,5 @@
 <?php
-use app\models\Order;
+
 use app\models\OrderItem;
 use yii\helpers\Html;
 use yii\web\View;

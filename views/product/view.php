@@ -29,7 +29,7 @@ ModalAsset::register($this);
             ],
         ]) ?>
 
-        <?= Html::button('Vendi il prodotto', ['value'=> Url::to(['available-product/create', 'idProduct' => $model->idProduct]), 'class' => 'showAjaxModal btn btn-success','id'=>'modalButton']) ?>
+        <?= Html::button('Vendi il prodotto', ['href'=> Url::to(['available-product/create', 'idProduct' => $model->idProduct]), 'class' => 'showAjaxModal btn btn-success','id'=>'modalButton']) ?>
     </p>
 
     <?= DetailView::widget([
