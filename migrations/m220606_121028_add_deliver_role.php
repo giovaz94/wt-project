@@ -22,6 +22,7 @@ class m220606_121028_add_deliver_role extends Migration
 
         $deliver= $auth->createRole("deliver");
         $auth->add($deliver);
+        $auth->addChild($deliver, $auth->getRole("buyer"));
 
         /**
          * ========================

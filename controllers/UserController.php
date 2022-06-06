@@ -30,7 +30,7 @@ class UserController extends Controller
                     'rules' => [
                         [
                             'allow' => true,
-                            'actions' => ['buyer-registration', 'vendor-registration', 'request-password-reset', "reset-password"],
+                            'actions' => ['buyer-registration', 'vendor-registration', 'deliver-registration', 'request-password-reset', "reset-password"],
                         ],
                         [
                             'allow' => true,
@@ -82,6 +82,41 @@ class UserController extends Controller
                 $auth = Yii::$app->authManager;
                 $authorRole = $auth->getRole('buyer');
                 $auth->assign($authorRole, $model->getId());
+
+                Yii::$app->user->login($model);
+
+                return $this->redirect(['view']);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        return $this->render('registration', [
+            'user' => $model,
+            'taxData' => null
+        ]);
+    }
+
+    /**
+     * Register a new deliver.
+     * @return string|\yii\web\Response
+     * @throws \Exception
+     */
+    public function actionDeliverRegistration()
+    {
+        $model = new User();
+        $model->scenario = User::SCENARIO_DELIVER_REGISTRATION;
+
+        if ($this->request->isPost) {
+
+            $model->load($this->request->post());
+            $model->validate();
+
+            if ($model->load($this->request->post()) && $model->save()) {
+
+                $auth = Yii::$app->authManager;
+                $deliverRole = $auth->getRole('deliver');
+                $auth->assign($deliverRole, $model->getId());
 
                 Yii::$app->user->login($model);
 
