@@ -11,9 +11,11 @@ $this->params['breadcrumbs'][] = ['label' => 'Notifications', 'url' => ['index']
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="notification-view">
+<div class="container-fluid">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="home-section-title cart-sum d-flex flex-wrap justify-content-start align-items-center d-inline py-3 my-2">
+        <h1 class="cart-sum-title section-list-decor font-section"><?= Html::encode($this->title)?></h1>
+    </div>
 
     <?= DetailView::widget([
         'model' => $model,
@@ -24,5 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'dateOfCreation',
         ],
     ]) ?>
+
+    <?= Html::a('Torna alle notifiche', ['notification/index'], ['class' => 'btn btn-primary']) ?>
 
 </div>

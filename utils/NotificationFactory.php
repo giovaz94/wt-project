@@ -2,6 +2,8 @@
 
 namespace app\utils;
 
+use Yii;
+
 class NotificationFactory
 {
     /**
@@ -20,20 +22,32 @@ class NotificationFactory
         $notification->body = $body;
 
         $isSaved = $notification->save();
+        $messages = [];
         if($isSaved) {
             if(is_array($users)) {
                 foreach ($users as $user) {
                     $notification->link('users', $user);
+                    $messages[] = $mail = Yii::$app->mailer
+                        ->compose('templates/notification', ['user' => $user, 'notification' => $notification])
+                        ->setFrom('info.campusbooks.media@gmail.com')
+                        ->setTo($user->email)
+                        ->setSubject('Nuova notifica');
                 }
             } else {
                 $notification->link('users', $users);
+                $messages[] = $mail = Yii::$app->mailer
+                    ->compose('templates/notification', ['user' => $users, 'notification' => $notification])
+                    ->setFrom('info.campusbooks.media@gmail.com')
+                    ->setTo($users->email)
+                    ->setSubject('Nuova notifica');
             }
 
+            Yii::$app->mailer->sendMultiple($messages);
             return $notification;
-
         }
 
-        throw new \yii\base\Exception("Error saving the notification");
+        var_dump($notification->firstErrors); die;
+        throw new \yii\base\Exception("Errore salvataggio notifica");
     }
 
     /**

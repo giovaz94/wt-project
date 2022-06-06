@@ -6,13 +6,17 @@ use app\models\AddToCartForm;
 use app\models\Cart;
 use app\models\CartItem;
 use app\models\CheckoutForm;
+use app\models\Notification;
 use app\models\Order;
 use app\models\OrderItem;
 use app\models\User;
+use app\utils\NotificationFactory;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\db\StaleObjectException;
 use yii\filters\AccessControl;
+use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
@@ -193,6 +197,17 @@ class CartController extends Controller
             // Update total
             $order->total = $orderTotal;
             $order->update();
+
+            $user = User::findOne(Yii::$app->user->id);
+            $link = Html::a("Ordine", Url::to(["order/detail", "idOrder" => $order->idOrder], true));
+
+            $title = "Ordine Completato";
+            $body = <<<BODY
+            Gentile {$user->firstName} {$user->lastName}, grazie per il tuo acquisto.
+            Ti informiamo che il tuo ordine è stato creato. Puoi trovare un riepilogo alla pagina {$link}.
+BODY;
+
+            NotificationFactory::sendToUser("Ordine completato", $body, $user);
 
             return $this->redirect(['site/index']);
         }

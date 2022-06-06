@@ -18,6 +18,8 @@ $this->title = 'Campus Book';
 <?= $this->render("_search_bar")?>
 
 <section class="product-overview">
+
+    <?php if($li): ?>
     <section class="product-overview-new-arrivals">
         <header class="home-section-title d-flex flex-wrap justify-content-start align-items-center">
             <h1 class="section-list-decor font-section">Nuovi arrivi</h1>
@@ -60,6 +62,8 @@ $this->title = 'Campus Book';
             </div>
         </div>
     </section>
+    <?php endif; ?>
+    <?php if($pr): ?>
     <section class="product-overview-promo-articles">
         <header class="home-section-title d-flex flex-wrap justify-content-start align-items-center">
             <h1 class="section-list-decor font-section">Articoli in promozione</h1>
@@ -102,6 +106,8 @@ $this->title = 'Campus Book';
             </div>
         </div>
     </section>
+    <?php endif; ?>
+    <?php if($eb): ?>
     <section class="product-overview-ebook">
         <header class="home-section-title d-flex flex-wrap justify-content-start align-items-center">
             <h1 class="section-list-decor font-section">Ebook</h1>
@@ -144,6 +150,7 @@ $this->title = 'Campus Book';
             </div>
         </div>
     </section>
+    <?php endif; ?>
 </section>
 
 
