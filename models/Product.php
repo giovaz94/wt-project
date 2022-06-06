@@ -57,7 +57,7 @@ class Product extends ActiveRecord
             [['img'], 'required', 'message' => 'Please, upload an image'],
             [['totalPages', 'refProductCategory', 'refProductTypology', 'refUser'], 'integer'],
             [['name', 'img', 'author'], 'string', 'max' => 255],
-            [['fileLoader'], 'file', 'extensions' => 'png, jpg'],
+            [['fileLoader'], 'file', 'extensions' => 'png, jpg, jpeg'],
             [['description'], 'string'],
             [['price'], 'number'],
             [['publication'], 'date', 'format' => 'php:Y-m-d'],

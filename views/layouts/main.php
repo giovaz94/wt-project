@@ -80,9 +80,8 @@ AppAsset::register($this);
                         <li><a href="<?= Url::to(["order/index"])?>" class="dropdown-item">Ordini</a></li>
                         <li><a href="<?= Url::to(["user/view"])?>" class="dropdown-item">Area utente</a></li>
                         <?php if(Yii::$app->user->can("vendor") ) : ?>
-                        <li><a href="<?= Url::to(["product/index"])?>" class="dropdown-item">Prodotti caricati</a></li>
-                        <li><a href="<?= Url::to(["available-product/index"])?>" class="dropdown-item">Prodotti in vendita</a></li>
                         <li><a href="<?= Url::to(["product/create"])?>" class="dropdown-item">Inserisci prodotto</a></li>
+                        <li><a href="<?= Url::to(["available-product/index"])?>" class="dropdown-item">Prodotti in vendita</a></li>
                         <?php endif; ?>
                         <li><hr class="dropdown-divider"></li>
                         <li><?= Html::a('Log out', Url::to(['login/logout']), ["class" => "dropdown-item" ,'data-method' => 'POST']) ?></li>
@@ -117,8 +116,8 @@ AppAsset::register($this);
     <?= $content ?>
 </main>
 
-<div class="container-fluid footer-container">
-    <footer class="d-flex flex-wrap justify-content-around align-items-center py-3 my-4 border-top">
+<div class="container-fluid footer-container mt-4">
+    <footer class="d-flex flex-wrap justify-content-around align-items-center py-3 mb-4">
         <ul class="nav nav-footer col-md-4 justify-content-start">
             <li class="nav-item"><a href="#" class="nav-link px-2 text-white">
                     <p class="footer-list-decor">Link</p>
