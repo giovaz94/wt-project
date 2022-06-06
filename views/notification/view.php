@@ -20,7 +20,13 @@ $this->title = $model->title;
         'attributes' => [
             'idNotification',
             'title',
-            'body:ntext',
+            [
+                    "label" => "Testo",
+                    "value" => function($model) {
+                        return Html::decode($model->body);
+                    },
+                    'format' => 'raw'
+            ],
             'dateOfCreation',
         ],
     ]) ?>

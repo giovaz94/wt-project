@@ -176,11 +176,14 @@ class User extends ActiveRecord implements IdentityInterface
     public function afterSave($insert, $changedAttributes)
     {
 
-        $cart = new Cart();
-        $cart->refUser = $this->idUser;
-        $cart->save();
+        if($insert) {
+            $cart = new Cart();
+            $cart->refUser = $this->idUser;
+            $cart->save();
 
-        $this->link('cart', $cart);
+            $this->link('cart', $cart);
+        }
+
         parent::afterSave($insert, $changedAttributes);
     }
 

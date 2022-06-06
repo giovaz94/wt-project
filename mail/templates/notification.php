@@ -7,12 +7,8 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-
 ?>
-
 <h1>Nuova notifica: "<?= $notification->title ?>" </h1>
-
-<p> Hai ricevuto una nuova notifica in data <?= $notification->dateOfCreation ?>: </p>
 
 <h2> Messaggio ricevuto: </h2>
 <p> <?= $notification->body ?></p>

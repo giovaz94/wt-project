@@ -42,8 +42,18 @@ ModalAsset::register($this);
             'totalPages',
             'releaseDate',
             'author',
-            'refProductCategory',
-            'refProductTypology',
+            [
+                "label" => "Categoria",
+                "value" => function($model) {
+                    return $model->category->name;
+                }
+            ],
+            [
+                "label" => "Tipologia",
+                "value" => function($model) {
+                    return $model->typology->name;
+                }
+            ],
         ],
     ]) ?>
 

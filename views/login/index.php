@@ -24,7 +24,7 @@ $this->title = 'Login Utente';
     <div class="card card-generic-login">
         <div class="card-body">
 
-            <?php $form = ActiveForm::begin(['class' => 'login-form']); ?>
+            <?php $form = ActiveForm::begin(['class' => 'login-form',   'options' => ['autocomplete' => 'off']]); ?>
 
             <fieldset>
                 <legend class="user_login">Login utente</legend>

@@ -11,7 +11,7 @@ use yii\bootstrap5\ActiveForm;
 ?>
 
 <div class="container container-luca">
-    <?php $form = ActiveForm::begin(["class" => "need-validation"]); ?>
+    <?php $form = ActiveForm::begin(["class" => "need-validation", 'options' => ['autocomplete' => 'off']]); ?>
     <form class="need-validation">
         <fieldset class="account">
             <legend class="form">Account</legend>

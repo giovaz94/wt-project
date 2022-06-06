@@ -182,6 +182,7 @@ class UserController extends Controller
     {
         $model = $this->findModel();
         $model->scenario = User::SCENARIO_UPDATE;
+        $model->password = "";
 
         $taxData =  $model->getTaxData()->one();
 
@@ -222,7 +223,7 @@ class UserController extends Controller
         $model = new ResetPasswordForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $model->sendRecovery();
-            $this->redirect(["site/index"]);
+            return $this->render("changing-password-info", ["email" => $model->email]);
         }
 
         $this->layout = "clear";
@@ -240,6 +241,8 @@ class UserController extends Controller
 
         $model->scenario = User::SCENARIO_RESET_PASSWORD;
         if($model->load(Yii::$app->request->post()) && $model->update()) {
+            $model->resetKey = "";
+            $model->update(false);
             return  $this->redirect(["site/index"]);
         }
 
