@@ -1,5 +1,6 @@
 <?php
 
+use app\assets\ModalAsset;
 use yii\bootstrap5\Modal;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -9,8 +10,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Product */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+ModalAsset::register($this);
 
 ?>
 <div class="container external-container">

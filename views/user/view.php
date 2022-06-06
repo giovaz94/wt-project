@@ -12,7 +12,7 @@ $this->title = "Account di $model->username";
 ?>
 
 <div class="container external-container">
-    <h1 class="titolo-pagina"> <?= Html::encode($this->title) ?> </h1>
+    <h1 class="titolo-pagina"> Informazioni </h1>
     <section class="dati-area-utente">
         <h2 class="titolo-dati-utente">Dati anagrafici</h2>
         <ul class="lista-dati-utente lista-dati-anagrafici-area-utente">

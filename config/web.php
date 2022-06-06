@@ -1,5 +1,7 @@
 <?php
 
+use yii\bootstrap5\BootstrapPluginAsset;
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
@@ -30,6 +32,13 @@ $config = [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+        'assetManager' => [
+            'bundles' => [
+                BootstrapPluginAsset::class => [
+                    'js'=>[]
+                ],
+            ],
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
