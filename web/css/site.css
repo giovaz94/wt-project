@@ -322,6 +322,10 @@ legend.form {
     -webkit-overflow-scrolling: touch;
 }
 
+.navbar {
+    border-bottom: 2px solid #D70000;
+}
+
 .nav-footer {
     text-align: left !important;
     font-size: 110%;

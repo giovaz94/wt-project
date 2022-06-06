@@ -151,7 +151,7 @@ AppAsset::register($this);
 
         <div class="col-md-4 d-flex flex-column-reverse align-items-end me-sm-1">
             <div class="mb-0">
-                <p class="copyright text-muted">&copy; 2022 Company, Inc</p>
+                <p class="copyright text-muted">&copy; 2022 Campus Books</p>
             </div>
             <div class="d-flex align-items-center mb-3 mb-md-0">
 
