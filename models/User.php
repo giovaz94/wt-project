@@ -39,7 +39,10 @@ class User extends ActiveRecord implements IdentityInterface
     // VENDOR SCENARIO
     const SCENARIO_VENDOR_REGISTRATION = "vendor-registration";
 
-    // RESET PASSWORD
+    // DELIVER SCENARIO
+    const SCENARIO_DELIVER_REGISTRATION = "deliver-registration";
+
+    // RESET PASSWORD SCENARIO
     const SCENARIO_RESET_PASSWORD = "reset-password";
 
     // LOGIN SCENARIO
@@ -72,7 +75,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['dateOfBirth'], 'date', 'format' => 'php:Y-m-d'],
             [['email'], 'unique'],
             [['email'], 'email'],
-            [['password_repeat','password'], 'required', 'on' => [self::SCENARIO_VENDOR_REGISTRATION, self::SCENARIO_BUYER_REGISTRATION, self::SCENARIO_RESET_PASSWORD]],
+            [['password_repeat','password'], 'required', 'on' => [self::SCENARIO_VENDOR_REGISTRATION, self::SCENARIO_BUYER_REGISTRATION, self::SCENARIO_DELIVER_REGISTRATION, self::SCENARIO_RESET_PASSWORD]],
             ['password_repeat', 'compare', 'compareAttribute'=>'password',
                 'message'=>"Passwords should match between each other",
                 'skipOnEmpty' => false ,
@@ -93,6 +96,7 @@ class User extends ActiveRecord implements IdentityInterface
         $scenarios = parent::scenarios();
         $scenarios[self::SCENARIO_LOGIN] = ['username', 'password'];
         $scenarios[self::SCENARIO_BUYER_REGISTRATION] = ['firstName', 'lastName', 'email', 'username', 'password', 'password_repeat', 'dateOfBirth', 'cityOfBirth'];
+        $scenarios[self::SCENARIO_DELIVER_REGISTRATION] = ['firstName', 'lastName', 'email', 'username', 'password', 'password_repeat', 'dateOfBirth', 'cityOfBirth'];
         $scenarios[self::SCENARIO_VENDOR_REGISTRATION] = ['firstName', 'lastName', 'email', 'username', 'password', 'password_repeat', 'dateOfBirth', 'cityOfBirth', 'refTaxData'];
         $scenarios[self::SCENARIO_UPDATE] = ['firstName', 'lastName', 'email', 'username', 'password', 'password_repeat', 'dateOfBirth', 'cityOfBirth'];
         $scenarios[self::SCENARIO_RESET_PASSWORD] = ["password", "password_repeat"];
