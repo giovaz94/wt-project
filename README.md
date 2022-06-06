@@ -85,6 +85,18 @@ And add a default value in the last line shown above:
 pdo_mysql.default_socket=8000
 ````
 
+5) Populate the database:
+
+Run MySQL Server
+
+Create new database, dbname=<dbname> used before
+
+Unzip the dump inside dump folder in the project's root
+
+Load the MySQL's files and run them
+
+Copy the uploads folder on the Web folder in the project's root
+
 RUNNING THE APPLICATION
 ------------
 

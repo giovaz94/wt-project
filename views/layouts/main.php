@@ -116,7 +116,7 @@ AppAsset::register($this);
 </nav>
 
 
-<main>
+<main class="mb-5">
     <?= $content ?>
 </main>
 
