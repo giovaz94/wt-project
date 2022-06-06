@@ -143,15 +143,16 @@ class User extends ActiveRecord implements IdentityInterface
     public function attributeLabels()
     {
         return [
-            'idUser' => 'Id User',
-            'firstName' => 'First Name',
-            'lastName' => 'Last Name',
+            'idUser' => 'Id Utente',
+            'firstName' => 'Nome',
+            'lastName' => 'Cognome',
             'email' => 'Email',
             'username' => 'Username',
             'password' => 'Password',
-            'dateOfBirth' => 'Date Of Birth',
-            'cityOfBirth' => 'City Of Birth',
-            'refTaxData' => 'Ref Tax Data',
+            'dateOfBirth' => 'Data di nascita',
+            'cityOfBirth' => 'Città di nascita',
+            'refTaxData' => 'Riferimento dati aziendali',
+            'password_repeat' => "Ripeti password"
         ];
     }
 

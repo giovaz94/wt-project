@@ -51,14 +51,14 @@ class OrderItem extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idOrderLine' => 'Id Order Line',
-            'name' => 'Name',
-            'img' => 'Img',
-            'description' => 'Description',
-            'unitPrice' => 'Unit Price',
-            'quantity' => 'Quantity',
-            'subtotal' => 'Subtotal',
-            'refOrder' => 'Ref Order',
+            'idOrderLine' => 'Id Linea Ordine',
+            'name' => 'Nome',
+            'img' => 'Immagine',
+            'description' => 'Descrizione',
+            'unitPrice' => 'Prezzo unitario',
+            'quantity' => 'Quantità',
+            'subtotal' => 'Prezzo complessivo',
+            'refOrder' => 'Riferimento ordine',
         ];
     }
 

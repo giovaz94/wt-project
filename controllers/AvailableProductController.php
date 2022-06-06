@@ -79,7 +79,7 @@ class AvailableProductController extends Controller
         $product = Product::findOne($idProduct);
 
         if(!$product) {
-            throw new NotFoundHttpException("The requested page does not exist.");
+            throw new NotFoundHttpException("La pagina richiesta non essite.");
         }
 
         if ($this->request->isPost) {
@@ -135,6 +135,6 @@ class AvailableProductController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException('La pagina richiesta non esiste.');
     }
 }

@@ -88,7 +88,7 @@ AppAsset::register($this);
                         <li><a href="<?= Url::to(["delivery/index"])?>" class="dropdown-item">Gestione status ordini</a></li>
                         <?php endif; ?>
                         <li><hr class="dropdown-divider"></li>
-                        <li><?= Html::a('Log out', Url::to(['login/logout']), ["class" => "dropdown-item" ,'data-method' => 'POST']) ?></li>
+                        <li><?= Html::a('Logout', Url::to(['login/logout']), ["class" => "dropdown-item" ,'data-method' => 'POST']) ?></li>
                         <?php else: ?>
                         <li><a href="<?= Url::toRoute(["login/index"])?>" class="dropdown-item">Accedi</a></li>
                         <?php endif; ?>
@@ -120,8 +120,8 @@ AppAsset::register($this);
     <?= $content ?>
 </main>
 
-<div class="container-fluid footer-container mt-4">
-    <footer class="d-flex flex-wrap justify-content-around align-items-center py-3 mb-4">
+<div class="container-fluid footer-container mt-4 mt-auto">
+    <footer class="d-flex flex-wrap justify-content-around align-items-center py-3 mb-4 ">
         <ul class="nav nav-footer col-md-4 justify-content-start">
             <li class="nav-item"><a href="#" class="nav-link px-2 text-white">
                     <p class="footer-list-decor">Link</p>

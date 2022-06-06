@@ -28,7 +28,16 @@ class CheckoutForm extends Model
         ];
     }
 
-
+    public function attributeLabels()
+    {
+        return [
+            'creditCardNumber' => 'Carta di credito',
+            'creditCardSecureNumber' => 'Numero di sicurezza carta di credito',
+            'expiryDate' => 'Data scadenza',
+            'creditCardOwnerName' => 'Nome Possessore',
+            'creditCardOwnerSurname' => 'Cognome Possessore',
+        ];
+    }
 
 
     /**

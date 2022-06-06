@@ -103,18 +103,18 @@ class Product extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idProduct' => 'Id Product',
-            'name' => 'Name',
-            'description' => 'Description',
-            'img' => 'Img',
-            'price' => 'Price',
-            'totalPages' => 'Total Pages',
-            'releaseDate' => 'Release Date',
-            'publication' => 'Publication',
-            'author' => 'Author',
-            'refProductCategory' => 'Ref Product Category',
-            'refProductTypology' => 'Ref Product Typology',
-            'refUser' => 'Ref User',
+            'idProduct' => 'Id Prodotto',
+            'name' => 'Nome',
+            'description' => 'Descrizione',
+            'img' => 'Immagine',
+            'price' => 'Prezzo',
+            'totalPages' => 'Pagine totali',
+            'releaseDate' => 'Data rilascio vendita',
+            'publication' => 'Data pubblicazione',
+            'author' => 'Autore',
+            'refProductCategory' => 'Riferimento alla categoria',
+            'refProductTypology' => 'Riferimento alla tipologia',
+            'refUser' => 'Riferimento utente',
         ];
     }
 

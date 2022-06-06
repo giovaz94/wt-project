@@ -33,7 +33,7 @@ $this->title = 'Login Utente';
                 <label for="LoginForm[password]" hidden>Password</label>
                 <?= $form->field($model, 'password')->passwordInput(["placeholder" => "Password"])->label(false) ?>
 
-                <button class="btn btn-lg btn-primary" type="submit">Log in</button>
+                <button class="btn btn-lg btn-primary" type="submit">Login</button>
                 <div class="row link-generic-login">
                     <?= Html::a("Hai dimenticato la password?", ["user/request-password-reset"]) ?>
                     <?= Html::a("Non hai un account? Iscriviti!", ["user/buyer-registration"]) ?>

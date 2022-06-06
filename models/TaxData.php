@@ -43,10 +43,10 @@ class TaxData extends \yii\db\ActiveRecord
     {
         return [
             'idTaxData' => 'Id Tax Data',
-            'businessName' => 'Business Name',
-            'vatNumber' => 'Vat Number',
-            'businessAddress' => 'Business Address',
-            'businessCity' => 'Business City',
+            'businessName' => 'Nome aziendale',
+            'vatNumber' => 'Numero VAT',
+            'businessAddress' => 'Indirizzo aziendale',
+            'businessCity' => 'Città',
         ];
     }
 

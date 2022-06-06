@@ -44,9 +44,9 @@ class ProductTypology extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idProductTypology' => 'Id Product Typology',
-            'name' => 'Name',
-            'description' => 'Description',
+            'idProductTypology' => 'Id Tipologia di prodotto',
+            'name' => 'Nome',
+            'description' => 'Descrizione',
         ];
     }
 

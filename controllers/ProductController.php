@@ -171,7 +171,7 @@ class ProductController extends Controller
     {
         $model = $this->findModel($idProduct);
         if($model->delete() && !$model->deleteImage()) {
-            throw new ServerErrorHttpException("An error occurred during the elimination of an image");
+            throw new ServerErrorHttpException("Errore eliminazione immagine");
         }
         return $this->redirect(['index']);
     }
@@ -188,6 +188,6 @@ class ProductController extends Controller
         if (($model = Product::findOne(['idProduct' => $idProduct])) !== null) {
             return $model;
         }
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException('La pagina richiesta non esiste.');
     }
 }

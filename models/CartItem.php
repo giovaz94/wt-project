@@ -53,10 +53,10 @@ class CartItem extends ActiveRecord
     {
         return [
             'idCartItem' => 'Id Cart Item',
-            'quantity' => 'Quantity',
-            'subtotal' => 'Subtotal',
-            'refCart' => 'Ref Cart',
-            'refAvailableProduct' => 'Ref Available Product',
+            'quantity' => 'Quantità',
+            'subtotal' => 'Prezzo complessivo',
+            'refCart' => 'Riferimento Carrello',
+            'refAvailableProduct' => 'Riferimento Prodotto Disponibile',
         ];
     }
 

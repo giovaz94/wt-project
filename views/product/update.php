@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
 
-$this->title = 'Update Product: ' . $model->name;
+$this->title = 'Aggiorna Prodotto: ' . $model->name;
 ?>
 <div class="container external-container">
 

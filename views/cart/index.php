@@ -18,7 +18,12 @@ $this->title = "Riepilogo Carrello";
 $price = $cart->total;
 $tax = 5.00;
 $total = $price + $tax;
+
 ?>
+
+
+
+<?php if($cart->getCartItems()->count()): ?>
 
 <?php Pjax::begin(['id' => 'cart-pjax-container']) ?>
 
@@ -94,12 +99,22 @@ $total = $price + $tax;
                 });
                 
             });
+            
+            $(\"form\").submit(function(e){ e.preventDefault(); });
         ");
 ?>
 
 <?php Pjax::end() ?>
 
+<?php else: ?>
 
+<div class="container">
+    <h1 class="mt-5">Carrello vuoto</h1>
+    <p class="lead">Attualmente non vi sono articoli nel tuo carrello</p>
+</div>
+
+
+<?php endif; ?>
 
 
 

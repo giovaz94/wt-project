@@ -29,6 +29,8 @@ $this->title = "Pagamento";
                 <fieldset>
                     <legend class="user_login"> <?= Html::encode($this->title) ?> </legend>
 
+                    <?= $form->errorSummary($model) ?>
+
                     <?= $form->field($model, 'creditCardNumber')->textInput() ?>
 
                     <?= $form->field($model, 'creditCardSecureNumber')->textInput() ?>

@@ -25,6 +25,16 @@ class ResetPasswordForm extends Model
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'email' => 'email',
+        ];
+    }
+
+    /**
      * Check if a email exists
      * @param $attribute
      * @param $params

@@ -69,12 +69,12 @@ class PaymentMethod extends ActiveRecord
     {
         return [
             'idPaymentMethod' => 'Id Payment Method',
-            'creditCardNumber' => 'Credit Card Number',
-            'creditCardSecurity' => 'Credit Card Security',
-            'expiringDate' => 'Expiring Date',
-            'ownerFirstName' => 'Owner First Name',
-            'ownerLastName' => 'Owner Last Name',
-            'refUser' => 'Ref User',
+            'creditCardNumber' => 'Carta di credito',
+            'creditCardSecurity' => 'Numero sicurezza',
+            'expiringDate' => 'Data scadenza carta',
+            'ownerFirstName' => 'Nome',
+            'ownerLastName' => 'Cognome',
+            'refUser' => 'Riferimento utente',
         ];
     }
 
@@ -96,12 +96,12 @@ class PaymentMethod extends ActiveRecord
      */
     public function validateExpiringDate() {
 
-            $exp = strtotime($this->expiringDate);
-            $today = strtotime(Yii::$app->formatter->asDatetime('now', 'php:Y-m-d'));
+        $exp = strtotime($this->expiringDate);
+        $today = strtotime(Yii::$app->formatter->asDatetime('now', 'php:Y-m-d'));
 
-            if($exp <= $today) {
-                $this->addError('expiringDate', 'Invalid expiration date'  );
-            }
+        if($exp <= $today) {
+            $this->addError('expiringDate', 'Invalid expiration date'  );
+        }
     }
 
 

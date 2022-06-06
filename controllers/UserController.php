@@ -235,7 +235,7 @@ class UserController extends Controller
 
         $model = User::findOne(["idUser" => $idUser, "resetKey" => $token]);
         if(!$model) {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException('La pagina richiesta non esiste.');
         }
 
         $model->scenario = User::SCENARIO_RESET_PASSWORD;
@@ -261,6 +261,6 @@ class UserController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException('La pagina richiesta non esiste.');
     }
 }

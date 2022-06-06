@@ -8,11 +8,10 @@ use yii\helpers\Html;
 
 $this->title = 'Create User';
 ?>
-<div class="container-fluid">
 
-    <?= $this->render('_form', [
-        'user' => $user,
-        'taxData' => $taxData
-    ]) ?>
 
-</div>
+<?= $this->render('_form', [
+    'user' => $user,
+    'taxData' => $taxData
+]) ?>
+

@@ -7,6 +7,11 @@ use yii\data\ActiveDataProvider;
 
 class SearchForm extends Model
 {
+    /**
+     * Research available products
+     * @param $params
+     * @return \yii\db\ActiveQuery
+     */
     public function search($params)
     {
         $query = AvailableProduct::find()->joinWith("product");

@@ -22,6 +22,17 @@ class AddToCartForm extends Model
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'quantity' => 'Quantità',
+            'idAvailable' => 'Id AviableProduct',
+        ];
+    }
+
+    /**
      * Add a cart line item.
      *
      * @param $cart Cart The cart where the line item should be added

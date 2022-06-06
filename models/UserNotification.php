@@ -46,9 +46,9 @@ class UserNotification extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'refUser' => 'Ref User',
-            'refNotification' => 'Ref Notification',
-            'readDate' => 'Read Date',
+            'refUser' => 'Riferimento utente',
+            'refNotification' => 'Riferimento notifiche',
+            'readDate' => 'Data lettura',
         ];
     }
 

@@ -25,6 +25,18 @@ class AvailableProductSearch extends AvailableProduct
     /**
      * {@inheritdoc}
      */
+    public function attributeLabels()
+    {
+        return [
+            'idAvailableProduct' => 'Id Available Product',
+            'availability' => 'Disponibilità',
+            'refUser' => 'Riferimento utente',
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function scenarios()
     {
         // bypass scenarios() implementation in the parent class

@@ -60,9 +60,9 @@ class AvailableProduct extends ActiveRecord
     {
         return [
             'idAvailableProduct' => 'Id Available Product',
-            'availability' => 'Availability',
-            'sellingPrice' => 'Selling Price',
-            'refProduct' => 'Ref Product',
+            'availability' => 'Disponibilità',
+            'sellingPrice' => 'Prezzo di vendita',
+            'refProduct' => 'Rifermiento Prodotto',
         ];
     }
 

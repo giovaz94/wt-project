@@ -79,7 +79,7 @@ use yii\bootstrap5\ActiveForm;
         <?php endif; ?>
 
         <div class="container text-center">
-            <?= Html::submitButton('Registrati', ['class' => 'btn btn-lg btn-primary btn-block']) ?>
+            <?= Html::submitButton('Invia', ['class' => 'btn btn-lg btn-primary btn-block']) ?>
         </div>
     <?php ActiveForm::end(); ?>
 </div>

@@ -42,9 +42,9 @@ class ProductCategory extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idProductCategory' => 'Id Product Category',
-            'name' => 'Name',
-            'description' => 'Description',
+            'idProductCategory' => 'Id Categoria prodotto',
+            'name' => 'Nome',
+            'description' => 'Descrizione',
         ];
     }
 

@@ -45,8 +45,8 @@ class Cart extends ActiveRecord
     {
         return [
             'idCart' => 'Id Cart',
-            'total' => 'Total',
-            'refUser' => 'Ref User',
+            'total' => 'Totale',
+            'refUser' => 'Riferimento Utente',
         ];
     }
 

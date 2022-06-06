@@ -55,7 +55,7 @@ class CartController extends Controller
     {
         $user = User::findOne(Yii::$app->user->id);
         if(!$user || !$user->cart){
-            throw new ServerErrorHttpException("Error loading cart");
+            throw new ServerErrorHttpException("Errore caricamento carrello");
         }
         $this->cart = $user->cart;
         return parent::beforeAction($action);
@@ -90,14 +90,14 @@ class CartController extends Controller
         $model = $this->findModel($idCartItem);
 
         $operationResult = 0;
-        $operationMsg = "Cart updated successfully!";
+        $operationMsg = "Carrello aggiornato con successo!";
         $errorDetail = "";
 
         $model->quantity = Yii::$app->request->post("quantity");
 
         if(!$model->update()) {
             $operationResult = 1;
-            $operationMsg = "Error, can't update the cart";
+            $operationMsg = "Errore, aggiornamento carrello non riuscito";
             $errorDetail = $model->firstErrors;
         }
 

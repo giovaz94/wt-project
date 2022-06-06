@@ -64,10 +64,10 @@ class Notification extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idNotification' => 'Id Notification',
-            'title' => 'Title',
-            'body' => 'Body',
-            'dateOfCreation' => 'Date Of Creation',
+            'idNotification' => 'Id Notificxa',
+            'title' => 'Titolo',
+            'body' => 'Messaggio',
+            'dateOfCreation' => 'Data di creazione',
         ];
     }
 

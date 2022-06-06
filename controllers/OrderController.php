@@ -70,7 +70,7 @@ class OrderController extends Controller
         if (($model = Order::findOne(['idOrder' => $idOrder, 'refUser' => Yii::$app->user->id])) !== null) {
             return $model;
         }
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException('La pagina richiesta non esiste.');
 
     }
 }

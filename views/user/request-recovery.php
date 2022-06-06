@@ -12,7 +12,6 @@ use yii\widgets\ActiveForm;
 $this->title = "Recupero password";
 ?>
 
-
 <div class="container container-luca">
     <div class="d-flex align-items-center justify-content-center logo-generic-login">
         <a href="<?= Url::toRoute(["site/index"]) ?>">
