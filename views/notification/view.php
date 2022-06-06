@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="home-section-title cart-sum d-flex flex-wrap justify-content-start align-items-center d-inline py-3 my-2">
         <h1 class="cart-sum-title section-list-decor font-section"><?= Html::encode($this->title)?></h1>
+        Prova prova
     </div>
 
     <?= DetailView::widget([

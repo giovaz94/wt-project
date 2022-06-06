@@ -71,7 +71,7 @@ class SiteController extends Controller
         // Ebook category
         $eb = AvailableProduct::find()
             ->joinWith("product.typology")
-            ->andWhere(['=', 'ProductTypology.name', 'Ebook'])
+            ->andWhere(['=', 'ProductTypology.name', 'E-book'])
             ->limit(10)
             ->all();
 

@@ -11,7 +11,7 @@ use yii\helpers\Url;
 
 $this->title = $model->product->name;
 ?>
-
+<?= $this->render("@app/views/site/_search_bar")?>
 <div class="container external-container">
     <section class="product-header">
         <div class="container external-container">

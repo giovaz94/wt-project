@@ -80,7 +80,7 @@ AppAsset::register($this);
                         <li><a href="<?= Url::to(["order/index"])?>" class="dropdown-item">I miei ordini</a></li>
                         <li><a href="<?= Url::to(["user/view"])?>" class="dropdown-item">Area utente</a></li>
                         <?php if(Yii::$app->user->can("vendor") ) : ?>
-                        <li><a href="<?= Url::to(["product/index"])?>" class="dropdown-item">Prodotti inserti</a></li>
+                        <li><a href="<?= Url::to(["product/index"])?>" class="dropdown-item">Prodotti inseriti</a></li>
                         <li><a href="<?= Url::to(["available-product/index"])?>" class="dropdown-item">Prodotti in vendita</a></li>
                         <li><a href="<?= Url::to(["product/create"])?>" class="dropdown-item">Inserisci prodotto</a></li>
                         <?php endif; ?>
@@ -154,7 +154,7 @@ AppAsset::register($this);
 
         <div class="col-md-4 d-flex flex-column-reverse align-items-end me-sm-1">
             <div class="mb-0">
-                <p class="copyright text-muted">&copy; 2022 Company, Inc</p>
+                <p class="copyright text-muted">&copy; 2022 Campus Books</p>
             </div>
             <div class="d-flex align-items-center mb-3 mb-md-0">
 
