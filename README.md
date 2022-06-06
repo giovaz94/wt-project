@@ -72,6 +72,18 @@ php yii migrate --migrationPath=@yii/rbac/migrations
 php yii migrate
 ```
 
+For PDOExcpetion issues on Windows, check the php.ini file in the program folder. Uncomment then the following lines:
+
+````config
+extension=pdo_mysql
+...
+...
+pdo_mysql.default_socket=
+````
+And add a default value in the last line shown above:
+````config
+pdo_mysql.default_socket=8000
+````
 
 RUNNING THE APPLICATION
 ------------
