@@ -118,4 +118,13 @@ Quit the server with CTRL-C or COMMAND-C.
 
 The site should be reachable from the following url : http://localhost:8080/
 
+INSIDE THE APPLICATION
+------------
 
+If successfully configurated the database by unzipping the dump.zip folder and loading its files,
+the system already has some users and products, to login as users here are the credentials:
+Users:               Passwords:                     E-mails:
+utente_compratore_1  password_utente_compratore_1   utente_compratore_1@gmail.com
+utente_compratore_2  password_utente_compratore_2   utente_compratore_2@gmail.com
+utente_venditore_1   password_utente_venditore_1    utente_venditore_1@gmail.com
+utente_venditore_2   password_utente_venditore_2    utente_venditore_2@gmail.com
