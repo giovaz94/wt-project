@@ -102,6 +102,7 @@ AppAsset::register($this);
                         Notifiche
                     </a>
                 </li>
+                <?php if(!Yii::$app->user->isGuest) : ?>
                 <li>
                     <a href="<?= Url::toRoute(["cart/index"])?>" class="nav-link text-center text-black-50">
                         <svg class="bi button-svg d-block mx-auto mb-1" role="img">
@@ -110,6 +111,7 @@ AppAsset::register($this);
                         Carrello
                     </a>
                 </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
