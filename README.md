@@ -125,13 +125,25 @@ If successfully configurated the database by unzipping the dump.zip folder and l
 the system already has some users and products, to login as users here are the credentials:
 
 User1: utente_compratore_1
-Password1:  password_utente_compratore_1
-E-mail1:  utente_compratore_1@gmail.com
+ 
+Password1: password_utente_compratore_1
+ 
+E-mail1: utente_compratore_1@gmail.com
 
 User2: utente_compratore_2
-Password2:  password_utente_compratore_2
-E-mail2:  utente_compratore_2@gmail.com 
  
-User: utente_venditore_1   Password:  password_utente_venditore_1   E-mail:  utente_venditore_1@gmail.com
+Password2: password_utente_compratore_2
+ 
+E-mail2: utente_compratore_2@gmail.com 
+ 
+User3: utente_venditore_1
+ 
+Password3: password_utente_venditore_1
+ 
+E-mail3: utente_venditore_1@gmail.com
 
-User: utente_venditore_2   Password:  password_utente_venditore_2   E-mail:  utente_venditore_2@gmail.com
+User4: utente_venditore_2
+ 
+Password4: password_utente_venditore_2
+ 
+E-mail: utente_venditore_2@gmail.com
